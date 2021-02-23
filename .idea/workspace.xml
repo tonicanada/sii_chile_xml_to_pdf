@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="169c7759-c5a0-46fc-9488-6cd5097ea777" name="Default Changelist" comment="" />
+    <list default="true" id="169c7759-c5a0-46fc-9488-6cd5097ea777" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input/T33_factura_ejemplo_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/input/T33_factura_ejemplo_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/pdf/20210202 FC Librería Acs SA 445.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/output/pdf/20210202 FC Librería Acs SA 445.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/pdf/20210205 FC Ferretería Laesquina SA 18023723.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/output/pdf/20210205 FC Ferretería Laesquina SA 18023723.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/pdf/20210208 FC Centro Hermanos SA 4132218.pdf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

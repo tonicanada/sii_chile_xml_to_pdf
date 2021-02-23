@@ -7,3 +7,8 @@ Este proyecto convierte los documentos electrónicos XML del SII (Servicio de Im
 El archivo _**script_convierte_xml.py**_ convierte todos los XML guardados en la carpeta _**input**_ y los guarda en _**output/pdf**_.
 
 El archivo _**script_obtiene_excel.py**_ genera un archivo excel llamado _**listado_xml.xlsx**_ que se guarda en _**output**_ (este excel parsea los xml generando una tabla resumen de ellos)
+
+## Aspectos a mejorar:
+* Parsear el descuento de los items, si es que tienen.
+* Evitar las filas de 0 en el caso de documentos de más de una página.
+* Formatear en tabla las referencias.
