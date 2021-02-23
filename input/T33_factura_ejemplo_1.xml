@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0">
+    <Documento ID="DOCT33F18023723P296349">
+        <Encabezado>
+            <IdDoc>
+                <TipoDTE>33</TipoDTE>
+                <Folio>18023723</Folio>
+                <FchEmis>2021-02-05</FchEmis>
+                <IndServicio>2</IndServicio>
+                <TpoTranVenta>1</TpoTranVenta>
+                <FmaPago>1</FmaPago>
+            </IdDoc>
+            <Emisor>
+                <RUTEmisor>77777777-7</RUTEmisor>
+                <RznSoc>Ferretería Laesquina S.A.</RznSoc>
+                <GiroEmis>Venta, Distribución e Instalación de Materiales de Construcción</GiroEmis>
+                <Acteco>514320</Acteco>
+                <CdgSIISucur>76821212</CdgSIISucur>
+                <DirOrigen>Panamericana 8000</DirOrigen>
+                <CmnaOrigen>QUILICURA</CmnaOrigen>
+                <CiudadOrigen>SANTIAGO</CiudadOrigen>
+            </Emisor>
+            <Receptor>
+                <RUTRecep>11111111-1</RUTRecep>
+                <RznSocRecep>Constructora Begur S.A.</RznSocRecep>
+                <GiroRecep>Construcción</GiroRecep>
+                <DirRecep>Isidora Valdivia 3600 oficina 61</DirRecep>
+                <CmnaRecep>Las Condes</CmnaRecep>
+                <CiudadRecep>Santiago</CiudadRecep>
+            </Receptor>
+            <Totales>
+                <MntNeto>64513</MntNeto>
+                <MntExe>0</MntExe>
+                <TasaIVA>19.0</TasaIVA>
+                <IVA>12257</IVA>
+                <MntTotal>76770</MntTotal>
+            </Totales>
+        </Encabezado>
+        <Detalle>
+            <NroLinDet>1</NroLinDet>
+            <NmbItem>NIVEL 24" ALUMINIO 42-074 STANLEY</NmbItem>
+            <DscItem>1.0 x 1 C/U $12390 Bruto/$10412.0 Neto</DscItem>
+            <UnmdRef>C/U</UnmdRef>
+            <QtyItem>1.0</QtyItem>
+            <PrcItem>10412.0</PrcItem>
+            <MontoItem>10412</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>2</NroLinDet>
+            <NmbItem>ROLLO MANGA NEGRA STD 4X10 MT (40 M2)</NmbItem>
+            <DscItem>1.0 x 1 C/U $10990 Bruto/$9235.0 Neto</DscItem>
+            <UnmdRef>C/U</UnmdRef>
+            <QtyItem>1.0</QtyItem>
+            <PrcItem>9235.0</PrcItem>
+            <MontoItem>9235</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>3</NroLinDet>
+            <NmbItem>LAPIZ FABER BICOLOR GRUESO MOD 873 DSP</NmbItem>
+            <DscItem>2.0 x 1 C/U $1770 Bruto/$1487.5 Neto</DscItem>
+            <UnmdRef>C/U</UnmdRef>
+            <QtyItem>2.0</QtyItem>
+            <PrcItem>1487.5</PrcItem>
+            <MontoItem>2975</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>4</NroLinDet>
+            <NmbItem>DISCO CORTE FE 9"X 1/8 X 7/8</NmbItem>
+            <DscItem>5.0 x 1 C/U $2690 Bruto/$2260.6 Neto</DscItem>
+            <UnmdRef>C/U</UnmdRef>
+            <QtyItem>5.0</QtyItem>
+            <PrcItem>2260.6</PrcItem>
+            <MontoItem>11303</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>5</NroLinDet>
+            <NmbItem>CLAVO CORRIENTE 4 X 8 1 KG.</NmbItem>
+            <DscItem>20.0 x 1 C/U $1820 Bruto/$1529.4 Neto</DscItem>
+            <UnmdRef>C/U</UnmdRef>
+            <QtyItem>20.0</QtyItem>
+            <PrcItem>1529.4</PrcItem>
+            <MontoItem>30588</MontoItem>
+        </Detalle>
+        <TED version="1.0">
+            <DD>
+                <RE>77777777-7</RE>
+                <TD>33</TD>
+                <F>18023722</F>
+                <FE>2021-02-05</FE>
+                <RR>11111111-1</RR>
+                <RSR>Constructora Begur S.A.</RSR>
+                <MNT>76770</MNT>
+                <IT1>NIVEL 24" ALUMINIO 42-074 STANLEY</IT1>
+                <CAF version="1.0">
+                    <DA>
+                        <RE>77777777-7</RE>
+                        <RS>Ferretería Laesquina S.A.</RS>
+                        <TD>33</TD>
+                        <RNG>
+                            <D>17984450</D>
+                            <H>18034449</H>
+                        </RNG>
+                        <FA>2020-12-18</FA>
+                        <RSAPK>
+                            <M>
+                                rez0DNoOUvYfA8fG5uTMRnMSJ3nQQP9mKo4fjlhaMQWWI0S1oeuCkJ2VMA8CBx5aV0ny3303uKlS/wDLGgs79w==
+                            </M>
+                            <E>Aw==</E>
+                        </RSAPK>
+                        <IDK>300</IDK>
+                    </DA>
+                    <FRMA algoritmo="SHA1withRSA">
+                        LN+CkB0ZbI7eyKsxHqRQMgbkkW2FXwM7RnSeTawF/Wvhu4hT1lC9i/EM0mRuBz0xp5RbAK+OoXgPtZBKb+mVvQ==
+                    </FRMA>
+                </CAF>
+                <TSTED>2021-02-05T11:58:40</TSTED>
+            </DD>
+            <FRMT algoritmo="SHA1withRSA">RMya3Dm4zz+gFiFJWlKddmNzFRy+Uqbaxbo8783hAT3vCYX5Z5++lEbEpVMn0kMqygeGI3B0g7y+
+                w1FHi9U6vQ==
+            </FRMT>
+        </TED>
+        <TmstFirma>2021-02-05T11:58:40</TmstFirma>
+    </Documento>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <Reference URI="#DOCT33F18023722P296350">
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                <DigestValue>mC3o6gth3fZuCI7KkFTR5SrB0nk=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>HEPauhxewezO8kFeMGzPFuK+jrpdYigvf1e5+D9q9B76xpsUIqHerUDvUQb7asguFaLWVswFMRaj
+            xXwHyjyBpAt7eNVb+fSH5BgnIr6RUrPLFQML8vkLLSYU+FukXAzhKorQrha1dPgSN8g8Z/MoySOQ
+            sq/7Pow9usn2/oQImqk=
+        </SignatureValue>
+        <KeyInfo>
+            <KeyValue>
+                <RSAKeyValue>
+                    <Modulus>rK0cNJg18U+7vySrHCEaPbJnTKe/5lglpitGKH0MoFM1hG4L6dQs3NaYG8prI+OTI/dlXL9VWe4b
+                        oZ4cLC+7/7cDHVREoGcW3B3szyhN9ISSOYf2dS5JZVKhcM6jX2aqb5qWeiMRW162TnXtg+Umbc+Z
+                        TphmDKTQc3wZSNfu0Ds=
+                    </Modulus>
+                    <Exponent>AQUB</Exponent>
+                </RSAKeyValue>
+            </KeyValue>
+            <X509Data>
+                <X509Certificate>MIIGTDCCBTSgAwIBAgIKcZoYpQAAAA6XMzANBgkqhkiG9w0BAQUFADCB0jELMAkGA1UEBhMCQ0wx
+                    HTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQHEwhTYW50aWFnbzEUMBIGA1UE
+                    ChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9yaWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQD
+                    EydFLUNFUlRDSElMRSBDQSBGSVJNQSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEW
+                    GHNjbGllbnRlc0BlLWNlcnRjaGlsZS5jbDAeFw0xOTA3MzEyMTI5NTJaFw0yMjA3MzAyMTI5NTJa
+                    MIHNMQswCQYDVQQGEwJDTDEqMCgGA1UECAwhUkVHScOTTiBNRVRST1BPTElUQU5BIERFIFNBTlRJ
+                    QUdPMREwDwYDVQQHEwhTYW50aWFnbzEkMCIGA1UECgwbR09OWkFMTyBKQVZJRVIgQVJVVEEgQUNV
+                    w5FBMQowCAYDVQQLDAEqMSQwIgYDVQQDDBtHT05aQUxPIEpBVklFUiBBUlVUQSBBQ1XDkUExJzAl
+                    BgkqhkiG9w0BCQEWGEFOQS5CUkFWT0BDT05TVFJVTUFSVC5DTDCBnzANBgkqhkiG9w0BAQEFAAOB
+                    jQAwgYkCgYEArK0cNJg18U+7vySrHCEaPbJnTKe/5lglpitGKH0MgFM1hG4L6dQs3NaYG8prI+OT
+                    I/dlXL9VWe4boZ4cLC+7/7cDHVREoGcW3B3szyhN9ISSOYf2dS5JZVKhcM6jX2aqb5qWeiMRW162
+                    TnXtg+Umbc+ZTphmDKTQc3wZSNfu0DsCAwEAAaOCAqkwggKlMIIBTwYDVR0gBIIBRjCCAUIwggE+
+                    BggrBgEEAcNSBTCCATAwLQYIKwYBBQUHAgEWIWh0dHA6Ly93d3cuZS1jZXJ0Y2hpbGUuY2wvQ1BT
+                    Lmh0bTCB/gYIKwYBBQUHAgIwgfEege4ARQBsACAAcgBlAHMAcABvAG4AZABlAHIAIABlAHMAdABl
+                    ACAAZgBvAHIAbQB1AGwAYQByAGkAbwAgAGUAcwAgAHUAbgAgAHIAZQBxAHUAaQBzAGkAdABvACAA
+                    aQBuAGQAaQBzAHAAZQBuAHMAYQBiAGwAZQAgAHAAYQByAGEAIABkAGEAcgAgAGkAbgBpAGMAaQBv
+                    ACAAYQBsACAAcAByAG8AYwBlAHMAbwAgAGQAZQAgAGMAZQByAHQAaQBmAGkAYwBhAGMAaQDzAG4A
+                    LgAgAFAAbwBzAHQAZQByAGkAbwByAG0AZQBuAHQAZQAsMB0GA1UdDgQWBBSHcoWvJC0lBbFtvIKe
+                    UpoPsJqZ6jALBgNVHQ8EBAMCBPAwIwYDVR0RBBwwGqAYBggrBgEEAcEBAaAMFgoxNDEyMjc4Ny00
+                    MB8GA1UdIwQYMBaAFHjhPp/SErN6PI3NMA5Ts0MpB7NVMD4GA1UdHwQ3MDUwM6AxoC+GLWh0dHA6
+                    Ly9jcmwuZS1jZXJ0Y2hpbGUuY2wvZWNlcnRjaGlsZWNhRkVTLmNybDA6BggrBgEFBQcBAQQuMCww
+                    KgYIKwYBBQUHMAGGHmh0dHA6Ly9vY3NwLmVjZXJ0Y2hpbGUuY2wvb2NzcDA9BgkrBgEEAYI3FQcE
+                    MDAuBiYrBgEEAYI3FQiC3IMvhZOMZoXVnReC4twnge/sPGGBy54UhqiCWAIBZAIBBDAjBgNVHRIE
+                    HDAaoBgGCCsGAQQBwQECoAwWCjk2OTI4MTgwLTUwDQYJKoZIhvcNAQEFBQADggEBAIfefuqLTcb8
+                    PF6h2uj7pF5C8XjwpcVSFcOexgsJow/t1rpmedXdkSOQ3acnfg/U/NzldTKwGArZorkO2/v7hyLD
+                    fYiGR8GcaD4MukBX7cQegznqzEELORagEmpbRtHK2O8NjWjDt2MlkrgYOCrR8g/O+Nhjv5XjkVhA
+                    vIYcqjmK/+henwJxc4hPjOnZ8VyZZGUO9EI0yJ0qM+eI95J2UbHzJEQtThmW1BfoQ3krZYXGhDl6
+                    Kl8W8pWnkwqbxCfsIhzX/Sa1Sr7Dw43OQKn1GjA8NYT75zp3/IxmmwbSJCS0gkc5iSqV4VUAvs8F
+                    dB7DKX11dv1qgQeUtNohzP7eabE=
+                </X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+
+
+</DTE>

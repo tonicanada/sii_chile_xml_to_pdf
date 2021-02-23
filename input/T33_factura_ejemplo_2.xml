@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0">
+    <!-- O Win32 Chrome 88 central VERSION: v20190409 -->
+    <Documento ID="MiPE12815959-20050">
+        <Encabezado>
+            <IdDoc>
+                <TipoDTE>33</TipoDTE>
+                <Folio>445</Folio>
+                <FchEmis>2021-02-02</FchEmis>
+                <TpoTranCompra>1</TpoTranCompra>
+                <TpoTranVenta>1</TpoTranVenta>
+                <FmaPago>1</FmaPago>
+            </IdDoc>
+            <Emisor>
+                <RUTEmisor>88888888-8</RUTEmisor>
+                <RznSoc>Librería ACS S.A.</RznSoc>
+                <GiroEmis>Librería</GiroEmis>
+                <CdgSIISucur>010297152</CdgSIISucur>
+                <DirOrigen>ECHENIQUE 297</DirOrigen>
+                <CmnaOrigen>COQUIMBO</CmnaOrigen>
+                <CiudadOrigen>COQUIMBO</CiudadOrigen>
+            </Emisor>
+            <Receptor>
+                <RUTRecep>11111111-1</RUTRecep>
+                <RznSocRecep>Constructora Begur S.A.</RznSocRecep>
+                <GiroRecep>Construcción</GiroRecep>
+                <DirRecep>Isidora Valdivia 3600 oficina 61</DirRecep>
+                <CmnaRecep>LAS CONDES</CmnaRecep>
+                <CiudadRecep>SANTIAGO</CiudadRecep>
+            </Receptor>
+            <Transporte>
+            </Transporte>
+            <Totales>
+                <MntNeto>6008</MntNeto>
+                <TasaIVA>19.00</TasaIVA>
+                <IVA>1142</IVA>
+                <MntTotal>7150</MntTotal>
+            </Totales>
+        </Encabezado>
+        <Detalle>
+            <NroLinDet>1</NroLinDet>
+            <NmbItem>SEPARADOR OFICIO</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <PrcItem>840.33</PrcItem>
+            <MontoItem>1681</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>2</NroLinDet>
+            <NmbItem>ARCHIVADOR OFICIO</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <PrcItem>1512.60</PrcItem>
+            <MontoItem>3025</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>3</NroLinDet>
+            <NmbItem>SEPARADOR DE OJAS</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <PrcItem>714.28</PrcItem>
+            <MontoItem>714</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>4</NroLinDet>
+            <NmbItem>LAPIZ PASTA</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <PrcItem>294.11</PrcItem>
+            <MontoItem>588</MontoItem>
+        </Detalle>
+        <TED version="1.0">
+            <DD>
+                <RE>88888888-8</RE>
+                <TD>33</TD>
+                <F>445</F>
+                <FE>2021-02-02</FE>
+                <RR>11111111-1</RR>
+                <RSR>Constructora Begur S.A.</RSR>
+                <MNT>7150</MNT>
+                <IT1>SEPARADOR OFICIO</IT1>
+                <CAF version="1.0">
+                    <DA>
+                        <RE>11111111-1</RE>
+                        <RS>Constructora Begur S.A.</RS>
+                        <TD>33</TD>
+                        <RNG>
+                            <D>445</D>
+                            <H>445</H>
+                        </RNG>
+                        <FA>2021-02-02</FA>
+                        <RSAPK>
+                            <M>
+                                4Uz7JylX4NSPhaYMj0z3XxQQozyJE0K69AwDwy/IL6L9qV3GBygy/6Xbx6sRldopg8DD/jvu0lH05o5cljq/nw==
+                            </M>
+                            <E>Aw==</E>
+                        </RSAPK>
+                        <IDK>300</IDK>
+                    </DA>
+                    <FRMA algoritmo="SHA1withRSA">
+                        G909Dcki9G+fWx/UsYyB/aASFevB6FGtKXhiLVhFydYzYIPEViADzV9MSgeUlSKJvzC+Af1YGoj5NyQj+nU+Vw==
+                    </FRMA>
+                </CAF>
+                <TSTED>2021-02-02T19:33:22</TSTED>
+            </DD>
+            <FRMT algoritmo="SHA1withRSA">
+                jPRdSE7ujEW5v52O4J5XTKF0CBLqci27o4LsJbyLENfL0A+H+D+zs9sPNBAcvcIsDyN8ty6ZQVhUL8jWzuzR6w==
+            </FRMT>
+        </TED>
+        <TmstFirma>2021-02-02T19:33:22</TmstFirma>
+
+    </Documento>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>
+            <Reference URI="#MiPE12815959-20050">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/>
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>
+                <DigestValue>B2j1puIh02ybXbDviHQ1lKVslbI=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>
+            R++hSzi6z5/C71mpeeJIkzKalp6dVZ7w7gN2VHS+ix1L2y8dGrGKk6KFcAefKrtkxzH5DkssBC42
+            rEy9jkP5kNbpMhQovJRNoxSkfbXipo7Qw+vOK0I4KV0Xs0t/EVXS52vnjN0jZ5dmhcYMZOhLPtP/
+            hfXiwE/gEy2fho/n2M8=
+        </SignatureValue>
+        <KeyInfo>
+            <KeyValue>
+                <RSAKeyValue>
+                    <Modulus>
+                        z6Gq1k8vWNjUlIY8/TWsz+LMCri0G/6p7nreWZCxG3aZ+XXR5DseMFwiZTGX6msHwvH6ak2eVeBJ
+                        NXFTBvTKo1NzhXIifv8zaymZFBmbmGFzupWVRgI6yiJRD8db+mQzWWvgW6MuNRD3FNVYYKBHA4BS
+                        NgIlVMjTY3w+v6NQa/8=
+                    </Modulus>
+                    <Exponent>AQAB</Exponent>
+                </RSAKeyValue>
+            </KeyValue>
+            <X509Data>
+                <X509Certificate>
+                    MIIGezCCBWOgAwIBAgIKHq7G9wAAABF9sTANBgkqhkiG9w0BAQUFADCB0jELMAkGA1UEBhMCQ0wx
+                    HTAbBgNVBAgTFFJlZ2lvbiBNZXRyb3BvbGl0YW5hMREwDwYDVQQHEwhTYW50aWFnbzEUMBIGA1UE
+                    ChMLRS1DRVJUQ0hJTEUxIDAeBgNVBAsTF0F1dG9yaWRhZCBDZXJ0aWZpY2Fkb3JhMTAwLgYDVQQD
+                    EydFLUNFUlRDSElMRSBDQSBGSVJNQSBFTEVDVFJPTklDQSBTSU1QTEUxJzAlBgkqhkiG9w0BCQEW
+                    GHNjbGllbnRlc0BlLWNlcnRjaGlsZS5jbDAeFw0yMDA2MTYyMzEwMzVaFw0yMzA2MTYyMzEwMzVa
+                    MIH8MQswCQYDVQQGEwJDTDE2MDQGA1UECAwtUkVHScOTTiBERUwgTElCRVJUQURPUiBHUkFMIEJF
+                    Uk5BUkRPIE9ISUdHSU5TMTgwNgYDVQQHDC9SRUdJw5NOIERFTCBMSUJFUlRBRE9SIEdSQUwuIEJF
+                    Uk5BUkRPIE8nSElHR0lOUzElMCMGA1UEChMcU09OSUEgQU5EUkVBIENPTlRSRVJBUyBOQVZFQTES
+                    MBAGA1UECxMJU0VSVklDSU9TMSUwIwYDVQQDExxTT05JQSBBTkRSRUEgQ09OVFJFUkFTIE5BVkVB
+                    MRkwFwYJKoZIhvcNAQkBFgppbmZvQHg3LmNsMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDP
+                    oarWTy9Y2NSUhjz9NazP4swKuLQb/qnuet5ZkLEbdpn5ddHkOx4wXCJlMZfqawfC8fpqTZ5V4Ek1
+                    cVMG9MqjU3OFciJ+/zNrKZkUGZuYYXO6lZVGAjrKIlEPx1v6ZDNZa+Bboy41EPcU1VhgoEcDgFI2
+                    AiVUyNNjfD6/o1Br/wIDAQABo4ICqTCCAqUwggFPBgNVHSAEggFGMIIBQjCCAT4GCCsGAQQBw1IF
+                    MIIBMDAtBggrBgEFBQcCARYhaHR0cDovL3d3dy5lL1NlcnRjaGlsZS5jbC9DUFMuaHRtMIH+Bggr
+                    BgEFBQcCAjCB8R6B7gBFAGwAIAByAGUAcwBwAG8AbgBkAGUAcgAgAGUAcwB0AGUAIABmAG8AcgBt
+                    AHUAbABhAHIAaQBvACAAZQBzACAAdQBuACAAcgBlAHEAdQBpAHMAaQB0AG8AIABpAG4AZABpAHMA
+                    cABlAG4AcwBhAGIAbABlACAAcABhAHIAYQAgAGQAYQByACAAaQBuAGkAYwBpAG8AIABhAGwAIABw
+                    AHIAbwBjAGUAcwBvACAAZABlACAAYwBlAHIAdABpAGYAaQBjAGEAYwBpAPMAbgAuACAAUABvAHMA
+                    dABlAHIAaQBvAHIAbQBlAG4AdABlACwwHQYDVR0OBBYEFIH0WJaSlib4dtSAJa2Kwet5wtNZMAsG
+                    A1UdDwQEAwIE8DAjBgNVHREEHDAaoBgGCCsGAQQBwQEBoAwWCjEyODE1OTU5LTIwHwYDVR0jBBgw
+                    FoAUeOE+n9ISs3o8jc0wDlOzQykHs1UwPgYDVR0fBDcwNTAzoDGgL4YtaHR0cDovL2NybC5lLWNl
+                    cnRjaGlsZS5jbC9lY2VydGNoaWxlY2FGRVMuY3JsMDoGCCsGAQUFBwEBBC4wLDAqBggrBgEFBQcw
+                    AYYeaHR0cDovL29jc3AuZWNlcnRjaGlsZS5jbC9vY3NwMD0GCSsGAQQBgjcVBwQwMC4GJisGAQQB
+                    gjcVCILcgy+Fk4xmhdWdF4Li3CeB7+w8YYHLnhSGqIJYAgFkAgEEMCMGA1UdEgQcMBqgGAYIKwYB
+                    BAHBAQKgDBYKOTY5MjgxODAtNTANBgkqhkiG9w0BAQUFAAOCAQEAop0XgFgCIiCMJXkyKchb8zpQ
+                    qTNc+wMx3Bpn5bVdeNXBxAKPGrFQXYw9CeakjLMu5V86oaJm5vtl5CuJHeyaCqI9Jn1qng05hLaO
+                    iKkmUBiu/kdho+/WE2z60GdNdOjpsaRNXiPymlG8UX7hoG1hTEfV4Z1R/1la80TrT8Luclh8eMql
+                    ipKrZgJY/gWMB/VNFJa2CNjW0RElAMAEKmHZKThc0OJwejsWcKe08MUcPBByt8S7jADQQjkepM+I
+                    9bHSzVEuWvBNgCcBS7uZkoRxmfqrYNJERA3HIr8hmSzY/+3uyxBCRjhVEFWas1/FZYnOqlpkiVrP
+                    wqRS5u7qNMPtoA==
+                </X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+</DTE>
