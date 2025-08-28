@@ -27,12 +27,6 @@ share/python-wheels/
 *.egg
 MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
-
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
@@ -55,26 +49,24 @@ coverage.xml
 *.mo
 *.pot
 
-# Django stuff:
+# Django / Flask / DB stuff
 *.log
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-
-# Flask stuff:
 instance/
 .webassets-cache
 
-# Scrapy stuff:
+# Scrapy
 .scrapy
 
-# Sphinx documentation
+# Sphinx
 docs/_build/
 
 # PyBuilder
 target/
 
-# Jupyter Notebook
+# Jupyter
 .ipynb_checkpoints
 
 # IPython
@@ -84,21 +76,18 @@ ipython_config.py
 # pyenv
 .python-version
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+# Pipenv / Poetry
+# Pipfile.lock  # decide según tu flujo
+# poetry.lock   # idem
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+# PEP 582
 __pypackages__/
 
-# Celery stuff
+# Celery
 celerybeat-schedule
 celerybeat.pid
 
-# SageMath parsed files
+# SageMath
 *.sage.py
 
 # Environments
@@ -110,20 +99,31 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
+# Spyder / Rope
 .spyderproject
 .spyproject
-
-# Rope project settings
 .ropeproject
 
-# mkdocs documentation
+# mkdocs
 /site
 
-# mypy
+# mypy / pyre
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
-# Pyre type checker
 .pyre/
+
+# VSCode / IDEs
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project-specific ignores
+examples/output/*.pdf
+examples/output/*.xlsx
+!examples/output/.gitkeep  # si quieres mantener el directorio vacío
+docs/*.png
+!docs/example_pdf.png      # conserva el PNG del README

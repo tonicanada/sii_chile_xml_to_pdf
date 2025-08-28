@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>{{ d.tipo_dte_palabras }} {{ d.numero_factura }}</title>
+    <meta name="description" content="Invoice SII" />
+    <link rel="stylesheet" href="invoice.css" />
+  </head>
+  <body>
+    <div class="content">
+      <!-- CABECERA -->
+      <div class="header">
+        <div id="info_proveedor">
+          <dt class="strong">{{ d.razon_social }}</dt>
+          {% if d.giro_proveedor %}
+          <dt>{{ d.giro_proveedor }}</dt>
+          {% endif %} {% if d.direccion_proveedor %}
+          <dt>{{ d.direccion_proveedor }}</dt>
+          {% endif %}
+          <dt>
+            {% if d.comuna_proveedor %}{{ d.comuna_proveedor }}{% endif %} {% if
+            d.ciudad_proveedor %} - {{ d.ciudad_proveedor }}{% endif %}
+          </dt>
+        </div>
+        <dl id="informations">
+          <dt>R.U.T.: {{ d.rut_proveedor }}</dt>
+          <dt>{{ d.tipo_dte_palabras }}</dt>
+          <dt>Nº: {{ d.numero_factura }}</dt>
+          <dt>{{ fecha_emision_larga }}</dt>
+        </dl>
+      </div>
+      <div id="receiver_data">
+        <table class="receiver">
+          <tr>
+            <td class="col-title">Señor:</td>
+            <td class="col-data">{{ d.receptor_razon_social or '' }}</td>
+            <td class="col-title right">Ciudad:</td>
+            <td class="col-data right">{{ d.receptor_ciudad or '' }}</td>
+          </tr>
+          <tr>
+            <td class="col-title">Giro:</td>
+            <td class="col-data">{{ d.receptor_giro or '' }}</td>
+            <td class="col-title right">Comuna:</td>
+            <td class="col-data right">{{ d.receptor_comuna or '' }}</td>
+          </tr>
+          <tr>
+            <td class="col-title">R.U.T.:</td>
+            <td class="col-data">{{ d.receptor_rut or '' }}</td>
+            <td class="col-title right">Forma pago:</td>
+            <td class="col-data right">{{ d.forma_pago_palabras or '' }}</td>
+          </tr>
+          <tr>
+            <td class="col-title">Dirección:</td>
+            <td class="col-data">{{ d.receptor_direccion or '' }}</td>
+            <td class="col-title right">Fecha venc:</td>
+            <td class="col-data right">{{ d.fecha_vencimiento or '' }}</td>
+          </tr>
+        </table>
+      </div>
+      <!-- Referencias -->
+      {% if d.referencias %}
+      <div id="referencias_table">
+        <div class="ref-title">Referencias:</div>
+        <table class="refs">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Tipo</th>
+              <th>Folio</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for r in d.referencias %}
+            <tr>
+              <td>{{ r.fecha_referencia }}</td>
+              <td>{{ r.tipo_doc_referencia_palabras }}</td>
+              <td>{{ r.folio_referencia }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      {% endif %}
+      <!-- Ítems -->
+      <div id="item_table">
+        <table>
+          <thead>
+            <tr>
+              <th>Nro.</th>
+              <th>Código</th>
+              <th>Descripción</th>
+              <th>Dscto.</th>
+              <th>Cantidad</th>
+              <th>Precio Unit.</th>
+              <th>Valor Item</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for it in d.items %}
+            <tr>
+              <td class="right">{{ loop.index }}</td>
+              <td class="right">{{ it.codigo }}</td>
+              <td class="left wrap">{{ it.descripcion }}</td>
+              <td class="right">0</td>
+              <td class="right">{{ '%.2f'|format(it.qty) }}</td>
+              <td class="right">{{ it.rate|round|int|clp }}</td>
+              <td class="right">{{ it.total|clp }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- cierre content -->
+    <!-- ===== FOOTER / TOTAL ===== -->
+    <div id="total">
+      <div id="total_bar">
+        SON <span class="light">{{ monto_total_palabras }}</span>
+      </div>
+      <div id="bottom_area">
+        <div id="barcode_block">
+          <div id="imagen-svg">{{ barcode_svg | safe }}</div>
+          <div class="barcode-legend">
+            <div>Timbre electrónico S.I.I.</div>
+            <div>Verifique documento en: {{ verificacion_url }}</div>
+          </div>
+        </div>
+        <div id="totals_block">
+          <div class="tot-col">
+            <div class="row">
+              <span>Impuestos:</span
+              ><span class="val">{{ monto_impuesto_y_retenciones|clp }}</span>
+            </div>
+            <div class="row">
+              <span>Retenciones:</span><span class="val">0</span>
+            </div>
+            <div class="row">
+              <span>Descuento:</span><span class="val">0</span>
+            </div>
+            <div class="row">
+              <span>Recargo:</span><span class="val">0</span>
+            </div>
+            <div class="row empty"></div>
+          </div>
+          <div class="tot-col">
+            <div class="row">
+              <span>Neto:</span><span class="val">{{ d.monto_neto|clp }}</span>
+            </div>
+            <div class="row">
+              <span>Exento:</span
+              ><span class="val">{{ d.monto_exento|clp }}</span>
+            </div>
+            <div class="row">
+              <span>19% I.V.A.:</span
+              ><span class="val">{{ d.monto_iva|clp }}</span>
+            </div>
+            <div class="row empty"></div>
+          </div>
+        </div>
+      </div>
+      <div id="monto_total_final">
+        <span class="label">Monto Total:</span>
+        <span class="val">{{ d.monto_total|clp }}</span>
+      </div>
+    </div>
+  </body>
+</html>

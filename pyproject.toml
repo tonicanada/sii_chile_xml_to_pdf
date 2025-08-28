@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sii-xml-pdf"
+version = "0.1.0"
+description = "Conversor de XML DTE de Chile a PDF"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "jinja2",
+    "weasyprint",
+    "pandas",
+    "num2words",
+    "pdf417",
+    "pydantic",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.scripts]
+sii-xml-pdf = "sii_xml_pdf.cli:main"

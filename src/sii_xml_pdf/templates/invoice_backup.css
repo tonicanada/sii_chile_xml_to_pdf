@@ -1,0 +1,284 @@
+@charset "UTF-8";
+
+/* ===== Página ===== */
+@page {
+  size: Letter;
+  margin: 1.5cm;
+  @bottom-right {
+    color: #a9a;
+    content: "Página " counter(page) " de " counter(pages);
+    font-family: "Inter", "Noto Sans", "DejaVu Sans", "Liberation Sans", Arial,
+      sans-serif;
+    font-size: 9pt;
+  }
+}
+
+/* Reset + Layout base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  color: #000;
+  font-family: "Inter", "Noto Sans", "DejaVu Sans", "Liberation Sans", Arial,
+    sans-serif;
+  font-size: 11pt;
+  line-height: 1.6;
+}
+
+.content {
+  flex: 1; /* ocupa todo el espacio disponible */
+}
+
+/* ===== Utilidades ===== */
+.muted {
+  color: #666;
+}
+.strong {
+  font-weight: 700;
+}
+.light {
+  font-weight: 400;
+}
+
+/* ===== Cabecera ===== */
+.header {
+  display: grid;
+  grid-template-columns: minmax(90mm, 1fr) 70mm;
+  align-items: start;
+  margin-bottom: 4mm;
+}
+#info_proveedor {
+  margin: 0;
+}
+#informations {
+  border: 2px solid #d32f2f;
+  padding: 1em;
+  margin: 0;
+  text-align: center;
+  width: 100%;
+}
+#informations dt {
+  margin: 0;
+}
+
+/* ===== Receptor (cuadro negro) ===== */
+#receiver_data {
+  display: flex;
+  width: 100%;
+  border: 1px solid #000;
+  font-size: 10pt;
+  padding: 0.4em 0.6em;
+  margin: 4mm 0;
+}
+#receiver_data .col-titles {
+  width: 12%;
+}
+#receiver_data .col-data {
+  width: 38%;
+}
+#receiver_data dt {
+  margin: 0;
+}
+
+/* ===== Referencias ===== */
+#referencias_table {
+  display: inline-block;
+  width: 50%;
+  min-width: 50%;
+  max-width: 100%;
+  margin-top: 2mm;
+  font-size: 9.25pt;
+  vertical-align: top;
+}
+#referencias_table table.refs {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
+}
+#referencias_table table.refs thead th {
+  border-bottom: 0.2mm solid #a9a;
+  font-size: 9.25pt;
+  line-height: 1.1;
+  padding: 3px 2px;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+#referencias_table table.refs td {
+  font-size: 9.25pt;
+  line-height: 1.1;
+  padding: 2px 2px;
+  vertical-align: middle;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+#referencias_table table.refs td:nth-child(2),
+#referencias_table table.refs th:nth-child(2) {
+  white-space: nowrap;
+}
+#referencias_table table.refs th:nth-child(1),
+#referencias_table table.refs td:nth-child(1) {
+  width: 26%;
+}
+#referencias_table table.refs th:nth-child(3),
+#referencias_table table.refs td:nth-child(3) {
+  width: 20%;
+  text-align: right;
+}
+
+/* ===== Ítems ===== */
+#item_table {
+  display: block;
+  width: 100%;
+  margin: 6mm 0;
+}
+#item_table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed; /* necesario para respetar anchos */
+  line-height: 1.1;
+  font-size: 9.25pt;
+}
+#item_table thead {
+  display: table-header-group;
+}
+#item_table tr {
+  page-break-inside: avoid;
+}
+#item_table th,
+#item_table td {
+  padding: 2px 2px;
+  font-size: 9.25pt;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
+}
+#item_table th {
+  border-bottom: 0.2mm solid #a9a;
+  font-weight: 600;
+  padding: 3px 2px;
+  text-align: center;
+}
+#item_table td {
+  text-align: center;
+}
+#item_table td.left {
+  text-align: left;
+}
+#item_table td.right {
+  text-align: right;
+}
+
+/* Anchos de columnas */
+#item_table th:nth-child(1),
+#item_table td:nth-child(1) {
+  width: 6%;
+}
+#item_table th:nth-child(2),
+#item_table td:nth-child(2) {
+  width: 12%;
+  padding-right: 6px;
+}
+#item_table th:nth-child(3),
+#item_table td:nth-child(3) {
+  width: 38%;
+  text-align: left;
+}
+#item_table th:nth-child(4),
+#item_table td:nth-child(4),
+#item_table th:nth-child(5),
+#item_table td:nth-child(5),
+#item_table th:nth-child(6),
+#item_table td:nth-child(6),
+#item_table th:nth-child(7),
+#item_table td:nth-child(7) {
+  width: 11%;
+}
+
+/* ===== Totales + Timbre ===== */
+#total {
+  margin-top: auto;
+  page-break-inside: avoid;
+  width: 100%;
+}
+#total_bar {
+  font-weight: bold;
+  border: 1px solid #000;
+  height: 0.7cm;
+  font-size: 0.4cm;
+  line-height: 0.7cm;
+  padding: 0 0.4cm;
+}
+#bottom_area {
+  display: flex;
+  width: 100%;
+  margin-top: 4mm;
+  align-items: stretch; /* ambos hijos mismo alto */
+}
+#barcode_block {
+  width: 50%;
+  padding-right: 4mm;
+}
+#imagen-svg {
+  width: 100%;
+  max-height: 32mm;
+  overflow: hidden;
+  margin-top: 0.2cm;
+}
+#imagen-svg svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.barcode-legend {
+  text-align: center;
+  font-size: 0.2cm;
+  line-height: 1.1;
+}
+#totals_block {
+  width: 50%;
+  margin-left: auto;
+  display: flex;
+  font-size: 10pt;
+}
+#totals_block .tot-col {
+  width: 50%;
+}
+#totals_block .row {
+  display: flex;
+  padding: 4px 4px;
+}
+#totals_block .row span {
+  width: 50%;
+  display: inline-block;
+  padding: 0 2px;
+  border-bottom: 1px solid #000;
+}
+#totals_block .row.empty span {
+  border-bottom: none;
+}
+#totals_block .row .val {
+  text-align: right;
+  padding-right: 0;
+}
+
+/* ===== Monto Total Final ===== */
+#monto_total_final {
+  margin-top: 2mm;
+  text-align: right;
+  font-weight: bold;
+  font-size: 12pt;
+}
+#monto_total_final .label {
+  margin-right: 10px;
+}
+#monto_total_final .val {
+  font-size: 12pt;
+}

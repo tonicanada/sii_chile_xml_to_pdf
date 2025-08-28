@@ -1,0 +1,555 @@
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0">
+    <Documento ID="RE82350300-8_RR76407152-2_T33_F284380">
+        <Encabezado>
+            <IdDoc>
+                <TipoDTE>33</TipoDTE>
+                <Folio>284381</Folio>
+                <FchEmis>2021-01-30</FchEmis>
+                <FmaPago>2</FmaPago>
+                <TermPagoCdg>9</TermPagoCdg>
+                <TermPagoGlosa>3 Cta Cte - 30 D</TermPagoGlosa>
+                <TermPagoDias>30</TermPagoDias>
+            </IdDoc>
+            <Emisor>
+                <RUTEmisor>22222222-2</RUTEmisor>
+                <RznSoc>Centro Hermanos SpA</RznSoc>
+                <GiroEmis>Ferreteria Y Materiales De Construccion</GiroEmis>
+                <Telefono>996445598</Telefono>
+                <CorreoEmisor>fgarcia@centrohermanos.cl</CorreoEmisor>
+                <Acteco>475201</Acteco>
+                <DirOrigen>Atesur 4201</DirOrigen>
+                <CmnaOrigen>Renca</CmnaOrigen>
+                <CiudadOrigen>Santiago</CiudadOrigen>
+                <CdgVendedor>6</CdgVendedor>
+            </Emisor>
+            <Receptor>
+                <RUTRecep>11111111-1</RUTRecep>
+                <RznSocRecep>Constructora Begur S.A.</RznSocRecep>
+                <GiroRecep>No Indicado</GiroRecep>
+                <Contacto>Manuel García</Contacto>
+                <CorreoRecep>mgarcia@begur.cl</CorreoRecep>
+                <DirRecep>Isidora Valdivia 3600 oficina 61</DirRecep>
+                <CmnaRecep>Las Condes</CmnaRecep>
+                <CiudadRecep>Santiago</CiudadRecep>
+            </Receptor>
+            <Totales>
+                <MntNeto>1051267</MntNeto>
+                <MntExe>0</MntExe>
+                <TasaIVA>19</TasaIVA>
+                <IVA>199741</IVA>
+                <MntTotal>1251008</MntTotal>
+            </Totales>
+        </Encabezado>
+
+        <!-- === Ítems originales (1 a 15) === -->
+        <!-- (idénticos a los que me pasaste, no los repito aquí para ahorrar espacio) -->
+        <Detalle>
+            <NroLinDet>1</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>002867</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Llave P/Corona 6 Force</NmbItem>
+            <QtyItem>6.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1252</PrcItem>
+            <MontoItem>7512</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>2</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>002869</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Llave P/Corona 8 Force Llave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 ForceLlave P/Corona 8 Force</NmbItem>
+            <QtyItem>6.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1269</PrcItem>
+            <MontoItem>7614</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>3</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>007097</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Dado 1/2*06Mm Force</NmbItem>
+            <QtyItem>3.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1288</PrcItem>
+            <MontoItem>3864</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>4</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>007111</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Dado 1/2*18Mm Force</NmbItem>
+            <QtyItem>3.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1300</PrcItem>
+            <MontoItem>3900</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>5</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>007112</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Dado 1/2*19Mm Force</NmbItem>
+            <QtyItem>3.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1374</PrcItem>
+            <MontoItem>4122</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>6</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>117010049</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Broca Hss Escalonada 6-30 Toma 8Mm Alpen</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>48344</PrcItem>
+            <MontoItem>48344</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>7</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>0280003</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Cuchillo Cart.Truper Prof. 6'' Cut6x #16977</NmbItem>
+            <QtyItem>10.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1915</PrcItem>
+            <MontoItem>19150</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>8</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>001436</VlrCodigo>
+            </CdgItem>
+            <NmbItem>CUCH. HOJA REPUESTO 44-L (10 UDS)</NmbItem>
+            <QtyItem>3.00</QtyItem>
+            <UnmdItem>Jgo</UnmdItem>
+            <PrcItem>450</PrcItem>
+            <MontoItem>1350</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>9</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>000128</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Aceite Penetrante Wd-40 311Gr</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>5340</PrcItem>
+            <MontoItem>10680</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>10</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>001558</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Diluyente Xileno 1Lt</NmbItem>
+            <QtyItem>6.00</QtyItem>
+            <UnmdItem>Lt</UnmdItem>
+            <PrcItem>1350</PrcItem>
+            <MontoItem>8100</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>11</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>115070153</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Lima Plana Uyus C/Mango 8" Lmp908</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1920</PrcItem>
+            <MontoItem>1920</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>12</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>115070264</VlrCodigo>
+            </CdgItem>
+            <NmbItem>LIMA REDONDA C/MANGO 8" UYUS LMR908</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>2195</PrcItem>
+            <MontoItem>2195</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>13</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>115070050</VlrCodigo>
+            </CdgItem>
+            <NmbItem>DIABLITO UYUS SACACLAVOS 12" DIA012</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1950</PrcItem>
+            <MontoItem>3900</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>14</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>0280015</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Maceta Goma 24 Oz Truper 16932</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>5040</PrcItem>
+            <MontoItem>10080</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>15</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>117010049</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Broca Hss Escalonada 6-30 Toma 8Mm Alpen</NmbItem>
+            <QtyItem>19.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>48344</PrcItem>
+            <MontoItem>918536</MontoItem>
+        </Detalle>
+        <!-- === Ítems inventados adicionales === -->
+        <Detalle>
+            <NroLinDet>16</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200001</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Taladro Percutor Bosch 600W</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>45990</PrcItem>
+            <MontoItem>91980</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>17</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200002</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Juego Destornilladores Stanley 6pzs</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <UnmdItem>Jgo</UnmdItem>
+            <PrcItem>14990</PrcItem>
+            <MontoItem>14990</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>18</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200003</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Set Brocas Madera 10pzs</NmbItem>
+            <QtyItem>3.00</QtyItem>
+            <UnmdItem>Jgo</UnmdItem>
+            <PrcItem>3990</PrcItem>
+            <MontoItem>11970</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>19</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200004</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Martillo Carpintero 16Oz</NmbItem>
+            <QtyItem>4.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>5990</PrcItem>
+            <MontoItem>23960</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>20</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200005</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Escalera Aluminio 6 peldaños</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>59990</PrcItem>
+            <MontoItem>59990</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>21</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200006</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Guantes de Seguridad Nitrilo</NmbItem>
+            <QtyItem>10.00</QtyItem>
+            <UnmdItem>Par</UnmdItem>
+            <PrcItem>1990</PrcItem>
+            <MontoItem>19900</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>22</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200007</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Casco de Seguridad Amarillo</NmbItem>
+            <QtyItem>5.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>4990</PrcItem>
+            <MontoItem>24950</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>23</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200008</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Chaleco Reflectante Naranja</NmbItem>
+            <QtyItem>5.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>2990</PrcItem>
+            <MontoItem>14950</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>24</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200009</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Disco Corte Metal 7"</NmbItem>
+            <QtyItem>12.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1990</PrcItem>
+            <MontoItem>23880</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>25</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200010</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Disco Diamante 9"</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>29990</PrcItem>
+            <MontoItem>59980</MontoItem>
+        </Detalle>
+                <Detalle>
+            <NroLinDet>25</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200005</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Escalera Aluminio 6 peldaños</NmbItem>
+            <QtyItem>1.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>59990</PrcItem>
+            <MontoItem>59990</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>26</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200006</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Guantes de Seguridad Nitrilo</NmbItem>
+            <QtyItem>10.00</QtyItem>
+            <UnmdItem>Par</UnmdItem>
+            <PrcItem>1990</PrcItem>
+            <MontoItem>19900</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>27</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200007</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Casco de Seguridad Amarillo</NmbItem>
+            <QtyItem>5.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>4990</PrcItem>
+            <MontoItem>24950</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>28</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200008</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Chaleco Reflectante Naranja</NmbItem>
+            <QtyItem>5.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>2990</PrcItem>
+            <MontoItem>14950</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>29</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200009</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Disco Corte Metal 7"</NmbItem>
+            <QtyItem>12.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>1990</PrcItem>
+            <MontoItem>23880</MontoItem>
+        </Detalle>
+        <Detalle>
+            <NroLinDet>30</NroLinDet>
+            <CdgItem>
+                <TpoCodigo>INT1</TpoCodigo>
+                <VlrCodigo>200010</VlrCodigo>
+            </CdgItem>
+            <NmbItem>Disco Diamante 9"</NmbItem>
+            <QtyItem>2.00</QtyItem>
+            <UnmdItem>Unid</UnmdItem>
+            <PrcItem>29990</PrcItem>
+            <MontoItem>59980</MontoItem>
+        </Detalle>
+        
+
+
+        <Referencia>
+            <NroLinRef>1</NroLinRef>
+            <TpoDocRef>ND</TpoDocRef>
+            <FolioRef>785</FolioRef>
+            <FchRef>2020-12-31</FchRef>
+        </Referencia>
+        <Referencia>
+            <NroLinRef>2</NroLinRef>
+            <TpoDocRef>801</TpoDocRef>
+            <FolioRef>OC-13682</FolioRef>
+            <FchRef>2020-12-31</FchRef>
+        </Referencia>
+        <Referencia>
+            <NroLinRef>3</NroLinRef>
+            <TpoDocRef>NV</TpoDocRef>
+            <FolioRef>5611</FolioRef>
+            <FchRef>2020-12-31</FchRef>
+        </Referencia>
+        <Referencia>
+            <NroLinRef>4</NroLinRef>
+            <TpoDocRef>52</TpoDocRef>
+            <FolioRef>278614</FolioRef>
+            <FchRef>2021-01-04</FchRef>
+        </Referencia>
+        <Referencia>
+            <NroLinRef>5</NroLinRef>
+            <TpoDocRef>52</TpoDocRef>
+            <FolioRef>278641</FolioRef>
+            <FchRef>2021-01-06</FchRef>
+        </Referencia>
+        <TED version="1.0">
+            <DD>
+                <RE>22222222-2</RE>
+                <TD>33</TD>
+                <F>284380</F>
+                <FE>2021-01-30</FE>
+                <RR>11111111-1</RR>
+                <RSR>Constructora Begur S.A.</RSR>
+                <MNT>1251008</MNT>
+                <IT1>Llave P/Corona 6 Force</IT1>
+                <CAF version="1.0">
+                    <DA>
+                        <RE>11111111-1</RE>
+                        <RS>Centro Hermanos S.A.</RS>
+                        <TD>33</TD>
+                        <RNG>
+                            <D>283001</D>
+                            <H>287000</H>
+                        </RNG>
+                        <FA>2020-12-14</FA>
+                        <RSAPK>
+                            <M>
+                                uqDUuJrIGmG6yA2QjaCgmk+I5GnREACPpnTHKTg9kVHrsQ6piFz1gO6FJdoBTWKl2xj2Bx/qghRaSlMxxfwkXw==
+                            </M>
+                            <E>Aw==</E>
+                        </RSAPK>
+                        <IDK>300</IDK>
+                    </DA>
+                    <FRMA algoritmo="SHA1withRSA">
+                        W+1ms/tw5WmIf+HUEHEHeTuoAoD2gnIV8nAb9JKVYnHlDv97mcUp1OKvxkaoHvMvEPcRMT+C3fokGtGYCVBXlA==
+                    </FRMA>
+                </CAF>
+                <TSTED>2021-01-30T11:49:26</TSTED>
+            </DD>
+            <FRMT algoritmo="SHA1withRSA">
+                G9w61o1AGPUOrhgJ86sa29FUmunoRppQPPC0zrJT3vh9ILMcgVMzVlHNFAeeKJ/mbFGOVK9KO8fueLuXWAyyww==
+            </FRMT>
+        </TED>
+        <TmstFirma>2021-01-30T11:49:26</TmstFirma>
+    </Documento>
+    <Signature xmlns="http://www.w3.org/2000/09/xmldsig#">
+        <SignedInfo>
+            <CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315" />
+            <SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+            <Reference URI="#RE82350300-8_RR76407152-2_T33_F284380">
+                <Transforms>
+                    <Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                </Transforms>
+                <DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <DigestValue>FYTbr506BRqkdDhOMruscL25bFg=</DigestValue>
+            </Reference>
+        </SignedInfo>
+        <SignatureValue>
+            Q5DyjdkRbpoMULQhSHk9QGRZdUAN4cVh7e2uUmr3nvRpO6KmxYR+x1ddbC0sM4GH/fY3nyB03YViXjHQDvVG21TAg54oUXtYHQren/yZ57ZMqMg91e7Y0rh9hJv6W1dRYfmNpQUR8sH8aowmd90tq9KnZ11g7Hv8OTz9HhS1b1G8jH8DL8LvMq5OUr3GFBnMeA5pWQpT2DwNsI1OCn1BN8EUaXIXQ9wMSqlWLITrHM9UmHbZ71lm/hXa+ms8qYuPKNzUXBzqe6z9YPeSGTmCmfQUQaHX+OV371btCUUgQg1E3Y34f+oa8A4nwPc41QvwJ83+vBxJWla5utRc3mNUbA==
+        </SignatureValue>
+        <KeyInfo>
+            <KeyValue>
+                <RSAKeyValue>
+                    <Modulus>
+                        hFV+3kE+VfraSG/C4PJoHs/SSMQcqZ9GrFxQUsD3z/Wa3P+gZl+fexAU1G500xylVrshVRipJ/+Kj2t8uHKBA/VxVveKrIswoH0Ii8HH+xVb2khL71O98U6fFtyvh2GN3I5QaULCDXMaxHXPDGmMi2QjTWpJ7/DWDBBvS9wd3X7xbWaPtfOqYEQmWoIijWT9c8MPwEVN+wntfNjPi9ji8k2l7hbFrGVtjMbGXvddlLM5SSl7f5scYu+1qyFQV4/w1zT+OIJNQkO3AFUfuQSnEPqQp/DR/6Po9y//11CZu9RnF4uzthuMwCVcF9Tbh2qCZ82WDIk3/ivJCaoFdD/i5Q==
+                    </Modulus>
+                    <Exponent>AQAB</Exponent>
+                </RSAKeyValue>
+            </KeyValue>
+            <X509Data>
+                <X509Certificate>MIIGTjCCBTagAwIBAgIIUHxz1+eA9gcwDQyJKoZIhvcNAQELBQAwga8xCzAJBgNV
+                    BAYTAkNMMRQwEgYDVQQKDAtFLVNpZ24gUy5BLjE5MDcGA1UECwwwVGVybXMgb2Yg
+                    dXNlIGF0IHd3dy5lc2lnbi1sYS5jb20vYWN1ZXJkb3RlcmNlcm9zMSswKQYDVQQD
+                    DCJFLVNpZ24gQ2xhc3MgMiBGaXJtYSBUcmlidXRhcmlhIENBMSIwIAYJKoZIhvcN
+                    AQkBFhNlLXNpZ25AZXNpZ24tbGEuY29tMB4XDTE4MDcyNzEzMTQwMFoXDTIxMDcy
+                    NjEzMTQwMFowga0xCzAJBgNVBAYTAkNMMRQwEgYDVQQKDAtFLVNpZ24gUy5BLjE5
+                    MDcGA1UECwwwVGVybXMgb2YgdXNlIGF0IHd3dy5lc2lnbi1sYS5jb20vYWN1ZXJk
+                    b3RlcmNlcm9zMSYwJAYDVQQDDB1GZXJuYW5kbyBBbmRyZXMgQmFyb25hIE9zb3Jp
+                    bzElMCMGCSqGSIb3DQEJARYWZmVybmFuZG8uYmFyb25hQGZzbS5jbDCCASIwDQYJ
+                    KoZIhvcNAQEBBQADggEPADCCAQoCggEBAIRVft5BPlX62khvwuDyaB7P0kjEHKmf
+                    RqxcUFLA98/1oNz/oGZfn3sQFNRudNMcpVa7IVUYqSf/io9rfLhygQP1cVb3iqyL
+                    MKB9CIvBx/sVW9pIS+9TvfFOnxbcr4dhjdyOUGlCwg1zGsR1zwxpjItkI01qSe/w
+                    1gwQb0vcHd1+8W1mj7XzqmBEJlqCIo1k/XPDD8BFTfsJ7XzYz4vY4vJNpe4Wxaxl
+                    bYzGxl73XZSzOUkpe3+bHGLvtashUFeP8Nc0/jiCTUJDtwBVH7kEpxD6kKfw0f+j
+                    6Pcv/9dQmbvUZxeLs7YbjMAlXBfU24dqgmfNlgyJN/4ryQmqBXQ/4uUCAwEAAaOC
+                    AmwwggJoMIGABggrBgEFBQcBAQR0MHIwSgYIKwYBBQUHMAKGPmh0dHA6Ly9wa2ku
+                    ZXNpZ24tbGEuY29tL2NhY2VydHMvcGtpQ2xhc3MyRmlybWFUcmlidXRhcmlhQ0Eu
+                    Y3J0MCQGCCsGAQUFBzABhhhodHRwOi8vb2NzcC5lc2lnbi1sYS5jb20wHQYDVR0O
+                    BBYEFOnkK67vFatqiRCf5j6p9KJCRePGMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgw
+                    FoAU+Ur6wsduwucSnFdFNYQabSjpSqQwgcgGA1UdIASBwDCBvTCBugYMKwYBBAGC
+                    ymoBBAECMIGpMH4GCCsGAQUFBwICMHIecABDAGUAcgB0AGkAZgBpAGMAYQBkAG8A
+                    IABwAGEAcgBhACAAdQBzAG8AIABUAHIAaQBiAHUAdABhAHIAaQBvACwAIABDAG8A
+                    bQBlAHIAYwBpAG8ALAAgAFAAYQBnAG8AcwAgAHkAIABPAHQAcgBvAHMwJwYIKwYB
+                    BQUHAgEWG2h0dHA6Ly93d3cuZXNpZ24tbGEuY29tL2NwczBRBgNVHR8ESjBIMEag
+                    RKBChkBodHRwOi8vcGtpLmVzaWduLWxhLmNvbS9jcmwvcGtpQ2xhc3MyRmlybWFU
+                    cmlidXRhcmlhL2VuZHVzZXIuY3JsMA4GA1UdDwEB/wQEAwIFoDAdBgNVHSUEFjAU
+                    BggrBgEFBQcDAgYIKwYBBQUHAwQwIwYDVR0RBBwwGqAYBggrBgEEAcEBAaAMFgox
+                    NTMzNTQ2NS0wMCMGA1UdEgQcMBqgGAYIKwYBBAHBAQKgDBYKOTk1NTE3NDAtSzAN
+                    BgkqhkiG9w0BAQsFAAOCAQEAhG9xHvrsbQFkbQT2tTI58uAvxoDqH5CD6UyXP7zI
+                    kI/3VaCafhoEW8fYEQjB6BE9nyCxJfCkNFIxBnvjFGa3un9S5dNfns0zf/JT4vR2
+                    Zp+bQKuyiSwU8yw+ECsmVVbL0laSoIG+0cbc6OVBx6Lc/zMMb/kg1dJvwDk5AF7Z
+                    K3uwdo7idTiwptTT2x8ZlmWdPLNkrEIo1EC87sStmycBVrGAio3l5IoJ2qYBiLBP
+                    xOhFYFCmVEQUZUWA8NicyhlJtuja/GYfnvEMmOjNMhfy2twcB3y2752jI/nvROzP
+                    DifAIRxpIzrr9EKVD5g40dI+0PxCqasUa78BkHSzpf21GA==
+                </X509Certificate>
+            </X509Data>
+        </KeyInfo>
+    </Signature>
+</DTE>
