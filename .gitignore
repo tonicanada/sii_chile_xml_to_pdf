@@ -125,5 +125,3 @@ Thumbs.db
 examples/output/*.pdf
 examples/output/*.xlsx
 !examples/output/.gitkeep  # si quieres mantener el directorio vacío
-docs/*.png
-!docs/example_pdf.png      # conserva el PNG del README
