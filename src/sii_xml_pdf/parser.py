@@ -179,7 +179,7 @@ def parse_xml(xml: Union[str, bytes, Path]) -> DTEData:
     comuna_proveedor = _proper_case(_text(root.find(f".//{x('CmnaOrigen')}")))
 
     # Receptor
-    receptor_rut  = _format_rut(_text(root.find(f".//{x('RUTRecep')}")) or "")
+    receptor_rut = _format_rut(_text(root.find(f".//{x('RUTRecep')}")) or "")
     receptor_razon_social = _text(root.find(f".//{x('RznSocRecep')}")) or ""
     receptor_giro = _proper_case(_text(root.find(f".//{x('GiroRecep')}")))
     receptor_direccion = _proper_case(_text(root.find(f".//{x('DirRecep')}")))
