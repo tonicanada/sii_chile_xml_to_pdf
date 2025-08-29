@@ -1,0 +1,9 @@
+services:
+  xml2pdf:
+    build: .
+    container_name: xml2pdf-service
+    ports:
+      - "${HOST_PORT}:${PORT}"
+    env_file:
+      - .env
+    restart: unless-stopped

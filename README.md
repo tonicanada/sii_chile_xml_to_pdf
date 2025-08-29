@@ -15,11 +15,11 @@ Compatible con **facturas, guías de despacho, notas de crédito, notas de débi
 - 📂 Procesa **un archivo** o **carpetas completas** de XML.
 - 🖋️ Genera timbre **PDF417** en los documentos.
 - 🗂️ **Nombrado inteligente de PDFs** usando datos del XML (`fecha_tipo_razonSocial_folio.pdf`).
-- ⚡ Instalación sencilla como **paquete Python** con CLI integrada.
+- ⚡ Instalación como **paquete Python (CLI)** o despliegue como **microservicio Docker**.
 
 ---
 
-## 🚀 Instalación
+## 🚀 Instalación como Paquete Python
 
 Clona el repositorio y entra en la carpeta:
 
@@ -67,6 +67,71 @@ sii-xml-pdf extract-excel examples/input -o examples/output/listado.xlsx
 
 ---
 
+## 🐳 Uso como Microservicio con Docker
+
+Este proyecto también puede correr como **microservicio REST** (FastAPI + Uvicorn).
+
+### 1. Configuración de variables de entorno
+
+Copia el archivo de ejemplo y ajusta tus valores:
+
+```bash
+cp .env.example .env
+```
+
+`.env`:
+
+```env
+API_TOKEN=supersecreto   # Token de autenticación
+PORT=8080                # Puerto interno del contenedor
+HOST_PORT=8000           # Puerto externo en el host
+```
+
+### 2. Levantar con Docker Compose
+
+```bash
+docker compose up --build -d
+```
+
+El servicio quedará disponible en:
+
+```
+http://localhost:8000
+```
+
+### 3. Endpoints disponibles
+
+- **Salud del servicio**
+  ```bash
+  curl http://localhost:8000/healthz
+  ```
+  Respuesta:
+  ```json
+  {"status": "ok"}
+  ```
+
+- **Conversión XML → PDF**
+  ```bash
+  curl -X POST "http://localhost:8000/render"     -H "Authorization: Bearer supersecreto"     -F "file=@examples/input/T33_factura_ejemplo_1.xml"     -o salida.pdf
+  ```
+
+### 4. Autenticación por Token
+
+El microservicio requiere un token en cada petición:
+
+- Se define en `.env` (`API_TOKEN`).  
+- Se envía en las cabeceras HTTP:
+  ```
+  Authorization: Bearer <token>
+  ```
+- Para generar un token seguro:
+  ```bash
+  openssl rand -hex 32
+  ```
+- Si necesitas rotarlo: generas uno nuevo, actualizas `.env` y reinicias el servicio (`docker compose up -d`).
+
+---
+
 ## 📂 Estructura del proyecto
 
 ```
@@ -74,10 +139,14 @@ sii_chile_xml_to_pdf/
 ├── examples/         # XML y resultados de ejemplo
 │   ├── input/        # Archivos XML de entrada
 │   └── output/       # PDFs y Excel generados
-├── src/sii_xml_pdf/  # Código fuente (parser, renderer, cli)
+├── src/
+│   ├── sii_xml_pdf/  # Código fuente (parser, renderer, cli)
+│   └── service/      # Microservicio FastAPI
+├── Dockerfile
+├── docker-compose.yml
+├── .env.example
 ├── README.md
-├── pyproject.toml
-└── requirements.txt  # (opcional, solo para entornos congelados)
+└── pyproject.toml
 ```
 
 ---
@@ -86,6 +155,7 @@ sii_chile_xml_to_pdf/
 
 - [ ] Parsear correctamente los **descuentos por ítem**.
 - [ ] Extender soporte a otros tipos de documentos.
+- [ ] Agregar soporte de colas para cargas masivas.
 
 ---
 
