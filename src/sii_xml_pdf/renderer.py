@@ -8,12 +8,14 @@ import io
 from .models import DTEData
 from .formatting import format_clp, fecha_es_larga
 from .barcode import pdf417_svg_from_ted
+from .parser import parse_xml 
 
 env = Environment(
     loader=PackageLoader("sii_xml_pdf", "templates"),
     autoescape=select_autoescape(["html"])
 )
 env.filters["clp"] = format_clp
+
 
 def _default_css_list(css_path: Optional[str]) -> List[CSS]:
     if css_path:
@@ -22,6 +24,7 @@ def _default_css_list(css_path: Optional[str]) -> List[CSS]:
     with resources.files("sii_xml_pdf").joinpath("templates/invoice.css").open("r", encoding="utf-8") as f:
         css_text = f.read()
     return [CSS(string=css_text)]
+
 
 def render_html(dte: DTEData) -> str:
     tmpl = env.get_template("invoice.html")
@@ -37,9 +40,21 @@ def render_html(dte: DTEData) -> str:
     }
     return tmpl.render(**ctx)
 
+
 def render_pdf(dte: DTEData, css_path: Optional[str] = None) -> bytes:
     html = render_html(dte)
     styles = _default_css_list(css_path)
     out = io.BytesIO()
     HTML(string=html).write_pdf(out, stylesheets=styles)
     return out.getvalue()
+
+
+def render_pdf_from_xml(xml_bytes: bytes, css_path: Optional[str] = None) -> bytes:
+    """
+    Recibe XML en bytes, devuelve el PDF en bytes.
+    """
+    # 1. Parsear el XML a un objeto DTEData
+    dte = parse_xml(xml_bytes)
+
+    # 2. Generar PDF a partir del DTEData
+    return render_pdf(dte, css_path=css_path)

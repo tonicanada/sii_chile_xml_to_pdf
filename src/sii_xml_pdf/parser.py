@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as ET
-from typing import List
+from typing import List, Union
+from pathlib import Path
 from .models import DTEData, Item, Referencia, Impuesto
 from .ns import x
 import re
@@ -157,8 +158,14 @@ def _forma_pago_palabras(forma: int) -> str:
     return REL_FORMA_PAGO.get(forma, f"Desconocido ({forma})")
 
 
-def parse_xml(path: str) -> DTEData:
-    tree = ET.parse(path)
+def parse_xml(xml: Union[str, bytes, Path]) -> DTEData:
+    if isinstance(xml, (str, Path)):
+        tree = ET.parse(str(xml))
+    else:
+        # bytes → usar fromstring
+        root = ET.fromstring(xml)
+        tree = ET.ElementTree(root)
+
     root = tree.getroot()
 
     # Emisor

@@ -17,6 +17,13 @@ dependencies = [
     "pydantic",
 ]
 
+[project.optional-dependencies]
+service = [
+    "fastapi",
+    "uvicorn[standard]",
+    "python-multipart"
+]
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
