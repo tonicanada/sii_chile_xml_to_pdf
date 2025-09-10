@@ -1,5 +1,15 @@
 from fastapi_mail import ConnectionConfig
 import os
+import logging
+import sys
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s",
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
+
+
 
 MAIL_CONF = ConnectionConfig(
     MAIL_USERNAME = os.getenv("SMTP_USER"),
