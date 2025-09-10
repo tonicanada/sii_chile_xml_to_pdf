@@ -1,0 +1,42 @@
+services:
+  xml2pdf:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sii-xml2pdf-dev
+    working_dir: /app/src
+    command: uvicorn service.main:app --host 0.0.0.0 --port ${PORT:-8080} --reload
+    volumes:
+      - ./:/app
+    ports:
+      - "${HOST_PORT:-9000}:${PORT:-8080}"
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app/src
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    container_name: xml2pdf-redis
+    ports:
+      - "6379:6379"
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: xml2pdf-worker
+    working_dir: /app/src
+    command: rq worker -u redis://redis:6379 xml2pdf
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app/src
+    depends_on:
+      - redis

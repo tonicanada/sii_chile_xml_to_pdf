@@ -1,9 +1,79 @@
 services:
   xml2pdf:
-    build: .
+    image: ghcr.io/tuusuario/sii_chile_xml_to_pdf:latest
     container_name: xml2pdf-service
+    working_dir: /app/src
+    command: >
+      gunicorn service.main:app
+      -k uvicorn.workers.UvicornWorker
+      -w ${GUNICORN_WORKERS:-2}
+      -b 0.0.0.0:${PORT:-8080}
+      --timeout ${GUNICORN_TIMEOUT:-120}
+      --keep-alive 75
+      --graceful-timeout 30
+      --max-requests 200 --max-requests-jitter 50
     ports:
-      - "${HOST_PORT}:${PORT}"
+      - "${HOST_PORT:-9000}:${PORT:-8080}"
     env_file:
       - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app/src
+      - REDIS_HOST=redis
+    depends_on:
+      redis:
+        condition: service_healthy
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:${PORT:-8080}/healthz"]
+      interval: 30s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  worker:
+    image: ghcr.io/tuusuario/sii_chile_xml_to_pdf:latest
+    container_name: xml2pdf-worker
+    working_dir: /app/src
+    command: rq worker -u redis://redis:6379 xml2pdf
+    env_file:
+      - .env
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app/src
+      - REDIS_HOST=redis
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  redis:
+    image: redis:7-alpine
+    container_name: xml2pdf-redis
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning"]
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "5m"
+        max-file: "3"
+
+volumes:
+  redis-data:

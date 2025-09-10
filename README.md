@@ -16,6 +16,7 @@ Compatible con **facturas, guías de despacho, notas de crédito, notas de débi
 - 🖋️ Genera timbre **PDF417** en los documentos.
 - 🗂️ **Nombrado inteligente de PDFs** usando datos del XML (`fecha_tipo_razonSocial_folio.pdf`).
 - ⚡ Instalación como **paquete Python (CLI)** o despliegue como **microservicio Docker**.
+- 📦 Nuevo endpoint `render-zip`: permite subir un **ZIP con XMLs** y un **email de destino**. El servicio procesa todos los XML, genera los PDFs y los envía al correo especificado.
 
 ---
 
@@ -33,7 +34,7 @@ Crea y activa un entorno virtual:
 ```bash
 python -m venv venv
 source venv/bin/activate   # Linux / macOS
-venv\Scripts\activate      # Windows
+venv\Scripts\activate    # Windows
 ```
 
 Instala en modo editable:
@@ -79,31 +80,55 @@ Copia el archivo de ejemplo y ajusta tus valores:
 cp .env.example .env
 ```
 
-`.env`:
+`.env.example`:
 
 ```env
-API_TOKEN=supersecreto   # Token de autenticación
-PORT=8080                # Puerto interno del contenedor
-HOST_PORT=8000           # Puerto externo en el host
+API_TOKEN=supersecreto
+PORT=8080
+HOST_PORT=9000
+
+# Configuración email
+SMTP_USER=usuario@dominio.com
+SMTP_PASS=contraseña_de_aplicacion
+SMTP_FROM=usuario@dominio.com
+SMTP_HOST=smtp.dominio.com
+SMTP_PORT=587
+
+# Usas STARTTLS (587)
+MAIL_STARTTLS=True
+MAIL_SSL_TLS=False
 ```
 
 ### 2. Levantar con Docker Compose
 
+El repositorio incluye dos configuraciones:
+
+- `docker-compose.dev.yml` → entorno de desarrollo (hot-reload con Uvicorn, volumen montado).  
+- `docker-compose.yml` → entorno de producción (Gunicorn + UvicornWorker, healthchecks, logs, etc.).  
+
+Ejemplo desarrollo:
+
 ```bash
-docker compose up --build -d
+docker compose -f docker-compose.dev.yml up --build -d
+```
+
+Ejemplo producción:
+
+```bash
+docker compose -f docker-compose.yml up -d
 ```
 
 El servicio quedará disponible en:
 
 ```
-http://localhost:8000
+http://localhost:9000
 ```
 
 ### 3. Endpoints disponibles
 
 - **Salud del servicio**
   ```bash
-  curl http://localhost:8000/healthz
+  curl http://localhost:9000/healthz
   ```
   Respuesta:
   ```json
@@ -112,8 +137,14 @@ http://localhost:8000
 
 - **Conversión XML → PDF**
   ```bash
-  curl -X POST "http://localhost:8000/render"     -H "Authorization: Bearer supersecreto"     -F "file=@examples/input/T33_factura_ejemplo_1.xml"     -o salida.pdf
+  curl -X POST "http://localhost:9000/render"        -H "Authorization: Bearer supersecreto"        -F "file=@examples/input/T33_factura_ejemplo_1.xml"        -o salida.pdf
   ```
+
+- **Conversión ZIP de XML y envío por correo**
+  ```bash
+  curl -X POST "http://localhost:9000/render-zip"        -H "Authorization: Bearer supersecreto"        -F "email=usuario@correo.com"        -F "file=@examples/input/facturas.zip"
+  ```
+  El servicio procesa el ZIP, genera PDFs y los envía al email indicado.
 
 ### 4. Autenticación por Token
 
@@ -144,6 +175,7 @@ sii_chile_xml_to_pdf/
 │   └── service/      # Microservicio FastAPI
 ├── Dockerfile
 ├── docker-compose.yml
+├── docker-compose.dev.yml
 ├── .env.example
 ├── README.md
 └── pyproject.toml
@@ -202,4 +234,4 @@ Las contribuciones, PRs y sugerencias son siempre bienvenidas.
 
 ## 📜 Licencia
 
-Distribuido bajo licencia MIT.  
+Distribuido bajo licencia MIT.
