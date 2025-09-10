@@ -1,6 +1,6 @@
 services:
   xml2pdf:
-    image: ghcr.io/tuusuario/sii_chile_xml_to_pdf:latest
+    image: ghcr.io/tonicanada/sii_chile_xml_to_pdf:latest
     container_name: xml2pdf-service
     working_dir: /app/src
     command: >
@@ -37,7 +37,7 @@ services:
         max-file: "3"
 
   worker:
-    image: ghcr.io/tuusuario/sii_chile_xml_to_pdf:latest
+    image: ghcr.io/tonicanada/sii_chile_xml_to_pdf:latest
     container_name: xml2pdf-worker
     working_dir: /app/src
     command: rq worker -u redis://redis:6379 xml2pdf
