@@ -9,5 +9,6 @@ MAIL_CONF = ConnectionConfig(
     MAIL_SERVER = os.getenv("SMTP_HOST", "smtp.example.com"),
     MAIL_STARTTLS=True,   # 👈 usa esto para STARTTLS (587)
     MAIL_SSL_TLS=False,   # 👈 usa esto en lugar de MAIL_SSL
-    USE_CREDENTIALS=True
+    USE_CREDENTIALS=True,
+    VALIDATE_CERTS=True,
 )
