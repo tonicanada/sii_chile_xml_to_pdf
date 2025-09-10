@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-# Dependencias del sistema necesarias para WeasyPrint
+# Dependencias del sistema necesarias para WeasyPrint + certificados SSL
 RUN apt-get update && apt-get install -y \
     libcairo2 \
     libpango-1.0-0 \
@@ -13,6 +13,8 @@ RUN apt-get update && apt-get install -y \
     libfreetype6 \
     shared-mime-info \
     fonts-dejavu-core \
+    ca-certificates \
+    && update-ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
