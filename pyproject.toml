@@ -21,7 +21,11 @@ dependencies = [
 service = [
     "fastapi",
     "uvicorn[standard]",
-    "python-multipart"
+    "python-multipart",
+    "redis",
+    "rq",
+    "fastapi-mail",
+     "gunicorn", 
 ]
 
 [tool.setuptools.packages.find]

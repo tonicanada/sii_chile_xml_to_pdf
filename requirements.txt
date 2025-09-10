@@ -28,3 +28,9 @@ tzdata==2025.2
 weasyprint==66.0
 webencodings==0.5.1
 zopfli==0.2.3.post1
+fastapi
+uvicorn[standard]
+python-multipart
+redis
+rq
+fastapi-mail
