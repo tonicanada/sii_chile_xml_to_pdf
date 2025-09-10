@@ -25,7 +25,7 @@ COPY src/ src/
 
 # Instalamos la librería con extras de servicio
 RUN pip install --no-cache-dir pip setuptools wheel \
-    && pip install --no-cache-dir -e .[service]
+    && pip install --no-cache-dir -e .[service] certifi
 
 EXPOSE 8080
 

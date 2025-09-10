@@ -20,6 +20,7 @@ services:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app/src
       - REDIS_HOST=redis
+      - SSL_CERT_FILE=/usr/local/lib/python3.11/site-packages/certifi/cacert.pem
     depends_on:
       redis:
         condition: service_healthy
@@ -47,6 +48,7 @@ services:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app/src
       - REDIS_HOST=redis
+      - SSL_CERT_FILE=/usr/local/lib/python3.11/site-packages/certifi/cacert.pem
     depends_on:
       redis:
         condition: service_healthy
