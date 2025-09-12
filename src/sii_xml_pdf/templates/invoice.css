@@ -7,46 +7,42 @@
   @bottom-right {
     color: #a9a;
     content: "Página " counter(page) " de " counter(pages);
-    font-family: "Inter", "Noto Sans", "DejaVu Sans", "Liberation Sans", Arial,
-      sans-serif;
+    font-family: "Inter", "Noto Sans", "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
     font-size: 9pt;
   }
 }
 
-/* Reset + Layout base */
+/* Reset + Base */
 *,
 *::before,
-*::after {
-  box-sizing: border-box;
-}
+*::after { box-sizing: border-box; }
 
-html,
-body {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+html, body {
+  height: auto;
+  display: block;       /* sin flex en root */
   margin: 0;
-  color: #000;
-  font-family: "Inter", "Noto Sans", "DejaVu Sans", "Liberation Sans", Arial,
-    sans-serif;
+  font-family: "Inter", "Noto Sans", "DejaVu Sans", "Liberation Sans", Arial, sans-serif;
   font-size: 11pt;
   line-height: 1.6;
+  color: #000;
 }
 
+/* Contenido que se estira */
 .content {
-  flex: 1; /* ocupa todo el espacio disponible */
+  display: flex;
+  flex-direction: column;
+  min-height: 19cm;  /* fuerza altura para empujar footer en páginas cortas */
+}
+
+/* Espaciador flexible para empujar totales al fondo */
+.spacer {
+  flex: 1;
 }
 
 /* ===== Utilidades ===== */
-.muted {
-  color: #666;
-}
-.strong {
-  font-weight: 700;
-}
-.light {
-  font-weight: 400;
-}
+.muted { color: #666; }
+.strong { font-weight: 700; }
+.light { font-weight: 400; }
 
 /* ===== Cabecera ===== */
 .header {
@@ -55,9 +51,7 @@ body {
   align-items: start;
   margin-bottom: 4mm;
 }
-#info_proveedor {
-  margin: 0;
-}
+#info_proveedor { margin: 0; }
 #informations {
   border: 2px solid #d32f2f;
   padding: 1em;
@@ -65,50 +59,23 @@ body {
   text-align: center;
   width: 100%;
 }
-#informations dt {
-  margin: 0;
-}
+#informations dt { margin: 0; }
 
-/* ===== Receptor (cuadro negro) ===== */
+/* ===== Receptor ===== */
 #receiver_data {
   width: 100%;
   border: 1px solid #000;
   font-size: 10pt;
   margin: 4mm 0;
-  padding: 4px 8px;   /* 👈 margen interno del recuadro */
+  padding: 4px 8px;
+  break-inside: avoid;
 }
-
-#receiver_data table.receiver {
-  width: 100%;
-  border-collapse: collapse;
-  line-height: 1.2;
-}
-
-#receiver_data table.receiver td {
-  padding: 2px 4px;   /* espacio interno de cada celda */
-  vertical-align: top;
-}
-
-#receiver_data .col-title {
-  width: 12%;   /* títulos de la izquierda */
-  font-weight: bold;
-}
-
-#receiver_data .col-data {
-  width: 38%;   /* datos de la izquierda */
-}
-
-/* 👇 títulos de la derecha */
-#receiver_data .col-title.right {
-  width: 18%;
-  font-weight: bold;
-}
-
-/* 👇 datos de la derecha */
-#receiver_data .col-data.right {
-  width: 32%;
-}
-
+#receiver_data table.receiver { width: 100%; border-collapse: collapse; line-height: 1.2; }
+#receiver_data table.receiver td { padding: 2px 4px; vertical-align: top; }
+#receiver_data .col-title { width: 12%; font-weight: bold; }
+#receiver_data .col-data { width: 38%; }
+#receiver_data .col-title.right { width: 18%; font-weight: bold; }
+#receiver_data .col-data.right { width: 32%; }
 
 /* ===== Referencias ===== */
 #referencias_table {
@@ -119,40 +86,29 @@ body {
   margin-top: 2mm;
   font-size: 9.25pt;
   vertical-align: top;
+  break-inside: avoid;
 }
 #referencias_table table.refs {
   border-collapse: collapse;
   width: 100%;
-  table-layout: auto;
 }
-#referencias_table table.refs thead th {
+#referencias_table thead th {
   border-bottom: 0.2mm solid #a9a;
   font-size: 9.25pt;
-  line-height: 1.1;
   padding: 3px 2px;
   text-transform: uppercase;
-  vertical-align: middle;
 }
-#referencias_table table.refs td {
+#referencias_table td {
   font-size: 9.25pt;
-  line-height: 1.1;
   padding: 2px 2px;
   vertical-align: middle;
-  overflow-wrap: anywhere;
   word-break: break-word;
 }
-#referencias_table table.refs td:nth-child(2),
-#referencias_table table.refs th:nth-child(2) {
-  white-space: nowrap;
-}
-#referencias_table table.refs th:nth-child(1),
-#referencias_table table.refs td:nth-child(1) {
-  width: 26%;
-}
-#referencias_table table.refs th:nth-child(3),
-#referencias_table table.refs td:nth-child(3) {
-  width: 20%;
-  text-align: right;
+#referencias_table td:nth-child(2),
+#referencias_table th:nth-child(2) { white-space: nowrap; }
+#referencias_table th:nth-child(1), #referencias_table td:nth-child(1) { width: 26%; }
+#referencias_table th:nth-child(3), #referencias_table td:nth-child(3) {
+  width: 20%; text-align: right;
 }
 
 /* ===== Ítems ===== */
@@ -164,76 +120,54 @@ body {
 #item_table table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* necesario para respetar anchos */
+  table-layout: fixed;
   line-height: 1.1;
   font-size: 9.25pt;
 }
-#item_table thead {
-  display: table-header-group;
-}
-#item_table tr {
-  page-break-inside: avoid;
-}
-#item_table th,
-#item_table td {
+#item_table thead { display: table-header-group; }
+#item_table tr { page-break-inside: avoid; }
+#item_table th, #item_table td {
   padding: 2px 2px;
   font-size: 9.25pt;
-  overflow-wrap: anywhere;
   word-break: break-word;
-  hyphens: auto;
 }
 #item_table th {
   border-bottom: 0.2mm solid #a9a;
   font-weight: 600;
-  padding: 3px 2px;
   text-align: center;
 }
-#item_table td {
-  text-align: center;
-}
-#item_table td.left {
-  text-align: left;
-}
-#item_table td.right {
-  text-align: right;
-}
+#item_table td { text-align: center; }
+#item_table td.left { text-align: left; }
+#item_table td.right { text-align: right; }
 
-/* Anchos de columnas */
-#item_table th:nth-child(1),
-#item_table td:nth-child(1) {
-  width: 6%;
-}
-#item_table th:nth-child(2),
-#item_table td:nth-child(2) {
+/* Anchos columnas */
+#item_table th:nth-child(1), #item_table td:nth-child(1) { width: 6%; }
+
+/* 👇 Columna 2 (Código) con reglas agresivas de corte */
+#item_table th:nth-child(2), #item_table td:nth-child(2) {
   width: 12%;
   padding-right: 6px;
-}
-#item_table th:nth-child(3),
-#item_table td:nth-child(3) {
-  width: 38%; /* ancho fijo */
-  max-width: 0; /* truco: fuerza al navegador a cortar */
-  text-align: left;
-  white-space: normal; /* permite varias líneas */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  hyphens: auto; /* divide palabras largas */
+  white-space: normal !important;
+  word-break: break-all !important;
+  overflow-wrap: anywhere !important;
 }
 
-#item_table th:nth-child(4),
-#item_table td:nth-child(4),
-#item_table th:nth-child(5),
-#item_table td:nth-child(5),
-#item_table th:nth-child(6),
-#item_table td:nth-child(6),
-#item_table th:nth-child(7),
-#item_table td:nth-child(7) {
-  width: 11%;
+#item_table th:nth-child(3), #item_table td:nth-child(3) {
+  width: 38%;
+  text-align: left;
+  white-space: normal;
+  hyphens: auto;
 }
+#item_table th:nth-child(4), #item_table td:nth-child(4),
+#item_table th:nth-child(5), #item_table td:nth-child(5),
+#item_table th:nth-child(6), #item_table td:nth-child(6),
+#item_table th:nth-child(7), #item_table td:nth-child(7) { width: 11%; }
 
 /* ===== Totales + Timbre ===== */
 #total {
-  margin-top: auto;
   page-break-inside: avoid;
+  break-inside: avoid;
+  margin-top: 4mm;
   width: 100%;
 }
 #total_bar {
@@ -248,53 +182,28 @@ body {
   display: flex;
   width: 100%;
   margin-top: 4mm;
+  break-inside: avoid;
 }
-#barcode_block {
-  width: 50%;
-  padding-right: 4mm;
-}
-#imagen-svg {
-  width: 100%;
-  max-height: 32mm;
-  overflow: hidden;
-  margin-top: 0.2cm;
-}
-#imagen-svg svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.barcode-legend {
-  text-align: center;
-  font-size: 0.2cm;
-  line-height: 1.1;
-}
+#barcode_block { width: 50%; padding-right: 4mm; }
+#imagen-svg { width: 100%; max-height: 32mm; margin-top: 0.2cm; }
+#imagen-svg svg { width: 100%; height: auto; display: block; }
+.barcode-legend { text-align: center; font-size: 0.2cm; line-height: 1.1; }
+
 #totals_block {
   width: 50%;
   margin-left: auto;
   display: flex;
   font-size: 10pt;
 }
-#totals_block .tot-col {
-  width: 50%;
-}
-#totals_block .row {
-  display: flex;
-  padding: 4px;
-}
+#totals_block .tot-col { width: 50%; }
+#totals_block .row { display: flex; padding: 4px; }
 #totals_block .row span {
   width: 50%;
   display: inline-block;
-  padding: 0 2px;
   border-bottom: 1px solid #000;
 }
-#totals_block .row.empty span {
-  border-bottom: none;
-}
-#totals_block .row .val {
-  text-align: right;
-  padding-right: 0;
-}
+#totals_block .row.empty span { border-bottom: none; }
+#totals_block .row .val { text-align: right; }
 
 /* ===== Monto Total Final ===== */
 #monto_total_final {
@@ -303,9 +212,4 @@ body {
   font-weight: bold;
   font-size: 12pt;
 }
-#monto_total_final .label {
-  margin-right: 10px;
-}
-#monto_total_final .val {
-  font-size: 12pt;
-}
+#monto_total_final .label { margin-right: 10px; }
