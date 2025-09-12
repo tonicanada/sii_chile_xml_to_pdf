@@ -12,14 +12,11 @@
       <div class="header">
         <div id="info_proveedor">
           <dt class="strong">{{ d.razon_social }}</dt>
-          {% if d.giro_proveedor %}
-          <dt>{{ d.giro_proveedor }}</dt>
-          {% endif %} {% if d.direccion_proveedor %}
-          <dt>{{ d.direccion_proveedor }}</dt>
-          {% endif %}
+          {% if d.giro_proveedor %}<dt>{{ d.giro_proveedor }}</dt>{% endif %}
+          {% if d.direccion_proveedor %}<dt>{{ d.direccion_proveedor }}</dt>{% endif %}
           <dt>
-            {% if d.comuna_proveedor %}{{ d.comuna_proveedor }}{% endif %} {% if
-            d.ciudad_proveedor %} - {{ d.ciudad_proveedor }}{% endif %}
+            {% if d.comuna_proveedor %}{{ d.comuna_proveedor }}{% endif %}
+            {% if d.ciudad_proveedor %} - {{ d.ciudad_proveedor }}{% endif %}
           </dt>
         </div>
         <dl id="informations">
@@ -29,6 +26,8 @@
           <dt>{{ fecha_emision_larga }}</dt>
         </dl>
       </div>
+
+      <!-- RECEPTOR -->
       <div id="receiver_data">
         <table class="receiver">
           <tr>
@@ -57,17 +56,14 @@
           </tr>
         </table>
       </div>
-      <!-- Referencias -->
+
+      <!-- REFERENCIAS -->
       {% if d.referencias %}
       <div id="referencias_table">
         <div class="ref-title">Referencias:</div>
         <table class="refs">
           <thead>
-            <tr>
-              <th>Fecha</th>
-              <th>Tipo</th>
-              <th>Folio</th>
-            </tr>
+            <tr><th>Fecha</th><th>Tipo</th><th>Folio</th></tr>
           </thead>
           <tbody>
             {% for r in d.referencias %}
@@ -81,18 +77,14 @@
         </table>
       </div>
       {% endif %}
-      <!-- Ítems -->
+
+      <!-- ÍTEMS -->
       <div id="item_table">
         <table>
           <thead>
             <tr>
-              <th>Nro.</th>
-              <th>Código</th>
-              <th>Descripción</th>
-              <th>Dscto.</th>
-              <th>Cantidad</th>
-              <th>Precio Unit.</th>
-              <th>Valor Item</th>
+              <th>Nro.</th><th>Código</th><th>Descripción</th>
+              <th>Dscto.</th><th>Cantidad</th><th>Precio Unit.</th><th>Valor Item</th>
             </tr>
           </thead>
           <tbody>
@@ -110,13 +102,14 @@
           </tbody>
         </table>
       </div>
+
+      <!-- Empujador -->
+      <div class="spacer"></div>
     </div>
-    <!-- cierre content -->
-    <!-- ===== FOOTER / TOTAL ===== -->
+
+    <!-- FOOTER / TOTALES -->
     <div id="total">
-      <div id="total_bar">
-        SON <span class="light">{{ monto_total_palabras }}</span>
-      </div>
+      <div id="total_bar">SON <span class="light">{{ monto_total_palabras }}</span></div>
       <div id="bottom_area">
         <div id="barcode_block">
           <div id="imagen-svg">{{ barcode_svg | safe }}</div>
@@ -127,40 +120,21 @@
         </div>
         <div id="totals_block">
           <div class="tot-col">
-            <div class="row">
-              <span>Impuestos:</span
-              ><span class="val">{{ monto_impuesto_y_retenciones|clp }}</span>
-            </div>
-            <div class="row">
-              <span>Retenciones:</span><span class="val">0</span>
-            </div>
-            <div class="row">
-              <span>Descuento:</span><span class="val">0</span>
-            </div>
-            <div class="row">
-              <span>Recargo:</span><span class="val">0</span>
-            </div>
-            <div class="row empty"></div>
+            <div class="row"><span>Impuestos:</span><span class="val">{{ monto_impuesto_y_retenciones|clp }}</span></div>
+            <div class="row"><span>Retenciones:</span><span class="val">0</span></div>
+            <div class="row"><span>Descuento:</span><span class="val">0</span></div>
+            <div class="row"><span>Recargo:</span><span class="val">0</span></div>
           </div>
           <div class="tot-col">
-            <div class="row">
-              <span>Neto:</span><span class="val">{{ d.monto_neto|clp }}</span>
-            </div>
-            <div class="row">
-              <span>Exento:</span
-              ><span class="val">{{ d.monto_exento|clp }}</span>
-            </div>
-            <div class="row">
-              <span>19% I.V.A.:</span
-              ><span class="val">{{ d.monto_iva|clp }}</span>
-            </div>
+            <div class="row"><span>Neto:</span><span class="val">{{ d.monto_neto|clp }}</span></div>
+            <div class="row"><span>Exento:</span><span class="val">{{ d.monto_exento|clp }}</span></div>
+            <div class="row"><span>19% I.V.A.:</span><span class="val">{{ d.monto_iva|clp }}</span></div>
             <div class="row empty"></div>
           </div>
         </div>
       </div>
       <div id="monto_total_final">
-        <span class="label">Monto Total:</span>
-        <span class="val">{{ d.monto_total|clp }}</span>
+        <span class="label">Monto Total:</span><span class="val">{{ d.monto_total|clp }}</span>
       </div>
     </div>
   </body>
