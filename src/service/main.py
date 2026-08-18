@@ -34,7 +34,8 @@ def healthz():
 async def render(authorization: str = Header(None),
                  file: UploadFile = File(...),
                  cedible: bool = Form(False),
-                 acuse_recibo: bool = Form(False)):
+                 acuse_recibo: bool = Form(False),
+                 timbre_formato: str = Form("png")):
     # Autenticación
     check_auth(authorization)
 
@@ -45,11 +46,14 @@ async def render(authorization: str = Header(None),
 
     # Generar PDF en memoria
     # `cedible`/`acuse_recibo`: opt-in, default False — sin pasarlos el PDF
-    # sale igual que antes de este cambio. Ver docstring de
-    # render_pdf_from_xml para el detalle de qué agrega cada uno y a qué
-    # TipoDTE aplica (Notas de Crédito/Débito los ignoran siempre).
+    # sale igual que antes de agregar esos dos parámetros. `timbre_formato`
+    # default "png" (probado contra el portal real de Muestras Impresas del
+    # SII: el timbre vectorial no es legible por su software de
+    # validación). Ver docstring de render_pdf_from_xml para el detalle.
     try:
-        pdf_bytes = render_pdf_from_xml(data, cedible=cedible, acuse_recibo=acuse_recibo)
+        pdf_bytes = render_pdf_from_xml(
+            data, cedible=cedible, acuse_recibo=acuse_recibo, timbre_formato=timbre_formato
+        )
         if not pdf_bytes.startswith(b"%PDF"):
             raise RuntimeError("Invalid PDF generated")
         return Response(pdf_bytes, media_type="application/pdf")

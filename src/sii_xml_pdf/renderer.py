@@ -7,7 +7,7 @@ import io
 
 from .models import DTEData
 from .formatting import format_clp, fecha_es_larga
-from .barcode import pdf417_svg_from_ted
+from .barcode import pdf417_svg_from_ted, pdf417_png_base64_from_ted
 from .parser import parse_xml 
 
 env = Environment(
@@ -38,13 +38,18 @@ TIPOS_CON_ACUSE_RECIBO = {33, 34, 43, 46, 52}
 _TIPO_GUIA_DESPACHO = 52
 
 
-def render_html(dte: DTEData, cedible: bool = False, acuse_recibo: bool = False) -> str:
+def render_html(
+    dte: DTEData,
+    cedible: bool = False,
+    acuse_recibo: bool = False,
+    timbre_formato: str = "png",
+) -> str:
     tmpl = env.get_template("invoice.html")
-    barcode_svg = pdf417_svg_from_ted(dte.timbre_xml)
     monto_imp_ret = sum(i.monto for i in dte.impuestos) if dte.impuestos else 0
-    # Ambos son opt-in y por defecto False: sin pedirlos explícitamente el
-    # PDF sale idéntico al de antes de este cambio (ninguna integración
-    # existente ve un layout distinto sin actualizar su llamada).
+    # `cedible`/`acuse_recibo` son opt-in (default False = sin cambios).
+    # `timbre_formato` SÍ cambia el default (ver docstring de
+    # render_pdf_from_xml) — es una excepción deliberada: el vector no es
+    # confiable para el portal de Muestras Impresas del SII.
     elegible = dte.tipo_dte in TIPOS_CON_ACUSE_RECIBO
     mostrar_acuse_recibo = (acuse_recibo or cedible) and elegible
     cedible_texto = (
@@ -53,14 +58,18 @@ def render_html(dte: DTEData, cedible: bool = False, acuse_recibo: bool = False)
     ctx = {
         "d": dte,
         "fecha_emision_larga": fecha_es_larga(dte.fecha_emision),
-        "barcode_svg": barcode_svg,
         "monto_total_palabras": num2words(dte.monto_total, lang="es").upper(),
         "monto_impuesto_y_retenciones": monto_imp_ret,
         "verificacion_url": "http://www.sii.cl",  # visible en el pie
         "mostrar_acuse_recibo": mostrar_acuse_recibo,
         "mostrar_cedible": cedible and elegible,
         "cedible_texto": cedible_texto,
+        "timbre_formato": timbre_formato,
     }
+    if timbre_formato == "png":
+        ctx["barcode_png_b64"] = pdf417_png_base64_from_ted(dte.timbre_xml)
+    else:
+        ctx["barcode_svg"] = pdf417_svg_from_ted(dte.timbre_xml)
     return tmpl.render(**ctx)
 
 
@@ -69,8 +78,11 @@ def render_pdf(
     css_path: Optional[str] = None,
     cedible: bool = False,
     acuse_recibo: bool = False,
+    timbre_formato: str = "png",
 ) -> bytes:
-    html = render_html(dte, cedible=cedible, acuse_recibo=acuse_recibo)
+    html = render_html(
+        dte, cedible=cedible, acuse_recibo=acuse_recibo, timbre_formato=timbre_formato
+    )
     styles = _default_css_list(css_path)
     out = io.BytesIO()
     HTML(string=html).write_pdf(out, stylesheets=styles)
@@ -82,13 +94,14 @@ def render_pdf_from_xml(
     css_path: Optional[str] = None,
     cedible: bool = False,
     acuse_recibo: bool = False,
+    timbre_formato: str = "png",
 ) -> bytes:
     """
     Recibe XML en bytes, devuelve el PDF en bytes.
 
-    Ambos parámetros son opt-in (default False) — sin pasarlos, el PDF es
-    idéntico al que generaba esta librería antes de agregar el cuadro de
-    Acuse de Recibo/Cedible; no rompe integraciones existentes.
+    `cedible` y `acuse_recibo` son opt-in (default False) — sin pasarlos,
+    esa parte del PDF es idéntica a la de antes de agregar esos dos
+    parámetros; no rompen integraciones existentes.
 
     `acuse_recibo`: agrega el cuadro "Acuse de Recibo" (Nombre/Rut/Fecha/
     Recinto/Firma + texto legal Ley 19.983) — usar para la copia TRIBUTARIA
@@ -101,9 +114,26 @@ def render_pdf_from_xml(
     Ambos se ignoran silenciosamente en TipoDTE que no llevan estos
     elementos (ej. Notas de Crédito/Débito — el manual del SII las excluye
     explícitamente).
+
+    `timbre_formato`: default **"png"** — incrusta el timbre PDF417 como
+    imagen rasterizada. Este SÍ es un cambio de comportamiento por
+    defecto respecto a versiones anteriores de esta librería (antes era
+    "svg", vector): se probó contra el portal real de Muestras Impresas
+    del SII y el vector no es legible por su software de validación
+    automática ("Timbre ilegible"), mientras que PNG sí — coincide con lo
+    que recomienda el Manual de Muestras Impresas (secc. 1.5, pág. 12):
+    "Lo ideal es que se utilicen imágenes incrustadas de tipo PNG, ya que
+    nuestro software los reconoce en forma más rápida". Pasar "svg"
+    explícitamente para recuperar el comportamiento vectorial anterior.
     """
     # 1. Parsear el XML a un objeto DTEData
     dte = parse_xml(xml_bytes)
 
     # 2. Generar PDF a partir del DTEData
-    return render_pdf(dte, css_path=css_path, cedible=cedible, acuse_recibo=acuse_recibo)
+    return render_pdf(
+        dte,
+        css_path=css_path,
+        cedible=cedible,
+        acuse_recibo=acuse_recibo,
+        timbre_formato=timbre_formato,
+    )

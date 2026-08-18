@@ -119,7 +119,13 @@
       <div id="total_bar">SON <span class="light">{{ monto_total_palabras }}</span></div>
       <div id="bottom_area">
         <div id="barcode_block">
-          <div id="imagen-svg">{{ barcode_svg | safe }}</div>
+          <div id="imagen-svg">
+            {% if timbre_formato == "png" %}
+            <img src="data:image/png;base64,{{ barcode_png_b64 }}" alt="Timbre electrónico PDF417" />
+            {% else %}
+            {{ barcode_svg | safe }}
+            {% endif %}
+          </div>
           <div class="barcode-legend">
             <div>Timbre electrónico S.I.I.</div>
             <div>Verifique documento en: {{ verificacion_url }}</div>
