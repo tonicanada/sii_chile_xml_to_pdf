@@ -6,7 +6,7 @@
     <meta name="description" content="Invoice SII" />
     <link rel="stylesheet" href="invoice.css" />
   </head>
-  <body>
+  <body class="{% if mostrar_acuse_recibo %}has-acuse{% endif %} {% if monto_texto_largo %}has-long-monto{% endif %}">
     <div class="content">
       <!-- CABECERA -->
       <div class="header">
@@ -118,19 +118,58 @@
             <div>Verifique documento en: {{ verificacion_url }}</div>
           </div>
         </div>
-        <div id="totals_block">
-          <div class="tot-col">
-            <div class="row"><span>Impuestos:</span><span class="val">{{ monto_impuesto_y_retenciones|clp }}</span></div>
-            <div class="row"><span>Retenciones:</span><span class="val">0</span></div>
-            <div class="row"><span>Descuento:</span><span class="val">0</span></div>
-            <div class="row"><span>Recargo:</span><span class="val">0</span></div>
+        <div id="right_block">
+          <div id="totals_block">
+            <div class="tot-col">
+              <div class="row"><span>Impuestos:</span><span class="val">{{ monto_impuesto_y_retenciones|clp }}</span></div>
+              <div class="row"><span>Retenciones:</span><span class="val">0</span></div>
+              <div class="row"><span>Descuento:</span><span class="val">0</span></div>
+              <div class="row"><span>Recargo:</span><span class="val">0</span></div>
+            </div>
+            <div class="tot-col">
+              <div class="row"><span>Neto:</span><span class="val">{{ d.monto_neto|clp }}</span></div>
+              <div class="row"><span>Exento:</span><span class="val">{{ d.monto_exento|clp }}</span></div>
+              <div class="row"><span>19% I.V.A.:</span><span class="val">{{ d.monto_iva|clp }}</span></div>
+              <div class="row empty"></div>
+            </div>
           </div>
-          <div class="tot-col">
-            <div class="row"><span>Neto:</span><span class="val">{{ d.monto_neto|clp }}</span></div>
-            <div class="row"><span>Exento:</span><span class="val">{{ d.monto_exento|clp }}</span></div>
-            <div class="row"><span>19% I.V.A.:</span><span class="val">{{ d.monto_iva|clp }}</span></div>
-            <div class="row empty"></div>
+
+          <!-- ACUSE DE RECIBO (Ley 19.983) — Factura, Factura Exenta, Guía
+               de Despacho, Factura de Compra y Liquidación-Factura. Nunca
+               en Notas de Crédito/Débito (Manual de Muestras Impresas SII,
+               secc. 1.4). -->
+          {% if mostrar_acuse_recibo %}
+          <div id="acuse_recibo_block">
+            <div class="acuse-title">Acuse de Recibo</div>
+            <table class="acuse-fields">
+              <tr>
+                <td class="col-label">Nombre:</td>
+                <td class="col-line" colspan="3"></td>
+              </tr>
+              <tr>
+                <td class="col-label">Rut:</td>
+                <td class="col-line"></td>
+                <td class="col-label">Fecha:</td>
+                <td class="col-line"></td>
+              </tr>
+              <tr>
+                <td class="col-label">Recinto:</td>
+                <td class="col-line"></td>
+                <td class="col-label">Firma:</td>
+                <td class="col-line"></td>
+              </tr>
+            </table>
+            <div class="acuse-legal">
+              El acuse de recibo que se declara en este acto, de acuerdo a lo
+              dispuesto en la letra b) del Art. 4°, y la letra c) del Art. 5°
+              de la Ley 19.983, acredita que la entrega de mercaderías o
+              servicio(s) prestado(s) ha(n) sido recibido(s).
+            </div>
+            {% if mostrar_cedible %}
+            <div class="cedible-legend">{{ cedible_texto }}</div>
+            {% endif %}
           </div>
+          {% endif %}
         </div>
       </div>
       <div id="monto_total_final">
