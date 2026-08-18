@@ -37,12 +37,6 @@ TIPOS_CON_ACUSE_RECIBO = {33, 34, 43, 46, 52}
 # Guía de Despacho Electrónica usa una leyenda distinta a las demás.
 _TIPO_GUIA_DESPACHO = 52
 
-# A partir de este largo, "SON <monto en palabras>" hace wrap a 2 líneas en
-# el recuadro (con el ancho/fuente actuales de invoice.css) — más allá de
-# esto es solo una heurística por conteo de caracteres, WeasyPrint no
-# expone el ancho real renderizado del texto en tiempo de armado del HTML.
-_LARGO_MONTO_DOS_LINEAS = 60
-
 
 def render_html(dte: DTEData, cedible: bool = False, acuse_recibo: bool = False) -> str:
     tmpl = env.get_template("invoice.html")
@@ -56,23 +50,16 @@ def render_html(dte: DTEData, cedible: bool = False, acuse_recibo: bool = False)
     cedible_texto = (
         "CEDIBLE CON SU FACTURA" if dte.tipo_dte == _TIPO_GUIA_DESPACHO else "CEDIBLE"
     )
-    monto_total_palabras = num2words(dte.monto_total, lang="es").upper()
     ctx = {
         "d": dte,
         "fecha_emision_larga": fecha_es_larga(dte.fecha_emision),
         "barcode_svg": barcode_svg,
-        "monto_total_palabras": monto_total_palabras,
+        "monto_total_palabras": num2words(dte.monto_total, lang="es").upper(),
         "monto_impuesto_y_retenciones": monto_imp_ret,
         "verificacion_url": "http://www.sii.cl",  # visible en el pie
         "mostrar_acuse_recibo": mostrar_acuse_recibo,
         "mostrar_cedible": cedible and elegible,
         "cedible_texto": cedible_texto,
-        # Monto en palabras largo (montos de cientos de millones): el
-        # recuadro "SON..." crece a 2 líneas — se libera un poco del
-        # min-height artificial del `.content` para que siga cabiendo en 1
-        # página (ver invoice.css, body.has-long-monto). Sin esto, algunos
-        # documentos con montos grandes pasarían a 2 páginas sin necesidad.
-        "monto_texto_largo": len(monto_total_palabras) > _LARGO_MONTO_DOS_LINEAS,
     }
     return tmpl.render(**ctx)
 
