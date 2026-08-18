@@ -32,7 +32,9 @@ def healthz():
 
 @app.post("/render")
 async def render(authorization: str = Header(None),
-                 file: UploadFile = File(...)):
+                 file: UploadFile = File(...),
+                 cedible: bool = Form(False),
+                 acuse_recibo: bool = Form(False)):
     # Autenticación
     check_auth(authorization)
 
@@ -42,8 +44,12 @@ async def render(authorization: str = Header(None),
         raise HTTPException(status_code=413, detail="XML too large")
 
     # Generar PDF en memoria
+    # `cedible`/`acuse_recibo`: opt-in, default False — sin pasarlos el PDF
+    # sale igual que antes de este cambio. Ver docstring de
+    # render_pdf_from_xml para el detalle de qué agrega cada uno y a qué
+    # TipoDTE aplica (Notas de Crédito/Débito los ignoran siempre).
     try:
-        pdf_bytes = render_pdf_from_xml(data)
+        pdf_bytes = render_pdf_from_xml(data, cedible=cedible, acuse_recibo=acuse_recibo)
         if not pdf_bytes.startswith(b"%PDF"):
             raise RuntimeError("Invalid PDF generated")
         return Response(pdf_bytes, media_type="application/pdf")

@@ -31,7 +31,25 @@ html, body {
 .content {
   display: flex;
   flex-direction: column;
-  min-height: 19cm;  /* fuerza altura para empujar footer en páginas cortas */
+  min-height: 18.7cm;  /* fuerza altura para empujar footer en páginas cortas */
+}
+/* Con Acuse de Recibo el footer crece ~2.5cm — se resta acá para seguir
+   cabiendo en 1 página. Solo aplica si se pidió acuse_recibo/cedible
+   explícitamente (ver invoice.html body class); documentos sin esos
+   parámetros no cambian su layout. */
+body.has-acuse .content {
+  min-height: 14cm;
+}
+/* El recuadro "SON..." crece a 2 líneas con montos muy grandes (ver
+   renderer._LARGO_MONTO_DOS_LINEAS) — se resta ~0.5cm para seguir cabiendo
+   en 1 página. Si también hay Acuse de Recibo, el min-height de 14cm de
+   arriba ya deja de sobra margen para las 2 líneas del monto, por eso la
+   regla combinada no necesita ser más chica que esa. */
+body.has-long-monto .content {
+  min-height: 18.4cm;
+}
+body.has-acuse.has-long-monto .content {
+  min-height: 14cm;
 }
 
 /* Espaciador flexible para empujar totales al fondo */
@@ -171,27 +189,43 @@ html, body {
   width: 100%;
 }
 #total_bar {
+  /* min-height (no height fija) + line-height normal: si el monto en
+     palabras hace wrap a 2 líneas, el recuadro crece con el contenido en
+     vez de recortarlo (antes el texto se salía del borde). El padding
+     vertical se deja mínimo a propósito para que en el caso de 1 línea
+     (el 99% de los documentos) la altura resultante siga siendo ~0.7cm,
+     igual que antes — solo crece cuando realmente hacen falta 2 líneas. */
   font-weight: bold;
   border: 1px solid #000;
-  height: 0.7cm;
+  min-height: 0.7cm;
   font-size: 0.4cm;
-  line-height: 0.7cm;
-  padding: 0 0.4cm;
+  line-height: 1.2;
+  padding: 0.06cm 0.4cm;
+  break-inside: avoid;
 }
 #bottom_area {
   display: flex;
   width: 100%;
   margin-top: 4mm;
   break-inside: avoid;
+  align-items: flex-start;
 }
 #barcode_block { width: 50%; padding-right: 4mm; }
 #imagen-svg { width: 100%; max-height: 32mm; margin-top: 0.2cm; }
 #imagen-svg svg { width: 100%; height: auto; display: block; }
-.barcode-legend { text-align: center; font-size: 0.2cm; line-height: 1.1; }
+.barcode-legend { text-align: center; font-size: 0.2cm; line-height: 1.1; margin-top: 1.5mm; }
 
-#totals_block {
+/* Columna derecha: totales + (opcional) acuse de recibo/cedible, apilados */
+#right_block {
   width: 50%;
   margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+}
+
+#totals_block {
+  width: 100%;
   display: flex;
   font-size: 10pt;
 }
@@ -204,6 +238,27 @@ html, body {
 }
 #totals_block .row.empty span { border-bottom: none; }
 #totals_block .row .val { text-align: right; }
+
+/* ===== Acuse de Recibo (Ley 19.983) + leyenda Cedible ===== */
+#acuse_recibo_block {
+  border: 1px solid #000;
+  padding: 1.2mm 2.5mm;
+  font-size: 7pt;
+  line-height: 1.2;
+  break-inside: avoid;
+}
+.acuse-title { font-weight: 700; margin-bottom: 0.5mm; font-size: 7.5pt; }
+.acuse-fields { width: 100%; border-collapse: collapse; margin-bottom: 0.8mm; }
+.acuse-fields td { padding: 0.8mm 2mm 0.3mm 0; vertical-align: bottom; }
+.acuse-fields .col-label { font-weight: 600; white-space: nowrap; width: 1%; }
+.acuse-fields .col-line { border-bottom: 0.3mm solid #000; min-width: 16mm; }
+.acuse-legal { font-size: 5.7pt; color: #333; text-align: justify; }
+.cedible-legend {
+  text-align: right;
+  font-weight: 700;
+  font-size: 9pt;
+  margin-top: 0.8mm;
+}
 
 /* ===== Monto Total Final ===== */
 #monto_total_final {
