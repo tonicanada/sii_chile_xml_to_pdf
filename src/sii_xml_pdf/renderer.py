@@ -41,7 +41,7 @@ _TIPO_GUIA_DESPACHO = 52
 # el recuadro (con el ancho/fuente actuales de invoice.css) — más allá de
 # esto es solo una heurística por conteo de caracteres, WeasyPrint no
 # expone el ancho real renderizado del texto en tiempo de armado del HTML.
-_LARGO_MONTO_DOS_LINEAS = 70
+_LARGO_MONTO_DOS_LINEAS = 60
 
 
 def render_html(dte: DTEData, cedible: bool = False, acuse_recibo: bool = False) -> str:
