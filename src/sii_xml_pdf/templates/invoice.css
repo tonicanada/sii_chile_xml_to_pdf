@@ -213,7 +213,8 @@ html, body {
 }
 #barcode_block { width: 50%; padding-right: 4mm; }
 #imagen-svg { width: 100%; max-height: 32mm; margin-top: 0.2cm; }
-#imagen-svg svg { width: 100%; height: auto; display: block; }
+#imagen-svg svg,
+#imagen-svg img { width: 100%; height: auto; display: block; }
 .barcode-legend { text-align: center; font-size: 0.2cm; line-height: 1.1; margin-top: 1.5mm; }
 
 /* Columna derecha: totales + (opcional) acuse de recibo/cedible, apilados */
