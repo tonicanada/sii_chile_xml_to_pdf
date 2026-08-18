@@ -27,29 +27,20 @@ html, body {
   color: #000;
 }
 
-/* Contenido que se estira */
+/* Contenido que se estira: .content ahora envuelve TODO — header, receptor,
+   referencias, ítems, el "spacer" y el footer (#total) — como un único
+   flex column del alto exacto de la página imprimible. Con @page margin:
+   1.5cm y tamaño Letter (27.94cm de alto), el área de contenido es
+   27.94cm - 1.5cm - 1.5cm = 24.94cm (24.9cm por margen de redondeo). El
+   spacer absorbe lo que sobre; si el footer crece (SON a 2 líneas, cuadro
+   de Acuse de Recibo, o ambos a la vez) el spacer simplemente se achica —
+   sigue cabiendo en 1 página sin ningún umbral ni caso especial, siempre
+   que el contenido "real" (header+receptor+ítems+footer) no exceda por sí
+   solo el alto de una página, que ahí sí correspondría pasar a la 2. */
 .content {
   display: flex;
   flex-direction: column;
-  min-height: 18.7cm;  /* fuerza altura para empujar footer en páginas cortas */
-}
-/* Con Acuse de Recibo el footer crece ~2.5cm — se resta acá para seguir
-   cabiendo en 1 página. Solo aplica si se pidió acuse_recibo/cedible
-   explícitamente (ver invoice.html body class); documentos sin esos
-   parámetros no cambian su layout. */
-body.has-acuse .content {
-  min-height: 14cm;
-}
-/* El recuadro "SON..." crece a 2 líneas con montos muy grandes (ver
-   renderer._LARGO_MONTO_DOS_LINEAS) — se resta ~0.5cm para seguir cabiendo
-   en 1 página. Si también hay Acuse de Recibo, el min-height de 14cm de
-   arriba ya deja de sobra margen para las 2 líneas del monto, por eso la
-   regla combinada no necesita ser más chica que esa. */
-body.has-long-monto .content {
-  min-height: 18.4cm;
-}
-body.has-acuse.has-long-monto .content {
-  min-height: 14cm;
+  min-height: 24.9cm;
 }
 
 /* Espaciador flexible para empujar totales al fondo */
@@ -171,15 +162,25 @@ body.has-acuse.has-long-monto .content {
 }
 
 #item_table th:nth-child(3), #item_table td:nth-child(3) {
-  width: 38%;
+  width: 29%;
   text-align: left;
   white-space: normal;
   hyphens: auto;
 }
-#item_table th:nth-child(4), #item_table td:nth-child(4),
-#item_table th:nth-child(5), #item_table td:nth-child(5),
+
+/* Dscto./Cantidad: valores siempre cortos (0, 1.00, etc.) — se dejan
+   angostos a propósito. Precio Unit./Valor Item necesitan más ancho: con
+   montos en pesos chilenos de 9-10 cifras (ej. "235.548.173", 11
+   caracteres con los puntos de miles) el 11% que tenían antes no alcanzaba
+   y el número se desbordaba visualmente sobre la columna vecina. */
+#item_table th:nth-child(4), #item_table td:nth-child(4) { width: 8%; }
+#item_table th:nth-child(5), #item_table td:nth-child(5) { width: 10%; }
 #item_table th:nth-child(6), #item_table td:nth-child(6),
-#item_table th:nth-child(7), #item_table td:nth-child(7) { width: 11%; }
+#item_table th:nth-child(7), #item_table td:nth-child(7) {
+  width: 17.5%;
+  white-space: nowrap;
+  padding-right: 6px;
+}
 
 /* ===== Totales + Timbre ===== */
 #total {

@@ -6,7 +6,13 @@
     <meta name="description" content="Invoice SII" />
     <link rel="stylesheet" href="invoice.css" />
   </head>
-  <body class="{% if mostrar_acuse_recibo %}has-acuse{% endif %} {% if monto_texto_largo %}has-long-monto{% endif %}">
+  <body>
+    <!-- .content es el único contenedor flex de la página: header/receptor/
+         referencias/ítems arriba, un "spacer" que absorbe el espacio
+         sobrante, y el footer (#total) al final — así el footer siempre
+         queda pegado al fondo de la página sin importar cuánto crezca (SON
+         a 2 líneas, cuadro de Acuse de Recibo, etc.), sin necesidad de
+         umbrales ni min-height "a ojo" por caso. -->
     <div class="content">
       <!-- CABECERA -->
       <div class="header">
@@ -103,12 +109,13 @@
         </table>
       </div>
 
-      <!-- Empujador -->
+      <!-- Empujador: crece para llenar el espacio libre y empujar el
+           footer de abajo hacia el fondo de la página, cualquiera sea su
+           alto real. -->
       <div class="spacer"></div>
-    </div>
 
-    <!-- FOOTER / TOTALES -->
-    <div id="total">
+      <!-- FOOTER / TOTALES -->
+      <div id="total">
       <div id="total_bar">SON <span class="light">{{ monto_total_palabras }}</span></div>
       <div id="bottom_area">
         <div id="barcode_block">
@@ -174,6 +181,7 @@
       </div>
       <div id="monto_total_final">
         <span class="label">Monto Total:</span><span class="val">{{ d.monto_total|clp }}</span>
+      </div>
       </div>
     </div>
   </body>
