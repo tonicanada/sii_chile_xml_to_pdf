@@ -60,7 +60,17 @@ html, body {
   align-items: start;
   margin-bottom: 4mm;
 }
-#info_proveedor { margin: 0; }
+#info_proveedor {
+  margin: 0;
+  /* El giro del emisor admite 80 caracteres (XSD del SII) y en el comercio
+     suele venir como una lista de rubros SIN espacios
+     ("MINIMARKET,ART.HOGAR,PAPEL,ELECTR,..."), o sea una única palabra que no
+     tiene dónde cortar: se desbordaba de su columna del grid y se montaba
+     encima del recuadro rojo del RUT. `anywhere` permite el corte y además
+     hace que el min-content del bloque sea chico, para que la palabra larga no
+     ensanche la columna y empuje al recuadro. */
+  overflow-wrap: anywhere;
+}
 #informations {
   border: 2px solid #d32f2f;
   padding: 1em;
