@@ -139,6 +139,9 @@ html, body {
   padding: 2px 2px;
   font-size: 9.25pt;
   word-break: break-word;
+  /* Arriba, no al centro: con una descripción de varias líneas el resto de las
+     columnas (folio, cantidad, precio) quedaba flotando a media altura. */
+  vertical-align: top;
 }
 #item_table th {
   border-bottom: 0.2mm solid #a9a;
@@ -164,7 +167,11 @@ html, body {
 #item_table th:nth-child(3), #item_table td:nth-child(3) {
   width: 29%;
   text-align: left;
-  white-space: normal;
+  /* `pre-line` y no `normal`: la descripción trae NmbItem y DscItem del DTE en
+     líneas separadas (ver parser.py) y hay que respetar ese salto, sin dejar de
+     ajustar el texto largo. Va acá y no en una regla `td.wrap` aparte porque
+     este selector es más específico y ganaba con `normal`. */
+  white-space: pre-line;
   hyphens: auto;
 }
 
@@ -253,7 +260,6 @@ html, body {
 #credito_especial {
   text-align: right;
   font-size: 10pt;
-  font-weight: 700;
 }
 #credito_especial .label { margin-right: 10px; white-space: nowrap; }
 #credito_especial .val {

@@ -227,7 +227,11 @@ def parse_xml(xml: Union[str, bytes, Path]) -> DTEData:
         dsc = _text(det.find(x("DscItem"))) or ""
 
         if nmb and dsc:
-            desc = f"{nmb} - {dsc}"
+            # NmbItem y DscItem son dos campos distintos del DTE: el nombre del
+            # ítem y su descripción. Se separan con un salto de línea y no con
+            # " - " para que se lean como lo que son; el template los muestra
+            # con `white-space: pre-line`.
+            desc = f"{nmb}\n{dsc}"
         else:
             desc = nmb or dsc
 
