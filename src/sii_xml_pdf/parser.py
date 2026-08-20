@@ -199,6 +199,8 @@ def parse_xml(xml: Union[str, bytes, Path]) -> DTEData:
     tipo_dte = _int_text(root.find(f".//{x('TipoDTE')}"))
     monto_iva = _int_text(root.find(f".//{x('IVA')}"))
     monto_exento = _int_text(root.find(f".//{x('MntExe')}"))
+    # Totales/CredEC — Crédito Especial Empresas Constructoras.
+    credito_especial = _int_text(root.find(f".//{x('CredEC')}"))
 
     tipo_pal, abrev = _tipo_dte_palabras_y_abrev(tipo_dte)
     forma_pal = _forma_pago_palabras(forma_pago)
@@ -273,6 +275,7 @@ def parse_xml(xml: Union[str, bytes, Path]) -> DTEData:
         monto_total=monto_total,
         monto_iva=monto_iva,
         monto_exento=monto_exento,
+        credito_especial_constructora=credito_especial,
         numero_factura=numero_factura,
         fecha_emision=fecha_emision,
         tipo_dte=tipo_dte,

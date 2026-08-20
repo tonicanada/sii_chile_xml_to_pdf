@@ -241,6 +241,27 @@ html, body {
 #totals_block .row.empty span { border-bottom: none; }
 #totals_block .row .val { text-align: right; }
 
+/* ===== Crédito Especial Empresas Constructoras ===== */
+/* Ocupa la mitad derecha de #right_block, o sea la misma columna donde caen
+   Neto/Exento/IVA, y queda alineado con el Monto Total. La etiqueta toma su
+   ancho natural: con un 50% fijo de esa columna "Cred. Especial:" se partía
+   en dos líneas. */
+/* Deliberadamente SIN flex: #right_block ya es un flex en columna y un flex
+   anidado acá lo colapsaba a altura cero en WeasyPrint (la fila desaparecía
+   del PDF aunque estuviera en el HTML). Se replica el patrón de
+   #monto_total_final, que en este template funciona. */
+#credito_especial {
+  text-align: right;
+  font-size: 10pt;
+  font-weight: 700;
+}
+#credito_especial .label { margin-right: 10px; white-space: nowrap; }
+#credito_especial .val {
+  display: inline-block;
+  min-width: 28mm;
+  border-bottom: 1px solid #000;
+}
+
 /* ===== Acuse de Recibo (Ley 19.983) + leyenda Cedible ===== */
 #acuse_recibo_block {
   border: 1px solid #000;

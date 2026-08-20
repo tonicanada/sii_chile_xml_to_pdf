@@ -147,6 +147,20 @@
             </div>
           </div>
 
+          {# CRÉDITO ESPECIAL EMPRESAS CONSTRUCTORAS (Totales/CredEC del DTE,
+             Art. 21 DL 910). Solo lo traen las facturas que lo usan, así que la
+             fila es condicional. No es cosmético: MntTotal ya viene neteado del
+             crédito, de modo que sin esta línea el documento no cuadra — Neto +
+             Exento + IVA daría más que el Monto Total.
+             Comentario de Jinja y no HTML a propósito: así un DTE sin CredEC
+             produce una salida byte a byte idéntica a la de antes de este
+             cambio, y la prueba de regresión da cero diferencias. #}
+          {% if d.credito_especial_constructora %}
+          <div id="credito_especial">
+            <span class="label">Cred. Especial:</span><span class="val">{{ d.credito_especial_constructora|clp }}</span>
+          </div>
+          {% endif %}
+
           <!-- ACUSE DE RECIBO (Ley 19.983) — Factura, Factura Exenta, Guía
                de Despacho, Factura de Compra y Liquidación-Factura. Nunca
                en Notas de Crédito/Débito (Manual de Muestras Impresas SII,
