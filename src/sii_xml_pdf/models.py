@@ -44,6 +44,11 @@ class DTEData(BaseModel):
     monto_total: int
     monto_iva: int
     monto_exento: int
+    # Crédito Especial Empresas Constructoras (Totales/CredEC del DTE,
+    # Art. 21 DL 910). Opcional: solo lo traen las facturas que lo usan.
+    # MntTotal ya viene neteado de este crédito, así que sin imprimirlo
+    # la muestra impresa no cuadra: neto + exento + IVA - CredEC = total.
+    credito_especial_constructora: int = 0
     numero_factura: str
     fecha_emision: str
     tipo_dte: int
