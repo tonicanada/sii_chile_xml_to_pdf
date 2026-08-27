@@ -95,9 +95,14 @@ def render_pdf_from_xml(
     cedible: bool = False,
     acuse_recibo: bool = False,
     timbre_formato: str = "png",
+    indice: Optional[int] = None,
 ) -> bytes:
     """
     Recibe XML en bytes, devuelve el PDF en bytes.
+
+    `indice` selecciona el documento cuando el XML es un sobre con varios: sin él,
+    un sobre multi-documento **levanta** en vez de renderizar uno mal. Ver
+    `parser.parse_xml`.
 
     `cedible` y `acuse_recibo` son opt-in (default False) — sin pasarlos,
     esa parte del PDF es idéntica a la de antes de agregar esos dos
@@ -127,7 +132,7 @@ def render_pdf_from_xml(
     explícitamente para recuperar el comportamiento vectorial anterior.
     """
     # 1. Parsear el XML a un objeto DTEData
-    dte = parse_xml(xml_bytes)
+    dte = parse_xml(xml_bytes, indice)
 
     # 2. Generar PDF a partir del DTEData
     return render_pdf(
