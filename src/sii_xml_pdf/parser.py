@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from typing import List, Union
+from typing import List, Union, Optional
 from pathlib import Path
 from .models import DTEData, Item, Referencia, Impuesto
 from .ns import x
@@ -158,15 +158,62 @@ def _forma_pago_palabras(forma: int) -> str:
     return REL_FORMA_PAGO.get(forma, f"Desconocido ({forma})")
 
 
-def parse_xml(xml: Union[str, bytes, Path]) -> DTEData:
+def _arbol(xml: Union[str, bytes, Path]):
     if isinstance(xml, (str, Path)):
-        tree = ET.parse(str(xml))
-    else:
-        # bytes → usar fromstring
-        root = ET.fromstring(xml)
-        tree = ET.ElementTree(root)
+        return ET.parse(str(xml)).getroot()
+    # bytes → usar fromstring
+    return ET.fromstring(xml)
 
-    root = tree.getroot()
+
+def _documentos(root) -> List:
+    """Los `<Documento>` del árbol, o el propio nodo si el XML ya es uno suelto.
+
+    Un `EnvioDTE` puede llevar N documentos: la representación impresa es **una por
+    documento**, no una por archivo. Lo normal en el intercambio B2B es que un proveedor
+    mande una factura por correo, pero los sobres multi-documento existen (los sets de
+    certificación del SII llegan a 20) y antes de esto se renderizaban mal en silencio.
+    """
+    docs = root.findall(f".//{x('Documento')}")
+    if docs:
+        return docs
+    if root.tag == x("Documento"):
+        return [root]
+    # Un `<DTE>` suelto, o cualquier otra forma: se lee el árbol entero, que es el
+    # comportamiento histórico y el que usan los llamadores de siempre.
+    return [root]
+
+
+def parse_envio(xml: Union[str, bytes, Path]) -> List[DTEData]:
+    """Todos los documentos del XML, en orden. Un PDF por elemento de la lista."""
+    root = _arbol(xml)
+    return [_parse_documento(d) for d in _documentos(root)]
+
+
+def parse_xml(xml: Union[str, bytes, Path], indice: Optional[int] = None) -> DTEData:
+    """Un único documento.
+
+    Con un sobre de varios documentos hay que decir cuál: sin `indice` **levanta**, en vez
+    de devolver un PDF con la cabecera del primero y las líneas de todos —que era el
+    comportamiento anterior, y el peor modo de fallo posible porque el PDF salía plausible—.
+    Para renderizarlos todos, `parse_envio`.
+    """
+    root = _arbol(xml)
+    docs = _documentos(root)
+    if len(docs) > 1 and indice is None:
+        raise ValueError(
+            f"el XML lleva {len(docs)} documentos: usa parse_envio() para obtenerlos "
+            f"todos, o parse_xml(..., indice=N) para uno concreto"
+        )
+    return _parse_documento(docs[indice or 0])
+
+
+def _parse_documento(root) -> DTEData:
+    """Extrae un DTE. `root` es **un** `<Documento>`, nunca el sobre.
+
+    Todas las búsquedas de abajo son `.//`, así que atarlas al sobre en vez de al documento
+    mezclaba los datos de documentos distintos: la cabecera salía del primero y `Detalle`,
+    `Referencia` e `ImptoReten` acumulaban los de todos.
+    """
 
     # Emisor
     rut_proveedor = _format_rut(_text(root.find(f".//{x('RUTEmisor')}")) or "")

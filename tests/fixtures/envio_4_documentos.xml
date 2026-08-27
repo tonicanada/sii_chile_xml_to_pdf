@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<EnvioDTE xmlns="http://www.sii.cl/SiiDte" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://www.sii.cl/SiiDte EnvioDTE_v10.xsd"><SetDTE ID="ENVIO20260819164440"><Caratula version="1.0"><RutEmisor>88888888-8</RutEmisor>
+<RutEnvia>88888888-8</RutEnvia>
+<RutReceptor>60803000-K</RutReceptor>
+<FchResol>2026-08-19</FchResol>
+<NroResol>0</NroResol>
+<TmstFirmaEnv>2026-08-19T16:44:40</TmstFirmaEnv>
+<SubTotDTE><TpoDTE>33</TpoDTE>
+<NroDTE>2</NroDTE>
+</SubTotDTE>
+<SubTotDTE><TpoDTE>56</TpoDTE>
+<NroDTE>1</NroDTE>
+</SubTotDTE>
+<SubTotDTE><TpoDTE>61</TpoDTE>
+<NroDTE>1</NroDTE>
+</SubTotDTE>
+</Caratula>
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0"><Documento ID="F1T33"><Encabezado><IdDoc><TipoDTE>33</TipoDTE>
+<Folio>1</Folio>
+<FchEmis>2026-08-19</FchEmis>
+</IdDoc>
+<Emisor><RUTEmisor>88888888-8</RUTEmisor>
+<RznSoc>Empresa Ejemplo SpA</RznSoc>
+<GiroEmis>Servicios de Ejemplo</GiroEmis>
+<Acteco>620200</Acteco>
+<DirOrigen>Av. Siempre Viva 123, oficina 1</DirOrigen>
+<CmnaOrigen>Santiago</CmnaOrigen>
+<CiudadOrigen>Santiago</CiudadOrigen>
+</Emisor>
+<Receptor><RUTRecep>60803000-K</RUTRecep>
+<RznSocRecep>Servicio De Impuestos Internos</RznSocRecep>
+<GiroRecep>Organismos De La Administracion Publica</GiroRecep>
+<DirRecep>Teatinos 120</DirRecep>
+<CmnaRecep>Santiago</CmnaRecep>
+<CiudadRecep>Santiago</CiudadRecep>
+</Receptor>
+<Totales><MntNeto>100000</MntNeto>
+<TasaIVA>19</TasaIVA>
+<IVA>19000</IVA>
+<MntTotal>119000</MntTotal>
+</Totales>
+</Encabezado>
+<Detalle><NroLinDet>1</NroLinDet>
+<NmbItem>Servicio de Ejemplo A</NmbItem>
+<QtyItem>2</QtyItem>
+<PrcItem>50000</PrcItem>
+<MontoItem>100000</MontoItem>
+</Detalle>
+<Referencia><NroLinRef>1</NroLinRef>
+<TpoDocRef>SET</TpoDocRef>
+<FolioRef>1</FolioRef>
+<FchRef>2026-08-19</FchRef>
+<RazonRef>CASO 0000001-1</RazonRef>
+</Referencia>
+<TED version="1.0"><DD><RE>88888888-8</RE><TD>33</TD><F>1</F><FE>2026-08-19</FE><RR>60803000-K</RR><RSR>Servicio De Impuestos Internos</RSR><MNT>119000</MNT><IT1>Servicio de Ejemplo A</IT1><CAF version="1.0">
+<DA><RE>88888888-8</RE><RS>EMPRESA EJEMPLO SPA</RS><TD>33</TD><RNG><D>1</D><H>10</H></RNG><FA>2026-08-19</FA><RSAPK><M>6kbS69AEEqGp4fC5rkileCg9fyxoIQC1Uk3rnlw1RiBeDi94LINp+ksdGaoED3ecWcaf7mqVfnkvGtAf+s6hihh2y+eVD5lF7oZwGQDrckF7nfONeQYhNWSEz6L22NIhJae8T2QBm282xYgT+thIIWbt+KxBuzNEmimHjNzYoBc=</M><E>Aw==</E></RSAPK><IDK>100</IDK></DA>
+<FRMA algoritmo="SHA1withRSA">5UIdlrEDlf16AmY5V3nq3R4H9CTgWbQtoTFR7Cxpbcdvx2hKvKq7tQzdAWBXL6TJ2q4sB25+40J5Ffm7LtkM0xHmLBaLub/Dp6sjOksK50Ey2yXbnQMqY3ye/2UolWxrYVI/VbycYd7rxOGMRyNGborYQ6PSojqnw9PzXSMzAAs=</FRMA>
+</CAF><TSTED>2026-08-19T16:44:40</TSTED></DD>
+<FRMT algoritmo="SHA1withRSA">ezGKYTUSsdimNHOQNd9SAgSI53u78/oDfaKCjAGHrRFWvTYSKODwd+eI/FkJNLxPsETA3pkg1BvRSRVgR5cSuYoVkUd2mMbMSnvD7S5YPg+rZ34gXPi6aiZGgg+d1TJy/rvwcUQJ68R/yw3nuXYMy+7mLaf19NvNR3wfpyM4Vc4=</FRMT>
+</TED>
+<TmstFirma>2026-08-19T16:44:40</TmstFirma>
+</Documento>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#F1T33"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>G4n48aX90dZU3eXqTtgYsTyAJcc=</DigestValue></Reference></SignedInfo><SignatureValue>
+PbEBfruLot8eCFfbBmpcT4y7sAGv90a+UJZveJ6ThG5RBkENX83+o5+bI0Dk3x5d
+K2EYWhMOenmEa4tDhIx3roVH9CuqX6TvLYcTqnaG7SvtNV/kSBnPwFFP2HVL3zXU
+ow/QfaBtpgRcNUzsVfjOeYBTaG7VXYYjgqTi9P3TWCGQKwV5jzkfjXLtOo0S3OYS
+hWWGYshRCIh6oq6blkNZdynowyfuIwezSx8qelfiD2kYFSVqmPy9H8IBPAzzrpCy
+Rbg/p0JtCeQzKRrJd1BUE8QFyg4uruA0JQ0Qv18uqWl0xnPqp/QAMdESm5LjvtuT
+xEhEAGKrr1lck8FJLDZ+vw==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+nSmf6VhzAdO73ci4hbitmvQFVz+PBBydEgd9PFqrA6Tepjt0+Ij2Jc/VBulRNE3E
+cYYQSruPqZ0+hKkoA0CUzW0JN/kdQQuqorAZkSbwVttLovtQ5Kg45XoU0L/DHFzR
+ENta5U+ktSQHZwbz/eCG7UY4draojLLwANiVE0iOlKP17ZZhCOM6H3WRqohty3AK
+rWKAEEZiM18IFuNCZayvNYeFbWIelfLPs4Pqgeyzs+3iMw8+nQOYIkoKP2Ry0i/5
+oyeapUgSyOxSEV/5bZSroSsvshKJUKfTrLDt8neTrd85dMj/y8NEgshegB+/oD5H
+J7PPOU2cKxiTFS9sAIwWnw==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIC8jCCAdqgAwIBAgIUBxXubKVZeQvHM/ACT/3+g0D5lcUwDQYJKoZIhvcNAQEL
+BQAwMzEcMBoGA1UEAwwTRW1wcmVzYSBFamVtcGxvIFNwQTETMBEGA1UEBRMKODg4
+ODg4ODgtODAeFw0yNjA4MTkxNDQxMjBaFw0zNjA4MTYxNDQxMjBaMDMxHDAaBgNV
+BAMME0VtcHJlc2EgRWplbXBsbyBTcEExEzARBgNVBAUTCjg4ODg4ODg4LTgwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCdKZ/pWHMB07vdyLiFuK2a9AVX
+P48EHJ0SB308WqsDpN6mO3T4iPYlz9UG6VE0TcRxhhBKu4+pnT6EqSgDQJTNbQk3
++R1BC6qisBmRJvBW20ui+1DkqDjlehTQv8McXNEQ21rlT6S1JAdnBvP94IbtRjh2
+tqiMsvAA2JUTSI6Uo/XtlmEI4zofdZGqiG3LcAqtYoAQRmIzXwgW40JlrK81h4Vt
+Yh6V8s+zg+qB7LOz7eIzDz6dA5giSgo/ZHLSL/mjJ5qlSBLI7FIRX/ltlKuhKy+y
+EolQp9OssO3yd5Ot3zl0yP/Lw0SCyF6AH7+gPkcns885TZwrGJMVL2wAjBafAgMB
+AAEwDQYJKoZIhvcNAQELBQADggEBAGE8qnM9sYYEaRZbBUWZToeCy/ukb9fS0ADw
+JxulNY3WMnzYhA2fM4M1xbon2Zps/W8FXGOfxkUO7F19rKkVKURq8Ki8A7MUqWb3
+Hzd+MsCfpA9OykzRFxxTJbYXCCIdlTxwrwWhvx49dSb+yv2G5GRKqh4x5DKfsl8E
+ipWTCD4EYPUMC7Qx0kLZH274EKSlYGx1Rns+f3X23U7aQYn/YVPOp4h6SLYq5SuW
+w7+0jn5RNaIzMSp9wrYr2R2+OVWZsVclaNO5PW+PMLTFOTs+Va+oXR7MoGp5Wsju
+xFVGVcmjU1yntL238bMmAaWsS5W9rBuSNrxpqCa+uvCqcK0hrKk=
+</X509Certificate></X509Data></KeyInfo></Signature>
+</DTE>
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0"><Documento ID="F2T33"><Encabezado><IdDoc><TipoDTE>33</TipoDTE>
+<Folio>2</Folio>
+<FchEmis>2026-08-19</FchEmis>
+</IdDoc>
+<Emisor><RUTEmisor>88888888-8</RUTEmisor>
+<RznSoc>Empresa Ejemplo SpA</RznSoc>
+<GiroEmis>Servicios de Ejemplo</GiroEmis>
+<Acteco>620200</Acteco>
+<DirOrigen>Av. Siempre Viva 123, oficina 1</DirOrigen>
+<CmnaOrigen>Santiago</CmnaOrigen>
+<CiudadOrigen>Santiago</CiudadOrigen>
+</Emisor>
+<Receptor><RUTRecep>60803000-K</RUTRecep>
+<RznSocRecep>Servicio De Impuestos Internos</RznSocRecep>
+<GiroRecep>Organismos De La Administracion Publica</GiroRecep>
+<DirRecep>Teatinos 120</DirRecep>
+<CmnaRecep>Santiago</CmnaRecep>
+<CiudadRecep>Santiago</CiudadRecep>
+</Receptor>
+<Totales><MntNeto>200000</MntNeto>
+<TasaIVA>19</TasaIVA>
+<IVA>38000</IVA>
+<MntTotal>238000</MntTotal>
+</Totales>
+</Encabezado>
+<Detalle><NroLinDet>1</NroLinDet>
+<NmbItem>Servicio de Ejemplo B</NmbItem>
+<QtyItem>1</QtyItem>
+<PrcItem>200000</PrcItem>
+<MontoItem>200000</MontoItem>
+</Detalle>
+<Referencia><NroLinRef>1</NroLinRef>
+<TpoDocRef>SET</TpoDocRef>
+<FolioRef>2</FolioRef>
+<FchRef>2026-08-19</FchRef>
+<RazonRef>CASO 0000001-2</RazonRef>
+</Referencia>
+<TED version="1.0"><DD><RE>88888888-8</RE><TD>33</TD><F>2</F><FE>2026-08-19</FE><RR>60803000-K</RR><RSR>Servicio De Impuestos Internos</RSR><MNT>238000</MNT><IT1>Servicio de Ejemplo B</IT1><CAF version="1.0">
+<DA><RE>88888888-8</RE><RS>EMPRESA EJEMPLO SPA</RS><TD>33</TD><RNG><D>1</D><H>10</H></RNG><FA>2026-08-19</FA><RSAPK><M>6kbS69AEEqGp4fC5rkileCg9fyxoIQC1Uk3rnlw1RiBeDi94LINp+ksdGaoED3ecWcaf7mqVfnkvGtAf+s6hihh2y+eVD5lF7oZwGQDrckF7nfONeQYhNWSEz6L22NIhJae8T2QBm282xYgT+thIIWbt+KxBuzNEmimHjNzYoBc=</M><E>Aw==</E></RSAPK><IDK>100</IDK></DA>
+<FRMA algoritmo="SHA1withRSA">5UIdlrEDlf16AmY5V3nq3R4H9CTgWbQtoTFR7Cxpbcdvx2hKvKq7tQzdAWBXL6TJ2q4sB25+40J5Ffm7LtkM0xHmLBaLub/Dp6sjOksK50Ey2yXbnQMqY3ye/2UolWxrYVI/VbycYd7rxOGMRyNGborYQ6PSojqnw9PzXSMzAAs=</FRMA>
+</CAF><TSTED>2026-08-19T16:44:40</TSTED></DD>
+<FRMT algoritmo="SHA1withRSA">vGEmDeNo07mI1xkQPivIulJ0Ro6nvDEHc3n+/RxOBkWd+ZYu8fihem5qgMmY9LIXewbko2rRI9TQXmXT/ShFCYk1k6KH4nMFNFUpB0dI3TjOo9BvfPHoMfJKLNTuWnoNlabaLgC9B9gQTHxR+O45C8q40kmSmbzf7fRz8vql5UM=</FRMT>
+</TED>
+<TmstFirma>2026-08-19T16:44:40</TmstFirma>
+</Documento>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#F2T33"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>bAClcwiLYIbW/ECmowTMpylXXjw=</DigestValue></Reference></SignedInfo><SignatureValue>
+NW37aV3mL4rq2ygNgPJ0RrxyNm3mMTE1f7pXlVX1YCAsYYw+t7lkgynOKONURWVk
+IKFYd2otKyJegOVGMY9F3jDxUTRJ3GYmYfVPnSkwh+eSApYwAnY0h7mpI5qz3n05
+McaqTR9pBzGcoxQG+2V8s2nfbsZAggRXc76FPJ5P4MI1VAq7FmQ1FvHoSD6ySsGO
+qmxXSJmJy3NuzS/XJbwBoMMGIqEuv3bOTMta/Q8D3wQCZ2hcyJs/aMQEAY6PFSrj
+7cUtSaxFH2CgCY9kT7JHnTgH3rSLxibzXG1PyWFz21O4pUqqCdHMOcOQ3/bCEY/+
+oZLiRDAocL/gbMz0G9o4VA==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+nSmf6VhzAdO73ci4hbitmvQFVz+PBBydEgd9PFqrA6Tepjt0+Ij2Jc/VBulRNE3E
+cYYQSruPqZ0+hKkoA0CUzW0JN/kdQQuqorAZkSbwVttLovtQ5Kg45XoU0L/DHFzR
+ENta5U+ktSQHZwbz/eCG7UY4draojLLwANiVE0iOlKP17ZZhCOM6H3WRqohty3AK
+rWKAEEZiM18IFuNCZayvNYeFbWIelfLPs4Pqgeyzs+3iMw8+nQOYIkoKP2Ry0i/5
+oyeapUgSyOxSEV/5bZSroSsvshKJUKfTrLDt8neTrd85dMj/y8NEgshegB+/oD5H
+J7PPOU2cKxiTFS9sAIwWnw==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIC8jCCAdqgAwIBAgIUBxXubKVZeQvHM/ACT/3+g0D5lcUwDQYJKoZIhvcNAQEL
+BQAwMzEcMBoGA1UEAwwTRW1wcmVzYSBFamVtcGxvIFNwQTETMBEGA1UEBRMKODg4
+ODg4ODgtODAeFw0yNjA4MTkxNDQxMjBaFw0zNjA4MTYxNDQxMjBaMDMxHDAaBgNV
+BAMME0VtcHJlc2EgRWplbXBsbyBTcEExEzARBgNVBAUTCjg4ODg4ODg4LTgwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCdKZ/pWHMB07vdyLiFuK2a9AVX
+P48EHJ0SB308WqsDpN6mO3T4iPYlz9UG6VE0TcRxhhBKu4+pnT6EqSgDQJTNbQk3
++R1BC6qisBmRJvBW20ui+1DkqDjlehTQv8McXNEQ21rlT6S1JAdnBvP94IbtRjh2
+tqiMsvAA2JUTSI6Uo/XtlmEI4zofdZGqiG3LcAqtYoAQRmIzXwgW40JlrK81h4Vt
+Yh6V8s+zg+qB7LOz7eIzDz6dA5giSgo/ZHLSL/mjJ5qlSBLI7FIRX/ltlKuhKy+y
+EolQp9OssO3yd5Ot3zl0yP/Lw0SCyF6AH7+gPkcns885TZwrGJMVL2wAjBafAgMB
+AAEwDQYJKoZIhvcNAQELBQADggEBAGE8qnM9sYYEaRZbBUWZToeCy/ukb9fS0ADw
+JxulNY3WMnzYhA2fM4M1xbon2Zps/W8FXGOfxkUO7F19rKkVKURq8Ki8A7MUqWb3
+Hzd+MsCfpA9OykzRFxxTJbYXCCIdlTxwrwWhvx49dSb+yv2G5GRKqh4x5DKfsl8E
+ipWTCD4EYPUMC7Qx0kLZH274EKSlYGx1Rns+f3X23U7aQYn/YVPOp4h6SLYq5SuW
+w7+0jn5RNaIzMSp9wrYr2R2+OVWZsVclaNO5PW+PMLTFOTs+Va+oXR7MoGp5Wsju
+xFVGVcmjU1yntL238bMmAaWsS5W9rBuSNrxpqCa+uvCqcK0hrKk=
+</X509Certificate></X509Data></KeyInfo></Signature>
+</DTE>
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0"><Documento ID="F1T61"><Encabezado><IdDoc><TipoDTE>61</TipoDTE>
+<Folio>1</Folio>
+<FchEmis>2026-08-19</FchEmis>
+</IdDoc>
+<Emisor><RUTEmisor>88888888-8</RUTEmisor>
+<RznSoc>Empresa Ejemplo SpA</RznSoc>
+<GiroEmis>Servicios de Ejemplo</GiroEmis>
+<Acteco>620200</Acteco>
+<DirOrigen>Av. Siempre Viva 123, oficina 1</DirOrigen>
+<CmnaOrigen>Santiago</CmnaOrigen>
+<CiudadOrigen>Santiago</CiudadOrigen>
+</Emisor>
+<Receptor><RUTRecep>60803000-K</RUTRecep>
+<RznSocRecep>Servicio De Impuestos Internos</RznSocRecep>
+<GiroRecep>Organismos De La Administracion Publica</GiroRecep>
+<DirRecep>Teatinos 120</DirRecep>
+<CmnaRecep>Santiago</CmnaRecep>
+<CiudadRecep>Santiago</CiudadRecep>
+</Receptor>
+<Totales><MntNeto>10000</MntNeto>
+<TasaIVA>19</TasaIVA>
+<IVA>1900</IVA>
+<MntTotal>11900</MntTotal>
+</Totales>
+</Encabezado>
+<Detalle><NroLinDet>1</NroLinDet>
+<NmbItem>Servicio de Ejemplo A</NmbItem>
+<QtyItem>2</QtyItem>
+<PrcItem>5000</PrcItem>
+<MontoItem>10000</MontoItem>
+</Detalle>
+<Referencia><NroLinRef>1</NroLinRef>
+<TpoDocRef>SET</TpoDocRef>
+<FolioRef>1</FolioRef>
+<FchRef>2026-08-19</FchRef>
+<RazonRef>CASO 0000001-3</RazonRef>
+</Referencia>
+<Referencia><NroLinRef>2</NroLinRef>
+<TpoDocRef>33</TpoDocRef>
+<FolioRef>1</FolioRef>
+<FchRef>2026-08-19</FchRef>
+<CodRef>3</CodRef>
+<RazonRef>MODIFICA MONTO</RazonRef>
+</Referencia>
+<TED version="1.0"><DD><RE>88888888-8</RE><TD>61</TD><F>1</F><FE>2026-08-19</FE><RR>60803000-K</RR><RSR>Servicio De Impuestos Internos</RSR><MNT>11900</MNT><IT1>Servicio de Ejemplo A</IT1><CAF version="1.0">
+<DA><RE>88888888-8</RE><RS>EMPRESA EJEMPLO SPA</RS><TD>61</TD><RNG><D>1</D><H>5</H></RNG><FA>2026-08-19</FA><RSAPK><M>vW4Qxap+wdbq0XYOwZXAzvAVOaZwCqMuomgqLZGTPPVHVE2a7ip0LxspiUGy1o8ZZM8QrE7EIbGpvC0SLz5n6IpnsGMEIcJ0yd5PhQY3VZFeCz9F0CqZOiVdnc+8UbNWxm+wpbSIBPMvUUlgafCxDMlVQvd0V7QhJ19uCDAMojE=</M><E>Aw==</E></RSAPK><IDK>100</IDK></DA>
+<FRMA algoritmo="SHA1withRSA">DEPynadL4HGV5L19KwcEwzZdw4+KnaKsmNY3QW0ul7fItgHWEYb11Uuf7nTg9jvfgsPOugPo46sb/2PmIMgyRt90/ioOloSUchvNelPvZTT5+cAMHvGhz8Pav27hweh0zBx1IMoMqLtNEJbn0nf6ru424V/5b87vEohIESCZQh0=</FRMA>
+</CAF><TSTED>2026-08-19T16:44:40</TSTED></DD>
+<FRMT algoritmo="SHA1withRSA">OXF41tJ7WuR+77letwpcqoKS6gXSC27xEtLbb6lxGghGDvmXbwpJ8cPP79l34Mur5G+4kAfizF+osKJ1TXn2fDyDWBHVOAYEyQ95wyz80d2HEmf06do/D/UpUIbSGfMf9jvwqET6hHSgFctfDWesVsih9oQkC21gnWklGX3RadE=</FRMT>
+</TED>
+<TmstFirma>2026-08-19T16:44:40</TmstFirma>
+</Documento>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#F1T61"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>qwBcyNQswc74iH7amMqW5uI9JA4=</DigestValue></Reference></SignedInfo><SignatureValue>
+M8E6AkqgRO3QXiIwOJnlN+QBgCLNBlNm7yuJvuCRaB32+X6W87e3+z2hYr/DKslf
+jSfuLK001vfNMT4T4nq2Cyy/xfFCNXZtst/lCsxQSyLwCo1goDPPrk65Veo0YA3u
+irUIWNI9mIzk3Zet4joLXNXFYBtK2TGdcpCl9RNtVzirW9+mfYF/1AgJFONhsPi6
++ioUbFjOFzSQNI2pL//KmkTyUq61OIf3RlazYagph4d4JqpObhv4idmoC618aQ2c
+kd0S3KOvpRWnIF1hFOfNZRnIdQ923CBCrb3MGlt+yDEJMte6fzbM0/RBN+FPvcLC
+saYxmqvYbahExQdbgbF5lw==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+nSmf6VhzAdO73ci4hbitmvQFVz+PBBydEgd9PFqrA6Tepjt0+Ij2Jc/VBulRNE3E
+cYYQSruPqZ0+hKkoA0CUzW0JN/kdQQuqorAZkSbwVttLovtQ5Kg45XoU0L/DHFzR
+ENta5U+ktSQHZwbz/eCG7UY4draojLLwANiVE0iOlKP17ZZhCOM6H3WRqohty3AK
+rWKAEEZiM18IFuNCZayvNYeFbWIelfLPs4Pqgeyzs+3iMw8+nQOYIkoKP2Ry0i/5
+oyeapUgSyOxSEV/5bZSroSsvshKJUKfTrLDt8neTrd85dMj/y8NEgshegB+/oD5H
+J7PPOU2cKxiTFS9sAIwWnw==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIC8jCCAdqgAwIBAgIUBxXubKVZeQvHM/ACT/3+g0D5lcUwDQYJKoZIhvcNAQEL
+BQAwMzEcMBoGA1UEAwwTRW1wcmVzYSBFamVtcGxvIFNwQTETMBEGA1UEBRMKODg4
+ODg4ODgtODAeFw0yNjA4MTkxNDQxMjBaFw0zNjA4MTYxNDQxMjBaMDMxHDAaBgNV
+BAMME0VtcHJlc2EgRWplbXBsbyBTcEExEzARBgNVBAUTCjg4ODg4ODg4LTgwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCdKZ/pWHMB07vdyLiFuK2a9AVX
+P48EHJ0SB308WqsDpN6mO3T4iPYlz9UG6VE0TcRxhhBKu4+pnT6EqSgDQJTNbQk3
++R1BC6qisBmRJvBW20ui+1DkqDjlehTQv8McXNEQ21rlT6S1JAdnBvP94IbtRjh2
+tqiMsvAA2JUTSI6Uo/XtlmEI4zofdZGqiG3LcAqtYoAQRmIzXwgW40JlrK81h4Vt
+Yh6V8s+zg+qB7LOz7eIzDz6dA5giSgo/ZHLSL/mjJ5qlSBLI7FIRX/ltlKuhKy+y
+EolQp9OssO3yd5Ot3zl0yP/Lw0SCyF6AH7+gPkcns885TZwrGJMVL2wAjBafAgMB
+AAEwDQYJKoZIhvcNAQELBQADggEBAGE8qnM9sYYEaRZbBUWZToeCy/ukb9fS0ADw
+JxulNY3WMnzYhA2fM4M1xbon2Zps/W8FXGOfxkUO7F19rKkVKURq8Ki8A7MUqWb3
+Hzd+MsCfpA9OykzRFxxTJbYXCCIdlTxwrwWhvx49dSb+yv2G5GRKqh4x5DKfsl8E
+ipWTCD4EYPUMC7Qx0kLZH274EKSlYGx1Rns+f3X23U7aQYn/YVPOp4h6SLYq5SuW
+w7+0jn5RNaIzMSp9wrYr2R2+OVWZsVclaNO5PW+PMLTFOTs+Va+oXR7MoGp5Wsju
+xFVGVcmjU1yntL238bMmAaWsS5W9rBuSNrxpqCa+uvCqcK0hrKk=
+</X509Certificate></X509Data></KeyInfo></Signature>
+</DTE>
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0"><Documento ID="F1T56"><Encabezado><IdDoc><TipoDTE>56</TipoDTE>
+<Folio>1</Folio>
+<FchEmis>2026-08-19</FchEmis>
+</IdDoc>
+<Emisor><RUTEmisor>88888888-8</RUTEmisor>
+<RznSoc>Empresa Ejemplo SpA</RznSoc>
+<GiroEmis>Servicios de Ejemplo</GiroEmis>
+<Acteco>620200</Acteco>
+<DirOrigen>Av. Siempre Viva 123, oficina 1</DirOrigen>
+<CmnaOrigen>Santiago</CmnaOrigen>
+<CiudadOrigen>Santiago</CiudadOrigen>
+</Emisor>
+<Receptor><RUTRecep>60803000-K</RUTRecep>
+<RznSocRecep>Servicio De Impuestos Internos</RznSocRecep>
+<GiroRecep>Organismos De La Administracion Publica</GiroRecep>
+<DirRecep>Teatinos 120</DirRecep>
+<CmnaRecep>Santiago</CmnaRecep>
+<CiudadRecep>Santiago</CiudadRecep>
+</Receptor>
+<Totales><MntTotal>0</MntTotal>
+</Totales>
+</Encabezado>
+<Detalle><NroLinDet>1</NroLinDet>
+<NmbItem>CORRECCION GIRO</NmbItem>
+<MontoItem>0</MontoItem>
+</Detalle>
+<Referencia><NroLinRef>1</NroLinRef>
+<TpoDocRef>SET</TpoDocRef>
+<FolioRef>1</FolioRef>
+<FchRef>2026-08-19</FchRef>
+<RazonRef>CASO 0000001-4</RazonRef>
+</Referencia>
+<Referencia><NroLinRef>2</NroLinRef>
+<TpoDocRef>33</TpoDocRef>
+<FolioRef>2</FolioRef>
+<FchRef>2026-08-19</FchRef>
+<CodRef>2</CodRef>
+<RazonRef>CORRIGE GIRO</RazonRef>
+</Referencia>
+<TED version="1.0"><DD><RE>88888888-8</RE><TD>56</TD><F>1</F><FE>2026-08-19</FE><RR>60803000-K</RR><RSR>Servicio De Impuestos Internos</RSR><MNT>0</MNT><IT1>CORRECCION GIRO</IT1><CAF version="1.0">
+<DA><RE>88888888-8</RE><RS>EMPRESA EJEMPLO SPA</RS><TD>56</TD><RNG><D>1</D><H>5</H></RNG><FA>2026-08-19</FA><RSAPK><M>yEJhX9If1FXmeRhmgo87IyFZy97Sdodj9XyIYqtz9S2FmijH/J3/qVCPqhu3KVgT6WefKdJg7U8rTGRIpcsdF05yF5Bb963lPeWrLp0QjqIadjUQZUo5n+euptinj2Ib2TdLjkuCWYdF03XJf+A6KvZwTf9Vj2dndPTRqo9MVPU=</M><E>Aw==</E></RSAPK><IDK>100</IDK></DA>
+<FRMA algoritmo="SHA1withRSA">npIus6GwTLNFPmAqvjDh555MZ7WST4fLxxVsoJT32ldD7tF7MTHGs1zy5PZSbl1lMtaP42khGgFt3gNvcFPCBArwF08xauH5btjN5F88iVeCwsmE3/4a+W69ujPbfMj/YXlCwLJAC+A4zYOiME7rDT7c3+yTDZTjvjv3JLrFXiM=</FRMA>
+</CAF><TSTED>2026-08-19T16:44:40</TSTED></DD>
+<FRMT algoritmo="SHA1withRSA">KtxcPu9OhvdsmkK6nfI611Zb+6mqj7haTUrWMtDOYbYQjGtFCRFPgJVC3917T7eDvouENtQHsMXLp62f5tcNCOAHEv3KDTEUySO3O8XXER0hIOudrk6C5TVPI5ScnpZkHWwRruiDP2DnMTOQS2K0ZE0obI+9TZ/QVbmdHodg6os=</FRMT>
+</TED>
+<TmstFirma>2026-08-19T16:44:40</TmstFirma>
+</Documento>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#F1T56"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>2FnrTa2I7F9ChaIWV5w6BBQSKU4=</DigestValue></Reference></SignedInfo><SignatureValue>
+Htel1kEMbWvIk5xHB9TdvOBiBsC6hulx+pKZZFKOl9+yW9HiA1r2aZnXXjD875Oo
+9L08d8WTOiycI6iLHwWnjzoUOenrx+jBHEA9q4NqU/EKEvCZq4En2z5VnC/GRSDC
+YU4DXW7p4MtQzdVJnuNokY7nRmifDHpQnm++UR4PwmD7z2rcnU9HcPKz1uS+VMcp
+119/kdMwsW/B2+69nCpJiPbCo49ELDCNoCKuC3/ZzS+0BPbiKF07pfGG6jPGaVqX
+jTkHGddiqBWin1P25XM5YnvaskCY2mqrlO5mptddFKadg4s2wZGsOFj9pkFoUJh+
+wv2ZZRX93jXccyj5cJe7YQ==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+nSmf6VhzAdO73ci4hbitmvQFVz+PBBydEgd9PFqrA6Tepjt0+Ij2Jc/VBulRNE3E
+cYYQSruPqZ0+hKkoA0CUzW0JN/kdQQuqorAZkSbwVttLovtQ5Kg45XoU0L/DHFzR
+ENta5U+ktSQHZwbz/eCG7UY4draojLLwANiVE0iOlKP17ZZhCOM6H3WRqohty3AK
+rWKAEEZiM18IFuNCZayvNYeFbWIelfLPs4Pqgeyzs+3iMw8+nQOYIkoKP2Ry0i/5
+oyeapUgSyOxSEV/5bZSroSsvshKJUKfTrLDt8neTrd85dMj/y8NEgshegB+/oD5H
+J7PPOU2cKxiTFS9sAIwWnw==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIC8jCCAdqgAwIBAgIUBxXubKVZeQvHM/ACT/3+g0D5lcUwDQYJKoZIhvcNAQEL
+BQAwMzEcMBoGA1UEAwwTRW1wcmVzYSBFamVtcGxvIFNwQTETMBEGA1UEBRMKODg4
+ODg4ODgtODAeFw0yNjA4MTkxNDQxMjBaFw0zNjA4MTYxNDQxMjBaMDMxHDAaBgNV
+BAMME0VtcHJlc2EgRWplbXBsbyBTcEExEzARBgNVBAUTCjg4ODg4ODg4LTgwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCdKZ/pWHMB07vdyLiFuK2a9AVX
+P48EHJ0SB308WqsDpN6mO3T4iPYlz9UG6VE0TcRxhhBKu4+pnT6EqSgDQJTNbQk3
++R1BC6qisBmRJvBW20ui+1DkqDjlehTQv8McXNEQ21rlT6S1JAdnBvP94IbtRjh2
+tqiMsvAA2JUTSI6Uo/XtlmEI4zofdZGqiG3LcAqtYoAQRmIzXwgW40JlrK81h4Vt
+Yh6V8s+zg+qB7LOz7eIzDz6dA5giSgo/ZHLSL/mjJ5qlSBLI7FIRX/ltlKuhKy+y
+EolQp9OssO3yd5Ot3zl0yP/Lw0SCyF6AH7+gPkcns885TZwrGJMVL2wAjBafAgMB
+AAEwDQYJKoZIhvcNAQELBQADggEBAGE8qnM9sYYEaRZbBUWZToeCy/ukb9fS0ADw
+JxulNY3WMnzYhA2fM4M1xbon2Zps/W8FXGOfxkUO7F19rKkVKURq8Ki8A7MUqWb3
+Hzd+MsCfpA9OykzRFxxTJbYXCCIdlTxwrwWhvx49dSb+yv2G5GRKqh4x5DKfsl8E
+ipWTCD4EYPUMC7Qx0kLZH274EKSlYGx1Rns+f3X23U7aQYn/YVPOp4h6SLYq5SuW
+w7+0jn5RNaIzMSp9wrYr2R2+OVWZsVclaNO5PW+PMLTFOTs+Va+oXR7MoGp5Wsju
+xFVGVcmjU1yntL238bMmAaWsS5W9rBuSNrxpqCa+uvCqcK0hrKk=
+</X509Certificate></X509Data></KeyInfo></Signature>
+</DTE>
+</SetDTE>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo xmlns="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#ENVIO20260819164440"><Transforms><Transform Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>9eWZhEIEB59VY5RNviesE8vBIkE=</DigestValue></Reference></SignedInfo><SignatureValue>
+T5da/aYvo/JlEjJDvTAmRu9g9PYfXcbC2V10rNmckZyAYZfLNz/7FwmVRgjvOgLK
+w+2jDeK7ehLvFg/NnQgY6X9Q7BaWyk5k0lzOdC7KoMlA9z/qbBz8QOhwJZkTCThB
+PflEv73uneqbRQ2CnnHwT9MqU266EKDBokvcGU/v4cqw+2Tsb78xNA9hsKNGOkcX
+wRbCnt9G/ky22XDOSFZnV8Dxn5epF0RDZFkCplErycY//vNFvd++8Vafr95yEk/M
+OJF5MXgn0POaaVGVEuWfxU9efIsp7XI9SVBvUOV75Fm6m4Tpt/Wrnsh7QjVBe5QT
+sTdfgHyRGM0qaghDmTcpgQ==
+</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>
+nSmf6VhzAdO73ci4hbitmvQFVz+PBBydEgd9PFqrA6Tepjt0+Ij2Jc/VBulRNE3E
+cYYQSruPqZ0+hKkoA0CUzW0JN/kdQQuqorAZkSbwVttLovtQ5Kg45XoU0L/DHFzR
+ENta5U+ktSQHZwbz/eCG7UY4draojLLwANiVE0iOlKP17ZZhCOM6H3WRqohty3AK
+rWKAEEZiM18IFuNCZayvNYeFbWIelfLPs4Pqgeyzs+3iMw8+nQOYIkoKP2Ry0i/5
+oyeapUgSyOxSEV/5bZSroSsvshKJUKfTrLDt8neTrd85dMj/y8NEgshegB+/oD5H
+J7PPOU2cKxiTFS9sAIwWnw==
+</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>
+MIIC8jCCAdqgAwIBAgIUBxXubKVZeQvHM/ACT/3+g0D5lcUwDQYJKoZIhvcNAQEL
+BQAwMzEcMBoGA1UEAwwTRW1wcmVzYSBFamVtcGxvIFNwQTETMBEGA1UEBRMKODg4
+ODg4ODgtODAeFw0yNjA4MTkxNDQxMjBaFw0zNjA4MTYxNDQxMjBaMDMxHDAaBgNV
+BAMME0VtcHJlc2EgRWplbXBsbyBTcEExEzARBgNVBAUTCjg4ODg4ODg4LTgwggEi
+MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCdKZ/pWHMB07vdyLiFuK2a9AVX
+P48EHJ0SB308WqsDpN6mO3T4iPYlz9UG6VE0TcRxhhBKu4+pnT6EqSgDQJTNbQk3
++R1BC6qisBmRJvBW20ui+1DkqDjlehTQv8McXNEQ21rlT6S1JAdnBvP94IbtRjh2
+tqiMsvAA2JUTSI6Uo/XtlmEI4zofdZGqiG3LcAqtYoAQRmIzXwgW40JlrK81h4Vt
+Yh6V8s+zg+qB7LOz7eIzDz6dA5giSgo/ZHLSL/mjJ5qlSBLI7FIRX/ltlKuhKy+y
+EolQp9OssO3yd5Ot3zl0yP/Lw0SCyF6AH7+gPkcns885TZwrGJMVL2wAjBafAgMB
+AAEwDQYJKoZIhvcNAQELBQADggEBAGE8qnM9sYYEaRZbBUWZToeCy/ukb9fS0ADw
+JxulNY3WMnzYhA2fM4M1xbon2Zps/W8FXGOfxkUO7F19rKkVKURq8Ki8A7MUqWb3
+Hzd+MsCfpA9OykzRFxxTJbYXCCIdlTxwrwWhvx49dSb+yv2G5GRKqh4x5DKfsl8E
+ipWTCD4EYPUMC7Qx0kLZH274EKSlYGx1Rns+f3X23U7aQYn/YVPOp4h6SLYq5SuW
+w7+0jn5RNaIzMSp9wrYr2R2+OVWZsVclaNO5PW+PMLTFOTs+Va+oXR7MoGp5Wsju
+xFVGVcmjU1yntL238bMmAaWsS5W9rBuSNrxpqCa+uvCqcK0hrKk=
+</X509Certificate></X509Data></KeyInfo></Signature></EnvioDTE>
