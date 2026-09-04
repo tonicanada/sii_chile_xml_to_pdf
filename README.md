@@ -25,7 +25,7 @@ Compatible con **facturas, guías de despacho, notas de crédito, notas de débi
 Clona el repositorio y entra en la carpeta:
 
 ```bash
-git clone https://github.com/tuusuario/sii_chile_xml_to_pdf.git
+git clone https://github.com/tonicanada/sii_chile_xml_to_pdf.git
 cd sii_chile_xml_to_pdf
 ```
 
