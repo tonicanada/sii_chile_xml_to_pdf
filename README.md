@@ -25,9 +25,30 @@ Compatible con **facturas, guías de despacho, notas de crédito, notas de débi
 Clona el repositorio y entra en la carpeta:
 
 ```bash
-git clone https://github.com/tuusuario/sii_chile_xml_to_pdf.git
+git clone https://github.com/tonicanada/sii_chile_xml_to_pdf.git
 cd sii_chile_xml_to_pdf
 ```
+
+### Dependencias del sistema
+
+WeasyPrint —el motor que rasteriza el PDF— no es Python puro: necesita las
+librerías de Cairo y Pango del sistema. Si faltan, `pip install` termina bien y
+el fallo aparece luego, al generar el primer PDF. En Debian/Ubuntu:
+
+```bash
+sudo apt-get install -y \
+  libcairo2 libpango-1.0-0 libpangoft2-1.0-0 libgdk-pixbuf-2.0-0 \
+  libffi-dev libxml2 libxslt1.1 libharfbuzz0b libfreetype6 \
+  shared-mime-info fonts-dejavu-core
+```
+
+En macOS con Homebrew: `brew install cairo pango gdk-pixbuf libffi`.
+
+Si prefieres no instalar nada de esto, usa el despliegue con Docker que está más
+abajo: la imagen ya las trae.
+
+_Gracias a [@berttty](https://github.com/berttty) por señalar que faltaban
+documentadas._
 
 Crea y activa un entorno virtual:
 
