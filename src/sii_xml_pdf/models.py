@@ -57,6 +57,9 @@ class DTEData(BaseModel):
 
     # Otros
     timbre_xml: str
+    # El TED tal como está en el XML, byte a byte. El de arriba pasa por
+    # ET.tostring() y pierde el formato que la firma del emisor cubre.
+    timbre_xml_crudo: str = ""
 
     # Detalles
     items: List[Item]

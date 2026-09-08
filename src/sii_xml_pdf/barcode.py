@@ -4,6 +4,8 @@ import base64
 import io
 import re
 
+from .ted import elegir_ted
+
 
 def clean_ted(ted_xml: str) -> str:
     """
@@ -34,8 +36,34 @@ def clean_ted(ted_xml: str) -> str:
 _ENCODING_TED = "iso-8859-1"
 
 
-def pdf417_svg_from_ted(ted_str: str, columns: int = 17, scale: int = 2, ratio: int = 3) -> str:
-    ted_clean = clean_ted(ted_str)
+def _cabe(ted: str, columns: int) -> bool:
+    """El PDF417 tiene un tope duro de 928 palabras de código: un TED con mucha
+    indentación puede no caber. Medido: 3 de 105 DTE reales."""
+    try:
+        encode(ted, columns=columns, security_level=0, encoding=_ENCODING_TED)
+        return True
+    except Exception:
+        return False
+
+
+def _ted_a_imprimir(ted_str: str, ted_crudo: str, columns: int) -> str:
+    """La forma normalizada de siempre, salvo que el TED crudo sea el que valida.
+
+    `clean_ted` recupera la forma firmada para la mayoría de los emisores —los que
+    firman compacto y guardan el XML indentado— pero rompe a los que firmaron con
+    espacios significativos. `elegir_ted` decide con la firma, prefiriendo siempre
+    lo que ya se venía imprimiendo, así que ningún timbre que hoy valida cambia.
+    """
+    normalizado = clean_ted(ted_str)
+    if not ted_crudo:
+        return normalizado
+    return elegir_ted(normalizado, ted_crudo, cabe=lambda t: _cabe(t, columns))
+
+
+def pdf417_svg_from_ted(
+    ted_str: str, columns: int = 17, scale: int = 2, ratio: int = 3, ted_crudo: str = ""
+) -> str:
+    ted_clean = _ted_a_imprimir(ted_str, ted_crudo, columns)
     codes = encode(ted_clean, columns=columns, security_level=0, encoding=_ENCODING_TED)
     svg_tree = render_svg(codes, scale=scale, ratio=ratio)
     root = svg_tree.getroot()
@@ -45,7 +73,7 @@ def pdf417_svg_from_ted(ted_str: str, columns: int = 17, scale: int = 2, ratio: 
 
 
 def pdf417_png_base64_from_ted(
-    ted_str: str, columns: int = 17, scale: int = 3, ratio: int = 3
+    ted_str: str, columns: int = 17, scale: int = 3, ratio: int = 3, ted_crudo: str = ""
 ) -> str:
     """
     Igual que pdf417_svg_from_ted, pero devuelve el timbre como imagen PNG
@@ -58,7 +86,7 @@ def pdf417_png_base64_from_ted(
     vectorial (pdf417_svg_from_ted) sigue siendo válida y se mantiene sin
     cambios; esta es una alternativa, no un reemplazo.
     """
-    ted_clean = clean_ted(ted_str)
+    ted_clean = _ted_a_imprimir(ted_str, ted_crudo, columns)
     codes = encode(ted_clean, columns=columns, security_level=0, encoding=_ENCODING_TED)
     img = render_image(codes, scale=scale, ratio=ratio)
     buf = io.BytesIO()

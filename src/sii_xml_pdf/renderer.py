@@ -67,9 +67,9 @@ def render_html(
         "timbre_formato": timbre_formato,
     }
     if timbre_formato == "png":
-        ctx["barcode_png_b64"] = pdf417_png_base64_from_ted(dte.timbre_xml)
+        ctx["barcode_png_b64"] = pdf417_png_base64_from_ted(dte.timbre_xml, ted_crudo=dte.timbre_xml_crudo)
     else:
-        ctx["barcode_svg"] = pdf417_svg_from_ted(dte.timbre_xml)
+        ctx["barcode_svg"] = pdf417_svg_from_ted(dte.timbre_xml, ted_crudo=dte.timbre_xml_crudo)
     return tmpl.render(**ctx)
 
 

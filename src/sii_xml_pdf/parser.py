@@ -3,6 +3,7 @@ from typing import List, Union, Optional
 from pathlib import Path
 from .models import DTEData, Item, Referencia, Impuesto
 from .ns import x
+from .ted import extraer_teds_crudos
 import re
 
 REL_TIPO_DOC = {
@@ -183,10 +184,37 @@ def _documentos(root) -> List:
     return [root]
 
 
+def _bytes_originales(xml: Union[str, bytes, Path]) -> bytes:
+    """Los bytes del XML de entrada, venga como ruta, texto o bytes."""
+    if isinstance(xml, bytes):
+        return xml
+    if isinstance(xml, Path):
+        return xml.read_bytes()
+    # str: puede ser una ruta o el propio XML
+    if xml.lstrip()[:1] == "<":
+        return xml.encode("iso-8859-1", errors="replace")
+    try:
+        return Path(xml).read_bytes()
+    except OSError:
+        return b""
+
+
+def _con_ted_crudo(dtes: List[DTEData], xml: Union[str, bytes, Path]) -> List[DTEData]:
+    """Adjunta a cada DTE su TED tal cual está en el XML, emparejado por (tipo, folio)."""
+    try:
+        crudos = extraer_teds_crudos(_bytes_originales(xml))
+    except Exception:
+        return dtes
+    for d in dtes:
+        # el folio vive en `numero_factura`; el TED lo llama <F>
+        d.timbre_xml_crudo = crudos.get((str(d.tipo_dte), str(d.numero_factura)), "")
+    return dtes
+
+
 def parse_envio(xml: Union[str, bytes, Path]) -> List[DTEData]:
     """Todos los documentos del XML, en orden. Un PDF por elemento de la lista."""
     root = _arbol(xml)
-    return [_parse_documento(d) for d in _documentos(root)]
+    return _con_ted_crudo([_parse_documento(d) for d in _documentos(root)], xml)
 
 
 def parse_xml(xml: Union[str, bytes, Path], indice: Optional[int] = None) -> DTEData:
@@ -204,7 +232,7 @@ def parse_xml(xml: Union[str, bytes, Path], indice: Optional[int] = None) -> DTE
             f"el XML lleva {len(docs)} documentos: usa parse_envio() para obtenerlos "
             f"todos, o parse_xml(..., indice=N) para uno concreto"
         )
-    return _parse_documento(docs[indice or 0])
+    return _con_ted_crudo([_parse_documento(docs[indice or 0])], xml)[0]
 
 
 def _parse_documento(root) -> DTEData:
