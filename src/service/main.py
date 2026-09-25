@@ -36,7 +36,9 @@ async def render(authorization: str = Header(None),
                  cedible: bool = Form(False),
                  acuse_recibo: bool = Form(False),
                  timbre_formato: str = Form("png"),
-                 vista_previa: bool = Form(False)):
+                 vista_previa: bool = Form(False),
+                 estilo: str = Form("actual"),
+                 logo_b64: str = Form("")):
     # Autenticación
     check_auth(authorization)
 
@@ -58,6 +60,7 @@ async def render(authorization: str = Header(None),
         pdf_bytes = render_pdf_from_xml(
             data, cedible=cedible, acuse_recibo=acuse_recibo,
             timbre_formato=timbre_formato, vista_previa=vista_previa,
+            estilo=estilo, logo_b64=logo_b64 or None,
         )
         if not pdf_bytes.startswith(b"%PDF"):
             raise RuntimeError("Invalid PDF generated")
