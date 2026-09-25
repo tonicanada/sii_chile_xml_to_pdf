@@ -52,14 +52,20 @@ body {
   font-family: "Sora", "Inter", "Liberation Sans", sans-serif;
 }
 
-/* Cifras y datos: las columnas numéricas de la tabla, los totales y los datos
-   del receptor (RUT, dirección), que son dato y no prosa. */
+/* Cifras y nada más. El monoespaciado sirve para que los dígitos caigan en
+   columna; en texto corrido solo estorba.
+
+   El receptor quedó fuera después de verlo impreso: sus campos son razón
+   social, giro y dirección —prosa, no datos— y en mono se leían como la salida
+   de un terminal. El RUT sí es cifra, pero comparte columna con los demás y no
+   hay forma de aislarlo sin tocar el HTML compartido; no compensa.
+
+   De las referencias solo van en mono el folio y la fecha: la primera columna
+   es el tipo de documento en palabras. */
 #item_table td:nth-child(1),
 #item_table td:nth-child(2),
 #item_table td:nth-child(n+5),
-#referencias_table td,
-#receiver_data table.receiver td:nth-child(2),
-#receiver_data table.receiver td:nth-child(4),
+#referencias_table td:nth-child(n+2),
 #totals_block .row span,
 #monto_total_final .val,
 #credito_especial .val {
