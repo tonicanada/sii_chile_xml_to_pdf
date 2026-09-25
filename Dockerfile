@@ -13,9 +13,17 @@ RUN apt-get update && apt-get install -y \
     libfreetype6 \
     shared-mime-info \
     fonts-dejavu-core \
+    fonts-inter \
     ca-certificates \
     && update-ca-certificates \
     && rm -rf /var/lib/apt/lists/*
+
+# Sora y DM Mono van EN EL REPO y no se descargan en el build: una descarga
+# aquí ataría cada construcción a que GitHub responda y a que la URL siga
+# existiendo, y dos builds del mismo commit podrían dar imágenes distintas.
+# Son OFL, así que se distribuyen con su licencia al lado (fonts/OFL-*.txt).
+COPY fonts/*.ttf /usr/share/fonts/truetype/tecton/
+RUN fc-cache -f >/dev/null
 
 WORKDIR /app
 

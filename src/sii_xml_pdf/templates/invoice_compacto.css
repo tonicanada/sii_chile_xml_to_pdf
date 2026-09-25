@@ -19,8 +19,51 @@
   margin: 1.2cm 1.2cm 1.5cm;
 }
 
+/* ── Tipografía ────────────────────────────────────────────────────────────
+   Tres familias, cada una donde aporta algo, siguiendo la guía de identidad de
+   Tecton («Sora para títulos y encabezados; DM Mono para cifras, datos y texto
+   tabular»).
+
+   Hasta ahora el documento salía en DejaVu Sans, y no por elección: el CSS base
+   pide Inter primero, pero en la imagen no había ninguna fuente instalada salvo
+   DejaVu, así que caía ahí. Se ve ancha y con aire de sistema antiguo.
+
+   DM Mono NO se usa en el texto corrido, aunque la guía lo permitiría: en
+   párrafos queda de máquina de escribir. Donde sí manda es en las columnas de
+   importes, porque el monoespaciado alinea las cifras por dígito y en una
+   factura eso es lo que se compara de un vistazo.
+
+   Todas las familias llevan respaldo: si un día falta una en la imagen, el
+   documento sale en la siguiente en vez de caer en DejaVu sin avisar. */
 body {
   font-size: 7.5pt;
+  font-family: "Inter", "Liberation Sans", "DejaVu Sans", sans-serif;
+}
+
+/* Títulos y encabezados: razón social, recuadro del folio, cabeceras de tabla
+   y las etiquetas del receptor. */
+#info_proveedor dt.strong,
+#informations dt,
+#item_table th,
+#referencias_table thead th,
+#receiver_data td.col-title,
+#total_bar,
+#monto_total_final .label {
+  font-family: "Sora", "Inter", "Liberation Sans", sans-serif;
+}
+
+/* Cifras y datos: las columnas numéricas de la tabla, los totales y los datos
+   del receptor (RUT, dirección), que son dato y no prosa. */
+#item_table td:nth-child(1),
+#item_table td:nth-child(2),
+#item_table td:nth-child(n+5),
+#referencias_table td,
+#receiver_data table.receiver td:nth-child(2),
+#receiver_data table.receiver td:nth-child(4),
+#totals_block .row span,
+#monto_total_final .val,
+#credito_especial .val {
+  font-family: "DM Mono", "DejaVu Sans Mono", monospace;
 }
 
 /* ── Cabecera ──────────────────────────────────────────────────────────── */
