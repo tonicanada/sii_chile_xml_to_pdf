@@ -13,8 +13,10 @@
 
 @page {
   /* Desis aprovecha bastante más ancho: 1,5cm de margen se comía la caja de
-     ítems en facturas con descripciones largas. */
-  margin: 1.2cm;
+     ítems en facturas con descripciones largas.
+     Abajo va más holgado que a los lados porque ahí vive el «Página X de Y»:
+     con 1,2cm quedaba casi tocando el borde y el pie se leía descolgado. */
+  margin: 1.2cm 1.2cm 1.5cm;
 }
 
 body {
@@ -38,12 +40,20 @@ body {
    empresa y no hay forma de saber su proporción — así un logotipo apaisado
    se ve entero y un isotipo cuadrado no desborda la cabecera. */
 #logo_emisor {
-  margin-bottom: 2mm;
+  /* Aire suficiente para que la razón social se lea como dato propio y no como
+     bajada del logo: es ella la que identifica legalmente al emisor. */
+  margin-bottom: 3.5mm;
 }
 
 #logo_emisor img {
-  max-height: 14mm;
-  max-width: 55mm;
+  /* 14mm era demasiado con un logotipo tipográfico como el de Tecton: llenaba
+     el alto del recuadro del RUT, competía con él y dejaba la cabecera coja.
+     A 9mm acompaña en vez de dominar, y las dos mitades quedan equilibradas. */
+  /* El que manda en un logotipo apaisado es el ANCHO, no el alto: con 48mm el
+     wordmark seguía ocupando casi un cuarto de la página aunque su altura
+     cupiera de sobra en los 9mm. */
+  max-height: 9mm;
+  max-width: 34mm;
   object-fit: contain;
 }
 
@@ -56,7 +66,10 @@ body {
 }
 
 #receiver_data table.receiver td {
-  padding: 1px 3px;
+  /* 1px apelmazaba las cuatro filas hasta parecer un bloque. El interlineado
+     del cuerpo (1.6) no llega aquí: en una tabla lo que separa es el padding. */
+  padding: 2.5px 3px;
+  line-height: 1.35;
 }
 
 /* ── Ítems ─────────────────────────────────────────────────────────────── */
@@ -73,12 +86,40 @@ body {
   font-size: 7.5pt;
 }
 
+#item_table table {
+  /* El base fija 1.1 pensando en 11pt. Al bajar a 7,5pt esa proporción se
+     mantiene, así que una descripción de tres líneas queda pegada consigo
+     misma. 1.35 la separa sin gastar apenas alto. */
+  line-height: 1.35;
+}
+
 #item_table th {
   padding: 1.5px 2px;
 }
 
 #item_table td {
-  padding: 1px 2px;
+  padding: 2px 2px;
+}
+
+/* El base usa `word-break: break-word`, que parte por donde sea y deja cosas
+   como «contra mau-llin» en mitad del nombre de un servicio. `overflow-wrap`
+   corta solo cuando una palabra no cabe de ninguna forma —el caso real que
+   motivó aquello: giros sin espacios— y nunca en medio de una frase normal. */
+#item_table td,
+#item_table th {
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: none;
+}
+
+/* La columna de Descripción trae `hyphens: auto` en el base, y ese selector
+   —`td:nth-child(3)`— gana al de arriba por especificidad: por eso seguía
+   saliendo «contra mau-llin» partido a la mitad. Silabear el nombre de un
+   servicio en un documento tributario no aporta nada y se lee como un error
+   de impresión. El `overflow-wrap` de arriba sigue cubriendo el caso que
+   justificaba aquello: una palabra tan larga que no cabe de ninguna forma. */
+#item_table td:nth-child(3) {
+  hyphens: none;
 }
 
 /* ── Referencias ───────────────────────────────────────────────────────── */
@@ -102,7 +143,31 @@ body {
 }
 
 #totals_block .row {
-  padding: 1.5px 2px;
+  padding: 2.5px 2px;
+}
+
+/* La línea, por FILA y no por celda. En el base cada `span` lleva su propio
+   borde, así que los de la izquierda terminan donde acaba su texto y los de la
+   derecha donde acaba el suyo: cuatro filas con ocho rayas de largos distintos.
+   Una sola línea continua por fila es lo que hace Desis y lo que se lee como
+   una tabla y no como un borrador. */
+#totals_block .row span {
+  border-bottom: none;
+}
+
+#totals_block .row {
+  border-bottom: 0.2mm solid #000;
+}
+
+#totals_block .row.empty {
+  border-bottom: none;
+}
+
+/* Las dos columnas necesitan separarse: al pasar la línea a la fila entera,
+   el valor de la izquierda y la etiqueta de la derecha quedan sobre el mismo
+   trazo y se leen como una sola cosa («0 Neto:»). */
+#totals_block .tot-col:first-child {
+  padding-right: 5mm;
 }
 
 .barcode-legend {
@@ -113,6 +178,10 @@ body {
    resto: en Desis también destaca sobre el cuerpo. */
 #monto_total_final {
   font-size: 11pt;
+  /* Pegado al bloque de totales, que es de donde sale. Con 2mm flotaba suelto
+     entre los totales y el pie, y esa franja muerta era buena parte de lo que
+     hacía ver el margen inferior descuadrado. */
+  margin-top: 1mm;
 }
 
 #credito_especial {
