@@ -20,20 +20,19 @@
 }
 
 /* ── Tipografía ────────────────────────────────────────────────────────────
-   Tres familias, cada una donde aporta algo, siguiendo la guía de identidad de
-   Tecton («Sora para títulos y encabezados; DM Mono para cifras, datos y texto
-   tabular»).
+   Dos familias: Sora en títulos y encabezados, como pide la guía de identidad
+   de Tecton, e Inter en todo lo demás.
 
    Hasta ahora el documento salía en DejaVu Sans, y no por elección: el CSS base
    pide Inter primero, pero en la imagen no había ninguna fuente instalada salvo
    DejaVu, así que caía ahí. Se ve ancha y con aire de sistema antiguo.
 
-   DM Mono NO se usa en el texto corrido, aunque la guía lo permitiría: en
-   párrafos queda de máquina de escribir. Donde sí manda es en las columnas de
-   importes, porque el monoespaciado alinea las cifras por dígito y en una
-   factura eso es lo que se compara de un vistazo.
+   DM Mono se probó en las columnas de importes —alinea las cifras por dígito—
+   y se descartó: su cero barrado y el ritmo monoespaciado dan al documento un
+   aire técnico que no encaja con algo que va a un cliente. Inter tiene cifras
+   de ancho fijo, así que las columnas siguen cuadrando.
 
-   Todas las familias llevan respaldo: si un día falta una en la imagen, el
+   Ambas familias llevan respaldo: si un día falta una en la imagen, el
    documento sale en la siguiente en vez de caer en DejaVu sin avisar. */
 body {
   font-size: 7.5pt;
@@ -52,31 +51,15 @@ body {
   font-family: "Sora", "Inter", "Liberation Sans", sans-serif;
 }
 
-/* Cifras y nada más. El monoespaciado sirve para que los dígitos caigan en
-   columna; en texto corrido solo estorba.
-
-   El receptor quedó fuera después de verlo impreso: sus campos son razón
-   social, giro y dirección —prosa, no datos— y en mono se leían como la salida
-   de un terminal. El RUT sí es cifra, pero comparte columna con los demás y no
-   hay forma de aislarlo sin tocar el HTML compartido; no compensa.
-
-   De las referencias solo van en mono el folio y la fecha: la primera columna
-   es el tipo de documento en palabras. */
-#item_table td:nth-child(1),
-#item_table td:nth-child(2),
-#item_table td:nth-child(n+5),
-#referencias_table td:nth-child(n+2),
-#totals_block .row span,
-#monto_total_final .val,
-#credito_especial .val {
-  font-family: "DM Mono", "DejaVu Sans Mono", monospace;
-}
-
 /* ── Cabecera ──────────────────────────────────────────────────────────── */
 
 #informations {
-  padding: 0.6em;
-  font-size: 8pt;
+  /* Es lo primero que se mira para identificar el documento —tipo, número y
+     RUT del emisor— y al compactar se había quedado igual de pequeño que el
+     resto. Con 9,5pt vuelve a leerse a distancia sin desequilibrar la página. */
+  padding: 0.9em 0.7em;
+  font-size: 9.5pt;
+  line-height: 1.5;
 }
 
 #info_proveedor dt.strong {
