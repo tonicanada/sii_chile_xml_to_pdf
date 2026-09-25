@@ -16,8 +16,10 @@ RAIZ = pathlib.Path(__file__).resolve().parent.parent
 FUENTES = RAIZ / "fonts"
 
 #: Las que se distribuyen con el repo. Inter viene del paquete `fonts-inter` de
-#: Debian, así que no está aquí.
-VENDORIZADAS = ["Sora.ttf", "DMMono-Regular.ttf", "DMMono-Medium.ttf"]
+#: Debian, así que no está aquí. DM Mono se probó y se descartó: una fuente
+#: instalada que nadie usa es peso en la imagen y una pista falsa para quien lea
+#: el Dockerfile.
+VENDORIZADAS = ["Sora.ttf"]
 
 
 @pytest.mark.parametrize("nombre", VENDORIZADAS)
@@ -32,7 +34,7 @@ def test_la_fuente_esta_en_el_repo(nombre):
 
 def test_las_licencias_viajan_con_las_fuentes():
 	"""Sora y DM Mono son OFL: la licencia tiene que distribuirse con ellas."""
-	for licencia in ("OFL-Sora.txt", "OFL-DMMono.txt"):
+	for licencia in ("OFL-Sora.txt",):
 		texto = (FUENTES / licencia).read_text(encoding="utf-8", errors="replace")
 		assert "SIL OPEN FONT LICENSE" in texto.upper()
 
@@ -52,7 +54,7 @@ def test_cada_familia_declara_un_respaldo():
 	css = (RAIZ / "src/sii_xml_pdf/templates/invoice_compacto.css").read_text(
 		encoding="utf-8"
 	)
-	for familia in ('"Sora"', '"Inter"', '"DM Mono"'):
+	for familia in ('"Sora"', '"Inter"'):
 		assert familia in css, f"{familia} no se declara en el estilo compacto"
 	# Ninguna declaración puede quedarse sin alternativa detrás.
 	for linea in css.splitlines():
