@@ -35,7 +35,8 @@ async def render(authorization: str = Header(None),
                  file: UploadFile = File(...),
                  cedible: bool = Form(False),
                  acuse_recibo: bool = Form(False),
-                 timbre_formato: str = Form("png")):
+                 timbre_formato: str = Form("png"),
+                 vista_previa: bool = Form(False)):
     # Autenticación
     check_auth(authorization)
 
@@ -49,10 +50,14 @@ async def render(authorization: str = Header(None),
     # sale igual que antes de agregar esos dos parámetros. `timbre_formato`
     # default "png" (probado contra el portal real de Muestras Impresas del
     # SII: el timbre vectorial no es legible por su software de
-    # validación). Ver docstring de render_pdf_from_xml para el detalle.
+    # validación). `vista_previa` marca el documento como borrador —"SIN FOLIO"
+    # y un sello en lugar del timbre— y se activa solo si el XML no trae TED,
+    # porque sin él no hay PDF417 que dibujar. Ver docstring de
+    # render_pdf_from_xml para el detalle.
     try:
         pdf_bytes = render_pdf_from_xml(
-            data, cedible=cedible, acuse_recibo=acuse_recibo, timbre_formato=timbre_formato
+            data, cedible=cedible, acuse_recibo=acuse_recibo,
+            timbre_formato=timbre_formato, vista_previa=vista_previa,
         )
         if not pdf_bytes.startswith(b"%PDF"):
             raise RuntimeError("Invalid PDF generated")

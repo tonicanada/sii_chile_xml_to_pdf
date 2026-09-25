@@ -43,6 +43,7 @@ def render_html(
     cedible: bool = False,
     acuse_recibo: bool = False,
     timbre_formato: str = "png",
+    vista_previa: bool = False,
 ) -> str:
     tmpl = env.get_template("invoice.html")
     monto_imp_ret = sum(i.monto for i in dte.impuestos) if dte.impuestos else 0
@@ -65,11 +66,23 @@ def render_html(
         "mostrar_cedible": cedible and elegible,
         "cedible_texto": cedible_texto,
         "timbre_formato": timbre_formato,
+        "vista_previa": vista_previa,
     }
-    if timbre_formato == "png":
-        ctx["barcode_png_b64"] = pdf417_png_base64_from_ted(dte.timbre_xml, ted_crudo=dte.timbre_xml_crudo)
-    else:
-        ctx["barcode_svg"] = pdf417_svg_from_ted(dte.timbre_xml, ted_crudo=dte.timbre_xml_crudo)
+    # Un documento sin timbrar no tiene TED, y el PDF417 no se puede dibujar: el
+    # codificador levanta «Data too short». Se trata igual que `vista_previa` explícita
+    # —marcarlo y seguir— porque un PDF sin sello y con hueco donde va el timbre parece
+    # un documento válido al que se le estropeó la imagen, y eso es lo peligroso.
+    sin_timbre = vista_previa or not (dte.timbre_xml or "").strip()
+    ctx["vista_previa"] = sin_timbre
+    if not sin_timbre:
+        if timbre_formato == "png":
+            ctx["barcode_png_b64"] = pdf417_png_base64_from_ted(
+                dte.timbre_xml, ted_crudo=dte.timbre_xml_crudo
+            )
+        else:
+            ctx["barcode_svg"] = pdf417_svg_from_ted(
+                dte.timbre_xml, ted_crudo=dte.timbre_xml_crudo
+            )
     return tmpl.render(**ctx)
 
 
@@ -79,9 +92,11 @@ def render_pdf(
     cedible: bool = False,
     acuse_recibo: bool = False,
     timbre_formato: str = "png",
+    vista_previa: bool = False,
 ) -> bytes:
     html = render_html(
-        dte, cedible=cedible, acuse_recibo=acuse_recibo, timbre_formato=timbre_formato
+        dte, cedible=cedible, acuse_recibo=acuse_recibo, timbre_formato=timbre_formato,
+        vista_previa=vista_previa,
     )
     styles = _default_css_list(css_path)
     out = io.BytesIO()
@@ -96,6 +111,7 @@ def render_pdf_from_xml(
     acuse_recibo: bool = False,
     timbre_formato: str = "png",
     indice: Optional[int] = None,
+    vista_previa: bool = False,
 ) -> bytes:
     """
     Recibe XML en bytes, devuelve el PDF en bytes.
@@ -120,6 +136,13 @@ def render_pdf_from_xml(
     elementos (ej. Notas de Crédito/Débito — el manual del SII las excluye
     explícitamente).
 
+    `vista_previa`: marca el documento como borrador — el folio se imprime
+    como "SIN FOLIO" y, en lugar del timbre, va un sello VISTA PREVIA. Sirve
+    para enseñar cómo va a quedar un documento ANTES de timbrarlo, que es
+    cuando todavía no hay folio ni TED. Se activa solo también cuando el XML
+    no trae TED, porque sin él no se puede dibujar el PDF417 y un PDF con el
+    hueco vacío pasaría por un documento válido mal impreso.
+
     `timbre_formato`: default **"png"** — incrusta el timbre PDF417 como
     imagen rasterizada. Este SÍ es un cambio de comportamiento por
     defecto respecto a versiones anteriores de esta librería (antes era
@@ -141,4 +164,5 @@ def render_pdf_from_xml(
         cedible=cedible,
         acuse_recibo=acuse_recibo,
         timbre_formato=timbre_formato,
+        vista_previa=vista_previa,
     )
