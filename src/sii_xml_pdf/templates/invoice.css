@@ -307,3 +307,25 @@ html, body {
   font-size: 12pt;
 }
 #monto_total_final .label { margin-right: 10px; }
+
+
+/* ── Vista previa ──────────────────────────────────────────────────────────
+   Un documento sin timbrar tiene que distinguirse de uno válido de un
+   vistazo y desde lejos: lo que se imprime aquí se parece mucho a una
+   factura, y la diferencia real —que no tiene folio ni timbre— es
+   justamente lo que menos se mira. De ahí el sello en rojo ocupando el
+   sitio del timbre, y no una nota al pie. */
+.sello-vista-previa {
+  width: 220px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #c0392b;
+  color: #c0392b;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  transform: rotate(-8deg);
+  box-sizing: border-box;
+}

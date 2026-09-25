@@ -28,7 +28,7 @@
         <dl id="informations">
           <dt>R.U.T.: {{ d.rut_proveedor }}</dt>
           <dt>{{ d.tipo_dte_palabras }}</dt>
-          <dt>Nº: {{ d.numero_factura }}</dt>
+          <dt>Nº: {% if vista_previa %}SIN FOLIO{% else %}{{ d.numero_factura }}{% endif %}</dt>
           <dt>{{ fecha_emision_larga }}</dt>
         </dl>
       </div>
@@ -120,15 +120,24 @@
       <div id="bottom_area">
         <div id="barcode_block">
           <div id="imagen-svg">
-            {% if timbre_formato == "png" %}
+            {% if vista_previa %}
+            <!-- Ocupa el mismo hueco que el timbre a propósito: así se ve dónde irá, y
+                 que hoy no está. Un hueco en blanco parecería un fallo de impresión. -->
+            <div class="sello-vista-previa">VISTA PREVIA</div>
+            {% elif timbre_formato == "png" %}
             <img src="data:image/png;base64,{{ barcode_png_b64 }}" alt="Timbre electrónico PDF417" />
             {% else %}
             {{ barcode_svg | safe }}
             {% endif %}
           </div>
           <div class="barcode-legend">
+            {% if vista_previa %}
+            <div><strong>Documento sin timbrar</strong></div>
+            <div>No tiene validez tributaria</div>
+            {% else %}
             <div>Timbre electrónico S.I.I.</div>
             <div>Verifique documento en: {{ verificacion_url }}</div>
+            {% endif %}
           </div>
         </div>
         <div id="right_block">
