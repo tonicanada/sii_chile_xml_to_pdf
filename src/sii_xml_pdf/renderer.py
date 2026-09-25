@@ -17,13 +17,42 @@ env = Environment(
 env.filters["clp"] = format_clp
 
 
-def _default_css_list(css_path: Optional[str]) -> List[CSS]:
+#: Estilos disponibles y la hoja que cada uno AÑADE sobre `invoice.css`.
+#: `actual` no añade nada: es el estilo de siempre, byte por byte.
+ESTILOS = {
+    "actual": None,
+    "compacto": "templates/invoice_compacto.css",
+}
+
+
+def _leer_css(nombre: str) -> str:
+    with resources.files("sii_xml_pdf").joinpath(nombre).open("r", encoding="utf-8") as f:
+        return f.read()
+
+
+def _default_css_list(css_path: Optional[str], estilo: str = "actual") -> List[CSS]:
+    """Las hojas de estilo, en orden de aplicación.
+
+    Un estilo distinto del base se monta COMO CAPA encima, no como copia: WeasyPrint
+    aplica en orden y la última gana, así que el compacto solo declara sus diferencias.
+    Duplicar las 331 líneas del base habría obligado a arreglar cada cosa dos veces y
+    dejado que los dos estilos divergieran sin que se notara.
+
+    Un `estilo` desconocido **levanta**. Caer al de por defecto en silencio significaría
+    entregar un PDF con un aspecto que nadie pidió, y eso no se nota mirando: el
+    documento sale bien, solo que no es el que se quería.
+    """
+    if estilo not in ESTILOS:
+        raise ValueError(
+            f"Estilo desconocido: {estilo!r}. Disponibles: {', '.join(sorted(ESTILOS))}"
+        )
     if css_path:
         return [CSS(filename=css_path)]
-    # Cargar el CSS del paquete si no se pasa ruta
-    with resources.files("sii_xml_pdf").joinpath("templates/invoice.css").open("r", encoding="utf-8") as f:
-        css_text = f.read()
-    return [CSS(string=css_text)]
+    hojas = [CSS(string=_leer_css("templates/invoice.css"))]
+    extra = ESTILOS[estilo]
+    if extra:
+        hojas.append(CSS(string=_leer_css(extra)))
+    return hojas
 
 
 # TipoDTE que llevan cuadro de Acuse de Recibo y (opcionalmente) copia
@@ -44,6 +73,7 @@ def render_html(
     acuse_recibo: bool = False,
     timbre_formato: str = "png",
     vista_previa: bool = False,
+    logo_b64: Optional[str] = None,
 ) -> str:
     tmpl = env.get_template("invoice.html")
     monto_imp_ret = sum(i.monto for i in dte.impuestos) if dte.impuestos else 0
@@ -67,6 +97,9 @@ def render_html(
         "cedible_texto": cedible_texto,
         "timbre_formato": timbre_formato,
         "vista_previa": vista_previa,
+        # El logo NO sale del XML: ese XML es el documento tributario firmado y meterle
+        # una imagen lo invalidaría. Llega como dato aparte y solo se pinta si viene.
+        "logo_b64": logo_b64,
     }
     # Un documento sin timbrar no tiene TED, y el PDF417 no se puede dibujar: el
     # codificador levanta «Data too short». Se trata igual que `vista_previa` explícita
@@ -93,12 +126,14 @@ def render_pdf(
     acuse_recibo: bool = False,
     timbre_formato: str = "png",
     vista_previa: bool = False,
+    estilo: str = "actual",
+    logo_b64: Optional[str] = None,
 ) -> bytes:
     html = render_html(
         dte, cedible=cedible, acuse_recibo=acuse_recibo, timbre_formato=timbre_formato,
-        vista_previa=vista_previa,
+        vista_previa=vista_previa, logo_b64=logo_b64,
     )
-    styles = _default_css_list(css_path)
+    styles = _default_css_list(css_path, estilo)
     out = io.BytesIO()
     HTML(string=html).write_pdf(out, stylesheets=styles)
     return out.getvalue()
@@ -112,6 +147,8 @@ def render_pdf_from_xml(
     timbre_formato: str = "png",
     indice: Optional[int] = None,
     vista_previa: bool = False,
+    estilo: str = "actual",
+    logo_b64: Optional[str] = None,
 ) -> bytes:
     """
     Recibe XML en bytes, devuelve el PDF en bytes.
@@ -135,6 +172,17 @@ def render_pdf_from_xml(
     Ambos se ignoran silenciosamente en TipoDTE que no llevan estos
     elementos (ej. Notas de Crédito/Débito — el manual del SII las excluye
     explícitamente).
+
+    `estilo`: `"actual"` (por defecto, el de siempre) o `"compacto"` —
+    tipografía y espaciado más densos, y logo del emisor en la cabecera si se
+    manda `logo_b64`. Se monta como capa sobre el CSS base, así que el estilo
+    por defecto no cambia. Un estilo desconocido levanta en vez de caer al
+    base: un PDF con el aspecto equivocado sale bien y no se nota.
+
+    `logo_b64`: imagen del emisor en base64 (data URI sin prefijo) para la
+    cabecera. No sale del XML —es un documento tributario firmado y meterle una
+    imagen lo invalidaría— sino que llega como dato aparte. Si no se manda, la
+    cabecera queda como siempre.
 
     `vista_previa`: marca el documento como borrador — el folio se imprime
     como "SIN FOLIO" y, en lugar del timbre, va un sello VISTA PREVIA. Sirve
@@ -165,4 +213,6 @@ def render_pdf_from_xml(
         acuse_recibo=acuse_recibo,
         timbre_formato=timbre_formato,
         vista_previa=vista_previa,
+        estilo=estilo,
+        logo_b64=logo_b64,
     )

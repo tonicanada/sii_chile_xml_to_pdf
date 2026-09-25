@@ -1,0 +1,120 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Estilo COMPACTO — una capa ENCIMA de invoice.css, no una copia.
+
+   WeasyPrint aplica las hojas en orden y la última gana, así que aquí solo
+   van las diferencias. Copiar las 331 líneas del base habría condenado a
+   arreglar cada cosa dos veces, y a que los dos estilos divergieran sin que
+   nadie se diera cuenta.
+
+   El objetivo es la densidad de la factura de Desis: el estilo base usa 11pt
+   de cuerpo y 9,25pt de tabla, que en una factura de una línea deja media
+   página en blanco y obliga a pasar a dos páginas antes de tiempo.
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+@page {
+  /* Desis aprovecha bastante más ancho: 1,5cm de margen se comía la caja de
+     ítems en facturas con descripciones largas. */
+  margin: 1.2cm;
+}
+
+body {
+  font-size: 7.5pt;
+}
+
+/* ── Cabecera ──────────────────────────────────────────────────────────── */
+
+#informations {
+  padding: 0.6em;
+  font-size: 8pt;
+}
+
+#info_proveedor dt.strong {
+  font-size: 10pt;
+}
+
+/* El logo va en la cabecera, sobre la razón social, y solo aparece si quien
+   llama manda uno: sin logo el bloque no existe y la cabecera queda como en
+   el estilo base. `max-height` y no `height` porque el logo lo sube cada
+   empresa y no hay forma de saber su proporción — así un logotipo apaisado
+   se ve entero y un isotipo cuadrado no desborda la cabecera. */
+#logo_emisor {
+  margin-bottom: 2mm;
+}
+
+#logo_emisor img {
+  max-height: 14mm;
+  max-width: 55mm;
+  object-fit: contain;
+}
+
+/* ── Receptor ──────────────────────────────────────────────────────────── */
+
+#receiver_data {
+  font-size: 7.5pt;
+  margin: 2.5mm 0;
+  padding: 3px 6px;
+}
+
+#receiver_data table.receiver td {
+  padding: 1px 3px;
+}
+
+/* ── Ítems ─────────────────────────────────────────────────────────────── */
+
+#item_table {
+  /* 6mm arriba y abajo en el base: con una factura de una línea, casi todo el
+     hueco entre la cabecera y la tabla era aire. */
+  margin: 3mm 0;
+}
+
+#item_table table,
+#item_table th,
+#item_table td {
+  font-size: 7.5pt;
+}
+
+#item_table th {
+  padding: 1.5px 2px;
+}
+
+#item_table td {
+  padding: 1px 2px;
+}
+
+/* ── Referencias ───────────────────────────────────────────────────────── */
+
+#referencias_table thead th,
+#referencias_table td {
+  font-size: 7.5pt;
+  padding: 1.5px 2px;
+}
+
+/* ── Totales y pie ─────────────────────────────────────────────────────── */
+
+#total_bar {
+  font-size: 7.5pt;
+  margin: 3mm 0;
+}
+
+#totals_block,
+#totals_block .row {
+  font-size: 7.5pt;
+}
+
+#totals_block .row {
+  padding: 1.5px 2px;
+}
+
+.barcode-legend {
+  font-size: 5.5pt;
+}
+
+/* El total es lo que se busca de un vistazo, así que se reduce menos que el
+   resto: en Desis también destaca sobre el cuerpo. */
+#monto_total_final {
+  font-size: 11pt;
+}
+
+#credito_especial {
+  font-size: 7.5pt;
+}

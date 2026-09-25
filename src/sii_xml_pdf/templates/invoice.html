@@ -17,6 +17,9 @@
       <!-- CABECERA -->
       <div class="header">
         <div id="info_proveedor">
+          {% if logo_b64 %}
+          <div id="logo_emisor"><img src="data:image;base64,{{ logo_b64 }}" alt="" /></div>
+          {% endif %}
           <dt class="strong">{{ d.razon_social }}</dt>
           {% if d.giro_proveedor %}<dt>{{ d.giro_proveedor }}</dt>{% endif %}
           {% if d.direccion_proveedor %}<dt>{{ d.direccion_proveedor }}</dt>{% endif %}
