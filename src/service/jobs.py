@@ -22,7 +22,7 @@ def sanitize_name(text: str, max_len: int = MAX_RAZON_LEN) -> str:
     return clean
 
 
-async def process_zip_and_send(zip_bytes: bytes, email: str):
+async def process_zip_and_send(zip_bytes: bytes, email: str, estilo: str = "actual"):
     logger.info("📦 Procesando ZIP para %s", email)
 
     pdfs = []
@@ -42,7 +42,7 @@ async def process_zip_and_send(zip_bytes: bytes, email: str):
                 folio = dte.numero_factura
                 pdf_name = f"{fecha} {tipo} {razon} {folio}.pdf"
 
-                pdf_bytes = render_pdf(dte)
+                pdf_bytes = render_pdf(dte, estilo=estilo)
             except Exception as e:
                 # 👉 Si falla el parseo, usar fallback
                 logger.warning(
@@ -51,7 +51,7 @@ async def process_zip_and_send(zip_bytes: bytes, email: str):
                     str(e),
                 )
                 pdf_name = name.replace(".xml", ".pdf")
-                pdf_bytes = render_pdf_from_xml(data)
+                pdf_bytes = render_pdf_from_xml(data, estilo=estilo)
 
             pdfs.append((pdf_name, pdf_bytes))
 
