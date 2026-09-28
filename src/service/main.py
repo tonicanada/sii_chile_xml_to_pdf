@@ -6,7 +6,7 @@ from redis import Redis
 from rq import Queue
 
 # importa tu función de conversión
-from sii_xml_pdf.renderer import render_pdf_from_xml
+from sii_xml_pdf.renderer import ESTILOS, render_pdf_from_xml
 from .jobs import process_zip_and_send  
 
 API_TOKEN = os.getenv("API_TOKEN", "change_me")
@@ -75,8 +75,17 @@ async def render(authorization: str = Header(None),
 @app.post("/render-zip")
 async def render_zip(authorization: str = Header(None),
                      file: UploadFile = File(...),
-                     email: str = Form(...)):
+                     email: str = Form(...),
+                     estilo: str = Form("actual")):
     check_auth(authorization)
+
+    # Se valida aquí y no en el worker: si revienta allá, el usuario ya recibió
+    # "encolado" y el correo nunca llega.
+    if estilo not in ESTILOS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Estilo desconocido: {estilo!r}. Disponibles: {', '.join(sorted(ESTILOS))}",
+        )
 
     data = await file.read()
     try:
@@ -85,7 +94,7 @@ async def render_zip(authorization: str = Header(None),
         raise HTTPException(status_code=400, detail="Archivo no es un ZIP válido")
 
     # 👇 Encolar en Redis, no procesar aquí
-    job = queue.enqueue(process_zip_and_send, data, email, job_timeout=600)
+    job = queue.enqueue(process_zip_and_send, data, email, estilo, job_timeout=600)
 
-    return {"status": "queued", "job_id": job.get_id(), "email": email}
+    return {"status": "queued", "job_id": job.id, "email": email}
 
