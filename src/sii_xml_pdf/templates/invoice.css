@@ -127,7 +127,9 @@ html, body {
 #referencias_table th:nth-child(2) { white-space: nowrap; }
 #referencias_table th:nth-child(1), #referencias_table td:nth-child(1) { width: 26%; }
 #referencias_table th:nth-child(3), #referencias_table td:nth-child(3) {
-  width: 20%; text-align: right;
+  /* Un folio de OC como `OC-TI-003808-1` se partía en el guion y la fila
+     quedaba en dos líneas. El SII lo limita a 18 caracteres: cabe entero. */
+  width: 20%; text-align: right; white-space: nowrap;
 }
 
 /* ===== Ítems ===== */
