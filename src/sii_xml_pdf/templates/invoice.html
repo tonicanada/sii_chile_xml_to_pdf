@@ -68,11 +68,16 @@
 
       <!-- REFERENCIAS -->
       {% if d.referencias %}
-      <div id="referencias_table">
+      {# La columna «Motivo» solo aparece si alguna referencia la trae: una nota de crédito
+         SIEMPRE lleva CodRef, y una referencia a una orden de compra o a un contrato no le
+         hace nada al documento, así que ahí la columna sobraría y estrecharía las otras. #}
+      {% set hay_motivo = d.referencias | map(attribute='codigo_referencia_palabras') | select | first
+                       or d.referencias | map(attribute='razon_referencia') | select | first %}
+      <div id="referencias_table" {% if hay_motivo %}class="con-motivo"{% endif %}>
         <div class="ref-title">Referencias:</div>
         <table class="refs">
           <thead>
-            <tr><th>Fecha</th><th>Tipo</th><th>Folio</th></tr>
+            <tr><th>Fecha</th><th>Tipo</th><th>Folio</th>{% if hay_motivo %}<th>Motivo</th>{% endif %}</tr>
           </thead>
           <tbody>
             {% for r in d.referencias %}
@@ -80,6 +85,11 @@
               <td>{{ r.fecha_referencia }}</td>
               <td>{{ r.tipo_doc_referencia_palabras }}</td>
               <td>{{ r.folio_referencia }}</td>
+              {% if hay_motivo %}
+              {# Lo que el documento le HACE al referenciado, y por qué. En una nota de
+                 crédito es lo que la explica: «Anula… Documento rechazado por cliente». #}
+              <td class="ref-motivo">{{ r.codigo_referencia_palabras }}{% if r.razon_referencia %}{% if r.codigo_referencia_palabras %}. {% endif %}{{ r.razon_referencia }}{% endif %}</td>
+              {% endif %}
             </tr>
             {% endfor %}
           </tbody>

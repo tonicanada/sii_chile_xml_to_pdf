@@ -32,6 +32,14 @@ REL_TIPO_DOC = {
     "NV": "Nota de Venta"
 }
 
+# `CodRef` del XSD. Solo estos tres: el SII no define más, y lo que no esté aquí se
+# imprime como el número crudo antes que inventarle un significado.
+REL_COD_REF = {
+    "1": "Anula documento de referencia",
+    "2": "Corrige texto del documento de referencia",
+    "3": "Corrige montos",
+}
+
 REL_IMP = {
     "14": "IVA margen comercialización", "15": "IVA retenido total", "17": "IVA anticipo faenamiento carne",
     "18": "IVA anticipado carne", "19": "IVA anticipado carne", "27": "DL 825/74 Art.42 a)",
@@ -159,11 +167,34 @@ def _forma_pago_palabras(forma: int) -> str:
     return REL_FORMA_PAGO.get(forma, f"Desconocido ({forma})")
 
 
+def _con_namespace(root):
+    """Pone el namespace del SII a un árbol que venga sin él. Devuelve el mismo `root`.
+
+    **El SII exporta los DTE sin declarar `xmlns`** (`<DTE version="1.0">`), mientras que
+    los que genera un emisor lo llevan (`<DTE xmlns="http://www.sii.cl/SiiDte" ...>`). No es
+    una rareza de un proveedor: de los 1.219 XML descargados del portal y revisados el
+    2026-09-29, los 1.219 vienen así.
+
+    Como el resto del parser busca con namespace, sin esto no encuentra **ningún** campo y
+    el documento sale entero vacío. No fallaba diciéndolo: reventaba más adelante al
+    formatear la fecha de emisión, que llegaba como `''`.
+
+    Se normaliza aquí, en el único punto de entrada, y no en cada `find`: así el resto del
+    parser no cambia. No afecta al TED, que se extrae del XML crudo y no de este árbol.
+    """
+    if root.tag.startswith("{"):
+        return root
+    for nodo in root.iter():
+        if not nodo.tag.startswith("{"):
+            nodo.tag = x(nodo.tag)
+    return root
+
+
 def _arbol(xml: Union[str, bytes, Path]):
     if isinstance(xml, (str, Path)):
-        return ET.parse(str(xml)).getroot()
+        return _con_namespace(ET.parse(str(xml)).getroot())
     # bytes → usar fromstring
-    return ET.fromstring(xml)
+    return _con_namespace(ET.fromstring(xml))
 
 
 def _documentos(root) -> List:
@@ -319,11 +350,16 @@ def _parse_documento(root) -> DTEData:
         tpo = _text(r.find(x("TpoDocRef"))) or ""
         folio = _text(r.find(x("FolioRef"))) or ""
         fch = _text(r.find(x("FchRef"))) or ""
+        cod = _text(r.find(x("CodRef"))) or ""
+        razon = _text(r.find(x("RazonRef"))) or ""
         refs.append(Referencia(
             tipo_doc_referencia=tpo,
             tipo_doc_referencia_palabras=REL_TIPO_DOC.get(str(tpo), str(tpo)),
             folio_referencia=folio,
             fecha_referencia=fch,
+            codigo_referencia=cod,
+            codigo_referencia_palabras=REL_COD_REF.get(cod, ""),
+            razon_referencia=razon,
         ))
 
     # Impuestos
