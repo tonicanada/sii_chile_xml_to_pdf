@@ -6,9 +6,11 @@ frágil —WeasyPrint mete metadatos que cambian— y lo que importa aquí es qu
 y qué sale en la plantilla.
 """
 
+import re
+
 import pytest
 
-from sii_xml_pdf.renderer import ESTILOS, _default_css_list
+from sii_xml_pdf.renderer import ESTILOS, _default_css_list, _leer_css
 
 
 def test_el_estilo_actual_no_anade_nada():
@@ -85,3 +87,47 @@ def test_el_logo_solo_sale_si_se_manda():
     con_logo = render_html(_dte_minimo(), vista_previa=True, logo_b64="QUJD")
     assert "logo_emisor" in con_logo
     assert "QUJD" in con_logo
+
+
+# ── anchos de las columnas de cifras ───────────────────────────────────────────
+
+def _anchos_de_columnas(css: str, columnas: range) -> dict[int, str]:
+    """El `width` declarado para cada `#item_table td:nth-child(N)` de esa hoja.
+
+    Se lee del CSS y no del PDF a propósito: «las cuatro columnas miden lo mismo» es una
+    propiedad de la hoja de estilo, y medirla sobre el PDF renderizado significaría
+    reconstruir el cálculo de WeasyPrint para comprobar lo que el CSS ya dice.
+    """
+    anchos = {}
+    for n in columnas:
+        # El width puede venir en una regla agrupada con otras columnas, así que se busca
+        # el bloque que menciona esta y se lee su `width`.
+        for m in re.finditer(r"([^{}]*)\{([^{}]*)\}", css):
+            selector, cuerpo = m.group(1), m.group(2)
+            if f"td:nth-child({n})" in selector and "width:" in cuerpo:
+                anchos[n] = re.search(r"width:\s*([\d.]+%)", cuerpo).group(1)
+    return anchos
+
+
+def test_en_el_compacto_las_cuatro_columnas_de_cifras_miden_lo_mismo():
+    """Dscto., Cantidad, Precio Unit. y Valor Item, parejas. A 7,5pt caben: comprobado con
+    el peor caso real que Tecton ha emitido, `10.601.964.727` — 13 caracteres con puntos."""
+    anchos = _anchos_de_columnas(_leer_css(ESTILOS["compacto"]), range(4, 8))
+    assert set(anchos) == {4, 5, 6, 7}, "las cuatro tienen que estar declaradas"
+    assert len(set(anchos.values())) == 1, f"no miden lo mismo: {anchos}"
+
+
+def test_el_base_las_deja_desiguales_a_proposito():
+    """Con la fuente del base, a Precio Unit. y Valor Item les hace falta más sitio: con 11%
+    los montos en pesos se desbordaban sobre la columna vecina. Igualarlas ahí volvería a
+    romper eso, y no se nota mirando el CSS."""
+    anchos = _anchos_de_columnas(_leer_css("templates/invoice.css"), range(4, 8))
+    assert anchos[6] == anchos[7], "Precio Unit. y Valor Item sí van iguales entre sí"
+    assert anchos[4] != anchos[6], "pero no con Dscto."
+
+
+def test_el_compacto_no_toca_las_columnas_de_texto():
+    """Nro., Código y Descripción siguen viniendo del base: lo que se pidió fue emparejar
+    las cifras, no rehacer la tabla."""
+    compacto = _leer_css(ESTILOS["compacto"])
+    assert _anchos_de_columnas(compacto, range(1, 4)) == {}

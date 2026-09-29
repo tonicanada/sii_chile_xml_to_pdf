@@ -118,6 +118,19 @@ body {
   font-size: 7.5pt;
 }
 
+/* Las cuatro columnas de cifras, del mismo ancho. En el base son desiguales (8 / 10 /
+   17,5 / 17,5) porque Dscto. y Cantidad llevan valores cortos y a Precio Unit./Valor Item
+   les hacía falta sitio: con 11% los montos en pesos se desbordaban sobre la columna
+   vecina. Aquí caben iguales porque el compacto imprime a 7,5pt, y el reparto parejo se
+   lee mejor. Comprobado con el peor caso real que Tecton ha emitido, 10.601.964.727, que
+   son 13 caracteres con los puntos de miles. */
+#item_table th:nth-child(4), #item_table td:nth-child(4),
+#item_table th:nth-child(5), #item_table td:nth-child(5),
+#item_table th:nth-child(6), #item_table td:nth-child(6),
+#item_table th:nth-child(7), #item_table td:nth-child(7) {
+  width: 13.25%;
+}
+
 #item_table table {
   /* El base fija 1.1 pensando en 11pt. Al bajar a 7,5pt esa proporción se
      mantiene, así que una descripción de tres líneas queda pegada consigo
