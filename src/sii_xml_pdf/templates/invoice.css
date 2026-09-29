@@ -131,6 +131,21 @@ html, body {
      quedaba en dos líneas. El SII lo limita a 18 caracteres: cabe entero. */
   width: 20%; text-align: right; white-space: nowrap;
 }
+/* Con motivo —una nota de crédito— la tabla ocupa el ancho entero: «Anula documento de
+   referencia» más la razón no caben en media página sin partirse en cuatro líneas. */
+#referencias_table.con-motivo { width: 100%; min-width: 100%; }
+#referencias_table.con-motivo th:nth-child(1),
+#referencias_table.con-motivo td:nth-child(1) { width: 13%; }
+#referencias_table.con-motivo th:nth-child(3),
+#referencias_table.con-motivo td:nth-child(3) { width: 10%; }
+#referencias_table td.ref-motivo,
+#referencias_table.con-motivo th:nth-child(4) {
+  /* El folio va alineado a la derecha, así que sin esta separación «1932» y «Anula
+     documento…» se leen pegados, como si fueran un solo campo. */
+  padding-left: 4mm;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
 
 /* ===== Ítems ===== */
 #item_table {

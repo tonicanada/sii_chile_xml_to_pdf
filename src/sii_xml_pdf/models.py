@@ -13,6 +13,13 @@ class Referencia(BaseModel):
     tipo_doc_referencia_palabras: str
     folio_referencia: str
     fecha_referencia: str
+    # `CodRef` y `RazonRef` del XSD: qué le hace al documento referenciado y por qué.
+    # Son opcionales en el esquema —una referencia a una orden de compra no "le hace"
+    # nada—, pero en una nota de crédito son lo que la explica: sin ellos el PDF dice
+    # qué documento corrige y no si lo anula ni por qué motivo.
+    codigo_referencia: str = ""
+    codigo_referencia_palabras: str = ""
+    razon_referencia: str = ""
 
 class Impuesto(BaseModel):
     tipo: str
