@@ -112,8 +112,8 @@
               <td class="right">{{ loop.index }}</td>
               <td class="right">{{ it.codigo }}</td>
               <td class="left wrap">{{ it.descripcion }}</td>
-              <td class="right">0</td>
-              <td class="right">{{ '%.2f'|format(it.qty) }}</td>
+              <td class="right">{{ it.descuento|clp }}</td>
+              <td class="right">{{ it.qty|cantidad }}</td>
               <td class="right">{{ it.rate|round|int|clp }}</td>
               <td class="right">{{ it.total|clp }}</td>
             </tr>
@@ -157,9 +157,9 @@
           <div id="totals_block">
             <div class="tot-col">
               <div class="row"><span>Impuestos:</span><span class="val">{{ monto_impuesto_y_retenciones|clp }}</span></div>
-              <div class="row"><span>Retenciones:</span><span class="val">0</span></div>
-              <div class="row"><span>Descuento:</span><span class="val">0</span></div>
-              <div class="row"><span>Recargo:</span><span class="val">0</span></div>
+              <div class="row"><span>Retenciones:</span><span class="val">{{ d.retenciones|clp }}</span></div>
+              <div class="row"><span>Descuento:</span><span class="val">{{ d.descuento_global|clp }}</span></div>
+              <div class="row"><span>Recargo:</span><span class="val">{{ d.recargo_global|clp }}</span></div>
             </div>
             <div class="tot-col">
               <div class="row"><span>Neto:</span><span class="val">{{ d.monto_neto|clp }}</span></div>

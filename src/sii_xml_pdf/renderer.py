@@ -6,7 +6,7 @@ from importlib import resources
 import io
 
 from .models import DTEData
-from .formatting import format_clp, fecha_es_larga
+from .formatting import format_cantidad, format_clp, fecha_es_larga
 from .barcode import pdf417_svg_from_ted, pdf417_png_base64_from_ted
 from .parser import parse_xml 
 
@@ -15,6 +15,7 @@ env = Environment(
     autoescape=select_autoescape(["html"])
 )
 env.filters["clp"] = format_clp
+env.filters["cantidad"] = format_cantidad
 
 
 #: Estilos disponibles y la hoja que cada uno AÑADE sobre `invoice.css`.
