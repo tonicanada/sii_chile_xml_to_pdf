@@ -342,7 +342,26 @@ def _parse_documento(root) -> DTEData:
             desc = nmb or dsc
 
         items.append(Item(qty=qty, rate=rate, descripcion=desc,
-                     total=total, codigo=cod))
+                     total=total, codigo=cod,
+                     descuento=_int_text(det.find(x("DescuentoMonto")), default=0),
+                     recargo=_int_text(det.find(x("RecargoMonto")), default=0),
+                     exento=_text(det.find(x("IndExe"))) == "1"))
+
+    # Descuentos/recargos globales. En % se aplican sobre los ítems que indica IndExeDR:
+    # sin él, los afectos; 1, los exentos (2 = no facturables, no aplica a estos ítems).
+    descuento_global = recargo_global = 0
+    for dr in root.findall(f".//{x('DscRcgGlobal')}"):
+        valor = _float_text(dr.find(x("ValorDR")), default=0.0)
+        if (_text(dr.find(x("TpoValor"))) or "") == "%":
+            ind = _text(dr.find(x("IndExeDR"))) or ""
+            base = sum(it.total for it in items if it.exento == (ind == "1"))
+            monto = int(round(base * valor / 100))
+        else:
+            monto = int(round(valor))
+        if (_text(dr.find(x("TpoMov"))) or "").upper() == "R":
+            recargo_global += monto
+        else:
+            descuento_global += monto
 
     # Referencias
     refs: List[Referencia] = []
@@ -364,9 +383,13 @@ def _parse_documento(root) -> DTEData:
 
     # Impuestos
     imps: List[Impuesto] = []
+    retenciones = 0
     for i in root.findall(f".//{x('ImptoReten')}"):
         tipo = _text(i.find(x("TipoImp"))) or ""
         monto = _int_text(i.find(x("MontoImp")), default=0)
+        if tipo.isdigit() and (int(tipo) == 15 or 30 <= int(tipo) <= 41):
+            retenciones += monto
+            continue
         imps.append(
             Impuesto(tipo=tipo, tipo_palabras=REL_IMP.get(tipo, tipo), monto=monto))
 
@@ -391,6 +414,9 @@ def _parse_documento(root) -> DTEData:
         monto_iva=monto_iva,
         monto_exento=monto_exento,
         credito_especial_constructora=credito_especial,
+        descuento_global=descuento_global,
+        recargo_global=recargo_global,
+        retenciones=retenciones,
         numero_factura=numero_factura,
         fecha_emision=fecha_emision,
         tipo_dte=tipo_dte,

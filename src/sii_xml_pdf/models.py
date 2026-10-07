@@ -7,6 +7,13 @@ class Item(BaseModel):
     descripcion: str
     total: int
     codigo: str = "0"
+    # DescuentoMonto / RecargoMonto de la línea. MontoItem ya viene neto de ellos; sin
+    # imprimirlos, la línea no cuadra (cantidad × precio ≠ valor) y el Set de Pruebas del
+    # SII lo exige: «los descuentos por línea o globales deben ser indicados en las
+    # representaciones impresas».
+    descuento: int = 0
+    recargo: int = 0
+    exento: bool = False
 
 class Referencia(BaseModel):
     tipo_doc_referencia: str
@@ -56,6 +63,13 @@ class DTEData(BaseModel):
     # MntTotal ya viene neteado de este crédito, así que sin imprimirlo
     # la muestra impresa no cuadra: neto + exento + IVA - CredEC = total.
     credito_especial_constructora: int = 0
+    # DscRcgGlobal: el monto ya resuelto (si viene en %, sobre los ítems que afecta).
+    descuento_global: int = 0
+    recargo_global: int = 0
+    # ImptoReten de retención (15 = IVA retenido total, 30-41 = retenciones de productos
+    # específicos). No se suman al total: se restan. Van aparte de los demás impuestos para
+    # que el PDF no diga «Impuestos» por algo que el comprador retiene.
+    retenciones: int = 0
     numero_factura: str
     fecha_emision: str
     tipo_dte: int
