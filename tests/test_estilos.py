@@ -111,7 +111,7 @@ def _anchos_de_columnas(css: str, columnas: range) -> dict[int, str]:
 
 def test_en_el_compacto_las_cuatro_columnas_de_cifras_miden_lo_mismo():
     """Dscto., Cantidad, Precio Unit. y Valor Item, parejas. A 7,5pt caben: comprobado con
-    un monto de mil millones, `1.000.000.000` — 13 caracteres con puntos."""
+    un monto de diez mil millones, `10.000.000.000` — 14 caracteres con puntos."""
     anchos = _anchos_de_columnas(_leer_css(ESTILOS["compacto"]), range(4, 8))
     assert set(anchos) == {4, 5, 6, 7}, "las cuatro tienen que estar declaradas"
     assert len(set(anchos.values())) == 1, f"no miden lo mismo: {anchos}"
