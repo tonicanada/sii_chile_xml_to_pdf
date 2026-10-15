@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Documento FICTICIO, generado por scripts/generar_ejemplos.py. No es una factura real. -->
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0">
+<Documento ID="F87T33">
+<Encabezado>
+<IdDoc><TipoDTE>33</TipoDTE><Folio>87</Folio><FchEmis>2026-09-02</FchEmis><TpoTranCompra>1</TpoTranCompra><TpoTranVenta>1</TpoTranVenta><FmaPago>1</FmaPago></IdDoc>
+<Emisor><RUTEmisor>88888888-8</RUTEmisor><RznSoc>Librería Ejemplo SpA</RznSoc><GiroEmis>Librería</GiroEmis><CdgSIISucur>81000002</CdgSIISucur><DirOrigen>Calle Inventada 297</DirOrigen><CmnaOrigen>Coquimbo</CmnaOrigen><CiudadOrigen>Coquimbo</CiudadOrigen></Emisor>
+<Receptor><RUTRecep>11111111-1</RUTRecep><RznSocRecep>Constructora Ejemplo S.A.</RznSocRecep><GiroRecep>Construcción de edificios</GiroRecep><DirRecep>Av. Ficticia 1234, oficina 56</DirRecep><CmnaRecep>Providencia</CmnaRecep><CiudadRecep>Santiago</CiudadRecep></Receptor>
+<Totales><MntNeto>6008</MntNeto><MntExe>0</MntExe><TasaIVA>19</TasaIVA><IVA>1142</IVA><MntTotal>7150</MntTotal></Totales>
+</Encabezado>
+<Detalle><NroLinDet>1</NroLinDet><NmbItem>SEPARADOR OFICIO</NmbItem><QtyItem>2.00</QtyItem><PrcItem>840</PrcItem><MontoItem>1680</MontoItem></Detalle>
+<Detalle><NroLinDet>2</NroLinDet><NmbItem>ARCHIVADOR OFICIO</NmbItem><QtyItem>2.00</QtyItem><PrcItem>1513</PrcItem><MontoItem>3026</MontoItem></Detalle>
+<Detalle><NroLinDet>3</NroLinDet><NmbItem>SEPARADOR DE HOJAS</NmbItem><QtyItem>1.00</QtyItem><PrcItem>714</PrcItem><MontoItem>714</MontoItem></Detalle>
+<Detalle><NroLinDet>4</NroLinDet><NmbItem>LÁPIZ PASTA AZUL</NmbItem><QtyItem>2.00</QtyItem><PrcItem>294</PrcItem><MontoItem>588</MontoItem></Detalle>
+
+<TED version="1.0"><DD><RE>88888888-8</RE><TD>33</TD><F>87</F><FE>2026-09-02</FE><RR>11111111-1</RR><RSR>Constructora Ejemplo S.A.</RSR><MNT>7150</MNT><IT1>SEPARADOR OFICIO</IT1><CAF version="1.0"><DA><RE>88888888-8</RE><RS>Librería Ejemplo SpA</RS><TD>33</TD><RNG><D>87</D><H>186</H></RNG><FA>2026-09-02</FA><RSAPK><M>27j/dVSw+GDjHH70C9ZWPVCfhiH3/Ptlis+mExczS74T+r7Gf07oOLXi3a7WLcmOeNAG8WsdHSxDh2NZ9O0ILiw3ImR9F/Pt4Jv8ErDx0u1+eajaOxp6Om2uj4yMOTm4IP+tQUn1E1kk/FfFgxcKtlWUvwdt/7E4Zg2eMrmUnCs=</M><E>AQAB</E></RSAPK><IDK>100</IDK></DA><FRMA algoritmo="SHA1withRSA">VHa/SySc91YPUyYpkfnoWy+hmH5SzhZSbfdsxUnqrhnMHg4E/ZfrEnhoHi/LUa+lTSRa0WrK68tfg5H2NGnBPN7+fMghcDA8D94ayjby1GLl3zDr1Y/GhJz/tzE0JnBTlgbZGxtq/tVxA0uYW08pIqfxxux7TXXEZRw7kRYEPxU=</FRMA></CAF><TSTED>2026-09-02T10:15:00</TSTED></DD><FRMT algoritmo="SHA1withRSA">XawznXa85VP7HLqmcrt6kxvP6eyOctbuGheb4MmL6vx1hN4SrFAGzUdkUyqD3aJjZEI+eRnl38b6gxQxP1YqZ/8tVDB9lQondhsf5Co9cYqnqsm/Y+II98Xs+LJNB2VSN17EfOJZWSUE3cx5R2bisXI0PzHipE1AuekdNiECJys=</FRMT></TED>
+<TmstFirma>2026-09-02T10:15:00</TmstFirma>
+</Documento>
+</DTE>

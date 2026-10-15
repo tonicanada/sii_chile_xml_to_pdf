@@ -87,6 +87,10 @@ sii-xml-pdf extract-excel examples/input -o examples/output/listado.xlsx
 
 👉 Los PDFs se generan en `output/pdf/` y el Excel en `output/`.
 
+Los XML de `examples/input/` son **ficticios**: empresas, RUT, ítems y montos
+inventados, con un timbre firmado por claves de prueba que no emitió el SII. Se
+regeneran con `python scripts/generar_ejemplos.py`.
+
 ---
 
 ## 🐳 Uso como Microservicio con Docker

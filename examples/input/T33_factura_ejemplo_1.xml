@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Documento FICTICIO, generado por scripts/generar_ejemplos.py. No es una factura real. -->
+<DTE xmlns="http://www.sii.cl/SiiDte" version="1.0">
+<Documento ID="F1520T33">
+<Encabezado>
+<IdDoc><TipoDTE>33</TipoDTE><Folio>1520</Folio><FchEmis>2026-09-05</FchEmis><IndServicio>2</IndServicio><TpoTranVenta>1</TpoTranVenta><FmaPago>1</FmaPago></IdDoc>
+<Emisor><RUTEmisor>77777777-7</RUTEmisor><RznSoc>Ferretería La Esquina S.A.</RznSoc><GiroEmis>Venta de materiales de construcción</GiroEmis><Acteco>475201</Acteco><CdgSIISucur>81000001</CdgSIISucur><DirOrigen>Camino Ejemplo 8000</DirOrigen><CmnaOrigen>Quilicura</CmnaOrigen><CiudadOrigen>Santiago</CiudadOrigen></Emisor>
+<Receptor><RUTRecep>11111111-1</RUTRecep><RznSocRecep>Constructora Ejemplo S.A.</RznSocRecep><GiroRecep>Construcción de edificios</GiroRecep><DirRecep>Av. Ficticia 1234, oficina 56</DirRecep><CmnaRecep>Providencia</CmnaRecep><CiudadRecep>Santiago</CiudadRecep></Receptor>
+<Totales><MntNeto>64508</MntNeto><MntExe>0</MntExe><TasaIVA>19</TasaIVA><IVA>12257</IVA><MntTotal>76765</MntTotal></Totales>
+</Encabezado>
+<Detalle><NroLinDet>1</NroLinDet><NmbItem>NIVEL 24" ALUMINIO</NmbItem><DscItem>Marca genérica, modelo 42-074</DscItem><QtyItem>1.00</QtyItem><PrcItem>10412</PrcItem><MontoItem>10412</MontoItem></Detalle>
+<Detalle><NroLinDet>2</NroLinDet><NmbItem>MANGA PLÁSTICA NEGRA 4X10 M</NmbItem><DscItem>Rollo de 40 m2</DscItem><QtyItem>1.00</QtyItem><PrcItem>9235</PrcItem><MontoItem>9235</MontoItem></Detalle>
+<Detalle><NroLinDet>3</NroLinDet><NmbItem>LÁPIZ BICOLOR GRUESO</NmbItem><DscItem>Rojo y azul</DscItem><QtyItem>2.00</QtyItem><PrcItem>1488</PrcItem><MontoItem>2976</MontoItem></Detalle>
+<Detalle><NroLinDet>4</NroLinDet><NmbItem>DISCO CORTE FIERRO 9"</NmbItem><DscItem>9 x 1/8 x 7/8 pulgadas</DscItem><QtyItem>5.00</QtyItem><PrcItem>2261</PrcItem><MontoItem>11305</MontoItem></Detalle>
+<Detalle><NroLinDet>5</NroLinDet><NmbItem>CLAVO CORRIENTE 4 X 8</NmbItem><DscItem>Paquete de 1 kg</DscItem><QtyItem>20.00</QtyItem><PrcItem>1529</PrcItem><MontoItem>30580</MontoItem></Detalle>
+
+<TED version="1.0"><DD><RE>77777777-7</RE><TD>33</TD><F>1520</F><FE>2026-09-05</FE><RR>11111111-1</RR><RSR>Constructora Ejemplo S.A.</RSR><MNT>76765</MNT><IT1>NIVEL 24" ALUMINIO</IT1><CAF version="1.0"><DA><RE>77777777-7</RE><RS>Ferretería La Esquina S.A.</RS><TD>33</TD><RNG><D>1520</D><H>1619</H></RNG><FA>2026-09-05</FA><RSAPK><M>8RQfMs662RQnfn1x6HYD8Uk4YuD4lj6TySgRu+W7xk8hoebHA6+pmjSiyDztMqzornLinKONrsvpwuh4US5EiGCteq1nXbLB1EeTjbN3q5vn26i1ut9u4MNC3WZEsRnDpUtqYga8u9OuOGOKbO6ThCp2oSrIluN5IoroEgSVa+0=</M><E>AQAB</E></RSAPK><IDK>100</IDK></DA><FRMA algoritmo="SHA1withRSA">ndbSiNVfehPPO6dSgFsZ9WaGCJEQzNhmwjjUwrsEFbY3PUonRnOv9Ipj/Vh/vP+D6vMm04KFeGoRa1LfdvU8mumc7GsYaMgG+7IveB0J5ix1WRpesSjshJfGAyal+9/QgSAmbpexhc79qFZkmqz9YwPjx4UXaXU0dq22fNvhmjA=</FRMA></CAF><TSTED>2026-09-05T10:15:00</TSTED></DD><FRMT algoritmo="SHA1withRSA">oo129bZRNHdf1BbDBlHPPhrzoLszxqIPxK7EcH7tFOCEDA2wExwPr821+Ei6cXIhusZLof/jEUY4UTKuz9N6vtRpfaEBjZv5lUY+va6axZeM9Wkxd4vzYL84OR/gAQvsCLIt5LlkuydNvsiJhMCfuZEG5aKBk2GFUph+sQQzJj4=</FRMT></TED>
+<TmstFirma>2026-09-05T10:15:00</TmstFirma>
+</Documento>
+</DTE>
