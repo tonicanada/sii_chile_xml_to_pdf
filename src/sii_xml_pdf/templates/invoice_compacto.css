@@ -122,8 +122,8 @@ body {
    17,5 / 17,5) porque Dscto. y Cantidad llevan valores cortos y a Precio Unit./Valor Item
    les hacía falta sitio: con 11% los montos en pesos se desbordaban sobre la columna
    vecina. Aquí caben iguales porque el compacto imprime a 7,5pt, y el reparto parejo se
-   lee mejor. Comprobado con un monto de diez mil millones, 10.000.000.000, que
-   son 13 caracteres con los puntos de miles. */
+   lee mejor. Comprobado con un monto de mil millones, 1.000.000.000, que son 13
+   caracteres con los puntos de miles. */
 #item_table th:nth-child(4), #item_table td:nth-child(4),
 #item_table th:nth-child(5), #item_table td:nth-child(5),
 #item_table th:nth-child(6), #item_table td:nth-child(6),
