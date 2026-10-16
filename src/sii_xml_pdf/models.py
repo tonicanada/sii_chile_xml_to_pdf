@@ -76,6 +76,14 @@ class DTEData(BaseModel):
     tipo_dte_palabras: str
     tipo_dte_abreviatura: str
 
+    # Guía de despacho (TD52). El Set de Pruebas exige «señalar el tipo de traslado en todos
+    # los documentos de Guía de Despacho Electrónica», también en la muestra impresa: sin
+    # esto el PDF no dice si los bienes se venden, se trasladan entre bodegas o se devuelven.
+    tipo_traslado: str = ""      # IndTraslado, en palabras
+    tipo_despacho: str = ""      # TipoDespacho, en palabras
+    destino: str = ""            # Transporte/DirDest, CmnaDest y CiudadDest
+    patente: str = ""            # Transporte/Patente
+
     # Otros
     timbre_xml: str
     # El TED tal como está en el XML, byte a byte. El de arriba pasa por

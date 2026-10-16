@@ -57,6 +57,22 @@ REL_IMP = {
     "271": "DL 825/74, Art.42 a) Inc. 2º"
 }
 
+# DTE_v10.xsd, IdDoc/IndTraslado y IdDoc/TipoDespacho.
+REL_TIPO_TRASLADO = {
+    1: "Operación constituye venta",
+    2: "Venta por efectuar",
+    3: "Consignación",
+    4: "Promoción o donación",
+    5: "Traslado interno",
+    6: "Otros traslados no venta",
+    7: "Guía de devolución",
+}
+REL_TIPO_DESPACHO = {
+    1: "Por cuenta del comprador",
+    2: "Por cuenta del emisor a instalaciones del comprador",
+    3: "Por cuenta del emisor a otras instalaciones",
+}
+
 REL_FORMA_PAGO = {
     0: "Sin información",
     1: "Contado",
@@ -308,6 +324,16 @@ def _parse_documento(root) -> DTEData:
     # Totales/CredEC — Crédito Especial Empresas Constructoras.
     credito_especial = _int_text(root.find(f".//{x('CredEC')}"))
 
+    traslado = _int_text(root.find(f".//{x('IndTraslado')}"), default=0)
+    despacho = _int_text(root.find(f".//{x('TipoDespacho')}"), default=0)
+    tipo_traslado = REL_TIPO_TRASLADO.get(traslado, "") if traslado else ""
+    tipo_despacho = REL_TIPO_DESPACHO.get(despacho, "") if despacho else ""
+    destino = ", ".join(
+        v for v in (_text(root.find(f".//{x('DirDest')}")),
+                    _text(root.find(f".//{x('CmnaDest')}")),
+                    _text(root.find(f".//{x('CiudadDest')}"))) if v)
+    patente = _text(root.find(f".//{x('Patente')}")) or ""
+
     tipo_pal, abrev = _tipo_dte_palabras_y_abrev(tipo_dte)
     forma_pal = _forma_pago_palabras(forma_pago)
 
@@ -422,6 +448,10 @@ def _parse_documento(root) -> DTEData:
         tipo_dte=tipo_dte,
         tipo_dte_palabras=tipo_pal,
         tipo_dte_abreviatura=abrev,
+        tipo_traslado=tipo_traslado,
+        tipo_despacho=tipo_despacho,
+        destino=destino,
+        patente=patente,
         timbre_xml=timbre_str,
         items=items,
         referencias=refs,

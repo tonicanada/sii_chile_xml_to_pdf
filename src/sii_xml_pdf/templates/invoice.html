@@ -63,6 +63,26 @@
             <td class="col-title right">Fecha venc:</td>
             <td class="col-data right">{{ d.fecha_vencimiento or '' }}</td>
           </tr>
+          {% if d.tipo_traslado or d.tipo_despacho %}
+          <tr>
+            <td class="col-title">Traslado:</td>
+            <td class="col-data">{{ d.tipo_traslado or '' }}</td>
+            <td class="col-title right">{% if d.patente %}Patente:{% endif %}</td>
+            <td class="col-data right">{{ d.patente or '' }}</td>
+          </tr>
+          {% if d.tipo_despacho %}
+          <tr>
+            <td class="col-title">Despacho:</td>
+            <td class="col-data" colspan="3">{{ d.tipo_despacho }}</td>
+          </tr>
+          {% endif %}
+          {% endif %}
+          {% if d.destino %}
+          <tr>
+            <td class="col-title">Destino:</td>
+            <td class="col-data" colspan="3">{{ d.destino }}</td>
+          </tr>
+          {% endif %}
         </table>
       </div>
 
